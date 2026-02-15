@@ -30,6 +30,7 @@ import {
 import { Button } from './Button';
 import { PRODUCTS, Product, BRAND_NAMES, LOCATIONS } from '../constants';
 import { useCart } from './CartContext';
+import { fallbackData, getProductsRequest } from '../services/api';
 
 // Quick View Modal Component
 interface QuickViewModalProps {
@@ -168,6 +169,7 @@ interface ShopProps {
 }
 
 export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
+  const [products, setProducts] = useState<Product[]>(PRODUCTS);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
@@ -184,7 +186,22 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
     setSelectedCategory(initialCategory);
   }, [initialCategory]);
 
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const apiProducts = await getProductsRequest();
+        setProducts(apiProducts);
+      } catch {
+        setProducts(fallbackData.products);
+      }
+    };
+
+    loadProducts();
+  }, []);
+
   const categories = Object.keys(CATEGORY_ICONS);
+  const brands = Array.from(new Set(products.map(product => product.brand))).filter(Boolean);
+  const availableBrands = brands.length ? brands : BRAND_NAMES;
 
   const toggleBrand = (brand: string) => {
     setSelectedBrands(prev => 
@@ -206,7 +223,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
     setTimeout(() => setAddedEffect(null), 1000);
   };
 
-  const filteredProducts = PRODUCTS.filter(product => {
+  const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           product.brand.toLowerCase().includes(searchQuery.toLowerCase());
@@ -260,7 +277,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
            <p className="text-sm font-semibold text-slate-400 mb-6">Trusted By Top Companies</p>
            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-              {BRAND_NAMES.slice(0, 5).map((brand, i) => (
+                {availableBrands.slice(0, 5).map((brand, i) => (
                  <span key={i} className="text-xl font-bold text-slate-800 dark:text-white">{brand}</span>
               ))}
            </div>
@@ -352,7 +369,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                 <div>
                    <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wider">Brands</h3>
                    <div className="flex flex-wrap gap-2">
-                      {BRAND_NAMES.map(brand => (
+                      {availableBrands.map(brand => (
                         <button
                           key={brand}
                           onClick={() => toggleBrand(brand)}

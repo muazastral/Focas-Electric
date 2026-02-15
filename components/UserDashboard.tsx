@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
 import { useCart } from './CartContext';
 import { 
@@ -14,13 +14,29 @@ import {
 } from 'lucide-react';
 import { Button } from './Button';
 import { MOCK_ORDERS } from '../constants';
+import { fallbackData, getOrdersRequest } from '../services/api';
+import { Order } from '../types';
 
 export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }) => {
   const { user, logout } = useAuth();
   const { cart, cartTotal, removeFromCart, updateQuantity } = useCart();
   const [activeTab, setActiveTab] = useState('profile');
+  const [orders, setOrders] = useState<Order[]>(MOCK_ORDERS);
 
   if (!user) return null;
+
+  useEffect(() => {
+    const loadOrders = async () => {
+      try {
+        const apiOrders = await getOrdersRequest();
+        setOrders(apiOrders);
+      } catch {
+        setOrders(fallbackData.orders.filter(o => o.userId === user.id));
+      }
+    };
+
+    loadOrders();
+  }, [user.id]);
 
   const handleLogout = () => {
     logout();
@@ -85,7 +101,7 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
       <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Order History</h2>
       <div className="space-y-4">
-        {MOCK_ORDERS.filter(o => o.userId === user.id).map(order => (
+        {orders.filter(o => o.userId === user.id).map(order => (
           <div key={order.id} className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex flex-wrap justify-between items-center mb-4 pb-4 border-b border-slate-100 dark:border-slate-800">
               <div>
@@ -113,7 +129,7 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
             </div>
           </div>
         ))}
-        {MOCK_ORDERS.filter(o => o.userId === user.id).length === 0 && (
+        {orders.filter(o => o.userId === user.id).length === 0 && (
           <div className="text-center py-12 text-slate-500">
             <ShoppingBag className="w-12 h-12 mx-auto mb-4 opacity-20" />
             <p>No orders found.</p>

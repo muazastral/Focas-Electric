@@ -12,12 +12,14 @@ import {
 import { NEWS_ITEMS } from '../constants';
 import { Button } from './Button';
 import { NewsItem } from '../types';
+import { fallbackData, getNewsRequest } from '../services/api';
 
 interface NewsPageProps {
     onNavigate: (page: string) => void;
 }
 
 export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
+  const [newsItems, setNewsItems] = useState<NewsItem[]>(NEWS_ITEMS);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
@@ -35,15 +37,28 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
     };
   }, [selectedNews]);
 
+  useEffect(() => {
+    const loadNews = async () => {
+      try {
+        const apiNews = await getNewsRequest();
+        setNewsItems(apiNews);
+      } catch {
+        setNewsItems(fallbackData.news);
+      }
+    };
+
+    loadNews();
+  }, []);
+
   // Extract unique categories
-  const categories = ['All', ...Array.from(new Set(NEWS_ITEMS.map(item => item.category)))];
+  const categories = ['All', ...Array.from(new Set(newsItems.map(item => item.category)))];
 
   // Helper to parse date string "Oct 12, 2023" to Date object
   const parseDate = (dateStr: string) => {
     return new Date(dateStr);
   };
 
-  const filteredNews = NEWS_ITEMS.filter(item => {
+  const filteredNews = newsItems.filter(item => {
     const matchesSearch = 
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
       item.content.toLowerCase().includes(searchQuery.toLowerCase());

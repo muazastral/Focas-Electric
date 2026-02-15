@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { User } from '../types';
 import { MOCK_USERS } from '../constants';
+import { clearAuthToken, getAuthToken, loginRequest, logoutRequest, meRequest, setAuthToken } from '../services/api';
 
 interface AuthContextType {
   user: User | null;
@@ -15,25 +16,46 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  React.useEffect(() => {
+    const hydrateAuth = async () => {
+      if (!getAuthToken()) {
+        return;
+      }
+
+      try {
+        const me = await meRequest();
+        setUser(me);
+      } catch {
+        clearAuthToken();
+        setUser(null);
+      }
+    };
+
+    hydrateAuth();
+  }, []);
+
   const login = async (email: string, password: string): Promise<boolean> => {
-    // Mock login logic
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Simple password check (for demo purposes, password is 'password')
-        if (password === 'password') {
-          const foundUser = MOCK_USERS.find(u => u.email === email);
-          if (foundUser) {
-            setUser(foundUser);
-            resolve(true);
-            return;
-          }
+    try {
+      const result = await loginRequest(email, password);
+      setAuthToken(result.token);
+      setUser(result.user);
+      return true;
+    } catch {
+      if (password === 'password') {
+        const foundUser = MOCK_USERS.find(u => u.email === email);
+        if (foundUser) {
+          setUser(foundUser);
+          return true;
         }
-        resolve(false);
-      }, 800);
-    });
+      }
+
+      return false;
+    }
   };
 
   const logout = () => {
+    logoutRequest().catch(() => undefined);
+    clearAuthToken();
     setUser(null);
   };
 

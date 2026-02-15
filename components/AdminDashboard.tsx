@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   LayoutDashboard, 
   Package, 
@@ -45,7 +45,8 @@ import {
 } from 'lucide-react';
 import { Button } from './Button';
 import { PRODUCTS, MOCK_ORDERS, MOCK_USERS, Product } from '../constants';
-import { Order } from '../types';
+import { Order, User } from '../types';
+import { deleteProductRequest, fallbackData, getAdminOrdersRequest, getAdminUsersRequest, getProductsRequest, saveProductRequest } from '../services/api';
 
 // --- Types ---
 
@@ -153,6 +154,7 @@ export const AdminDashboard: React.FC = () => {
   // -- Data State --
   const [products, setProducts] = useState<Product[]>(PRODUCTS);
   const [orders, setOrders] = useState<Order[]>(MOCK_ORDERS);
+  const [users, setUsers] = useState<User[]>(MOCK_USERS);
   const [searchTerm, setSearchTerm] = useState('');
   
   // -- Product Editing State --
@@ -164,6 +166,28 @@ export const AdminDashboard: React.FC = () => {
   const [previewMode, setPreviewMode] = useState<'desktop' | 'mobile'>('desktop');
 
   const selectedSection = sections.find(s => s.id === selectedSectionId);
+
+  useEffect(() => {
+    const loadAdminData = async () => {
+      try {
+        const [apiProducts, apiOrders, apiUsers] = await Promise.all([
+          getProductsRequest(),
+          getAdminOrdersRequest(),
+          getAdminUsersRequest(),
+        ]);
+
+        setProducts(apiProducts);
+        setOrders(apiOrders);
+        setUsers(apiUsers);
+      } catch {
+        setProducts(fallbackData.products);
+        setOrders(fallbackData.orders);
+        setUsers(fallbackData.users);
+      }
+    };
+
+    loadAdminData();
+  }, []);
 
   // --- Actions ---
 
@@ -219,17 +243,38 @@ export const AdminDashboard: React.FC = () => {
     setSections(newSections);
   };
 
-  const handleSaveProduct = () => {
+  const handleSaveProduct = async () => {
     if (editingProduct) {
-      if (editingProduct.id) {
-        setProducts(prev => prev.map(p => p.id === editingProduct.id ? { ...p, ...editingProduct } as Product : p));
-      } else {
-        const newProduct = { ...editingProduct, id: Date.now().toString(), rating: 0, availableAt: ['hq'] } as Product;
-        setProducts(prev => [...prev, newProduct]);
+      try {
+        const savedProduct = await saveProductRequest(editingProduct);
+
+        if (editingProduct.id) {
+          setProducts(prev => prev.map(p => p.id === savedProduct.id ? savedProduct : p));
+        } else {
+          setProducts(prev => [savedProduct, ...prev]);
+        }
+      } catch {
+        if (editingProduct.id) {
+          setProducts(prev => prev.map(p => p.id === editingProduct.id ? { ...p, ...editingProduct } as Product : p));
+        } else {
+          const newProduct = { ...editingProduct, id: Date.now().toString(), rating: 0, availableAt: ['hq'] } as Product;
+          setProducts(prev => [...prev, newProduct]);
+        }
       }
+
       setEditingProduct(null);
       setActiveSubView(null);
     }
+  };
+
+  const handleDeleteProduct = async (productId: string) => {
+    try {
+      await deleteProductRequest(productId);
+    } catch {
+      // Continue with local state update for offline/mock mode.
+    }
+
+    setProducts(prev => prev.filter(p => p.id !== productId));
   };
 
   const handleOrderStatusChange = (orderId: string, status: Order['status']) => {
@@ -564,7 +609,7 @@ export const AdminDashboard: React.FC = () => {
                    <td className="px-6 py-4 text-right">
                      <div className="flex justify-end gap-2">
                        <button onClick={() => { setEditingProduct(product); setActiveSubView('product_entry'); }} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-cyan-600"><Pencil className="w-4 h-4" /></button>
-                       <button onClick={() => setProducts(products.filter(p => p.id !== product.id))} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                       <button onClick={() => handleDeleteProduct(product.id)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                      </div>
                    </td>
                  </tr>
@@ -662,8 +707,8 @@ export const AdminDashboard: React.FC = () => {
                </tr>
              </thead>
              <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
-               {MOCK_USERS.map(user => {
-                 const spent = MOCK_ORDERS.filter(o => o.userId === user.id).reduce((acc, curr) => acc + curr.total, 0);
+               {users.map(user => {
+                 const spent = orders.filter(o => o.userId === user.id).reduce((acc, curr) => acc + curr.total, 0);
                  return (
                    <tr key={user.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                      <td className="px-6 py-4 flex items-center gap-3">
