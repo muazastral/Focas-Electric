@@ -27,7 +27,7 @@ import { Button } from './Button';
 const FAQs = [
   {
     question: "What is Focus Electrical Malaysia Sdn Bhd?",
-    answer: "Focus Electrical Malaysia Sdn Bhd is an electrical and electronic product supplier providing certified products for residential, commercial, and industrial use in Malaysia."
+    answer: "Focus Electrical Malaysia Sdn Bhd is an established Malaysian electrical and electronic distributor incorporated on 9 July 1999, supplying certified solutions for residential, commercial, and industrial use nationwide."
   },
   {
     question: "Do you sell to individual homeowners?",
@@ -39,7 +39,7 @@ const FAQs = [
   },
   {
     question: "What brands do you carry?",
-    answer: "We supply products from trusted brands including Panasonic, KDK, Schneider Electric, Legrand, Bosch, SJ Lite, Hitachi, and many more."
+    answer: "We supply products from trusted brands including Panasonic, KDK, Schneider Electric, Osram, Hager, ABB, Bosch, SJ Lite, PNE, VITALITE, Mega Kabel, and many more."
   },
   {
     question: "Do you provide installation services?",
@@ -158,7 +158,7 @@ export const About: React.FC = () => {
             <span className="text-cyan-600 dark:text-cyan-400">Trusted Electrical Solutions</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            Focus Electrical Malaysia Sdn Bhd is a trusted electrical and electronic product supplier serving residential, commercial, and industrial customers across Malaysia.
+            Focus Electrical Malaysia Sdn Bhd is a trusted electrical and electronic supplier, delivering high-quality products and dependable service to homes, businesses, contractors, and projects across Malaysia since 1999.
           </p>
         </div>
       </section>
@@ -174,7 +174,7 @@ export const About: React.FC = () => {
             </div>
             <div className="prose dark:prose-invert text-slate-600 dark:text-slate-400 leading-relaxed space-y-4 text-justify mx-auto">
               <p>
-                <strong>FOCUS ELECTRICAL MALAYSIA SDN. BHD.</strong> was incorporated on July 2000. The company was set up primarily to supply electrical and electronic goods to the contractor, factory, developers, wireman, end users and etc. The company has tied up joint partnership arrangements with established fully owned private company in local electrical fields.
+                <strong>FOCUS ELECTRICAL MALAYSIA SDN. BHD.</strong> was incorporated on <strong>9 July 1999</strong> and focuses on supplying high-quality electrical and electronic goods, including lighting products and accessories, for contractors, factories, developers, wiremen, and end users.
               </p>
               <p>
                 Being a relatively young set-up, the company emphasizes on transparent, flexible and pro active dealings. The core team charting the growth of the company comprises of a select few professionals who have many years of experience and expertise in both engineering and electrical fields.
@@ -183,7 +183,7 @@ export const About: React.FC = () => {
                 In line with the national aspiration to create successful business, all shareholders of the company are committed to build the company over time into an excellent electrical goods provider that can compete in a level playing field. In addition it wishes to establish itself as a Malaysian company with a solid reputation in this industry.
               </p>
               <p>
-                Currently the company is targeting potential customers in the selected sectors i.e. construction, services, oil & gas, manufacturing and retail. The company aims to develop a number of revenue streams from local outsourcing, providing professional services and supplying niche products.
+                Headquartered in Kuantan, Pahang, the company has expanded its branch network across key regions, including Selangor and Terengganu, while supporting customers in construction, services, manufacturing, retail, and project sectors.
               </p>
             </div>
           </div>
@@ -218,7 +218,7 @@ export const About: React.FC = () => {
                       <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Our Vision</h3>
                     </div>
                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                      To become one of Malaysia’s most reliable and recognized electrical supply partners for homes, contractors, and industries.
+                      To be Malaysia’s leading and most trusted electrical and electronics supplier, delivering innovative, high-quality products and exceptional service to every home, business, and project across the nation.
                     </p>
                   </div>
                 </div>

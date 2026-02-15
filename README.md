@@ -19,16 +19,43 @@ Frontend is Vite + React. Backend API is Laravel (in [backend/README.md](backend
 
 - Frontend only: `npm run dev:frontend`
 - Backend only: `npm run dev:backend`
+- Backend only (strict/fail-fast): `npm run dev:backend:strict`
 - Both together: `npm run dev:all`
 
 Notes:
 - Run scripts with `npm run ...` (for example, `dev:all` alone will not work).
-- In WSL, backend script automatically falls back to XAMPP PHP at `/mnt/c/xampp/php/php.exe` if `php` is not in PATH.
+- Backend startup uses a cross-platform Node launcher and tries `php` in PATH, then common XAMPP locations.
+- If PHP is not available, `dev:all` keeps frontend running and prints a backend warning instead of crashing.
+- In WSL with interop disabled, Windows `php.exe` cannot be executed; install Linux PHP (`php-cli`, `php-sqlite3`) or run from PowerShell.
+- Use `dev:backend:strict` when you want a non-zero exit code if backend cannot start.
+- Set `BACKEND_STRICT=1` to make `dev:backend` (and therefore `dev:all`) fail fast in CI.
 - `backend/` must be a full Laravel app (must include `backend/artisan`).
 
 ## Backend Setup
 
 Follow [backend/README.md](backend/README.md).
+
+### CMS Setup (Media + Page Builder)
+
+After backend dependencies are ready:
+
+- Run migrations: `cd backend && php artisan migrate`
+- Create media storage symlink: `cd backend && php artisan storage:link`
+
+What is included now:
+- Media Library API with upload/delete (stored in Laravel `public` disk).
+- CMS Page API for page title/slug/status and section JSON blocks.
+- Product `inventoryMatrix` support for stock by `variant`, `color`, `size`, `length`, `weight`, and custom detail.
+
+### CMS Features Enabled
+
+- Media Library API with persistent storage (`/api/admin/media`)
+- CMS Page Builder API (`/api/admin/pages`) with JSON section blocks
+- Product Inventory Matrix (`inventoryMatrix`) for stock per variant/color/size/length/weight
+
+After pulling latest changes, run:
+
+`cd backend && php artisan migrate && php artisan storage:link`
 
 ## Demo Login
 

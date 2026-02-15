@@ -68,3 +68,35 @@ export interface CartItem {
   productId: string;
   quantity: number;
 }
+
+export interface InventoryMatrixRow {
+  sku?: string;
+  variant?: string;
+  color?: string;
+  size?: string;
+  length?: string;
+  weight?: string;
+  stock: number;
+  details?: string;
+}
+
+export interface MediaAsset {
+  id: string;
+  filename: string;
+  original_name: string;
+  mime_type: string;
+  size_bytes: number;
+  disk: string;
+  path: string;
+  url: string;
+  alt_text?: string;
+}
+
+export interface CmsPage {
+  id: string;
+  title: string;
+  slug: string;
+  status: 'draft' | 'published';
+  sections: any[];
+  updated_at?: string;
+}

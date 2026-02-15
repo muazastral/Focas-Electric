@@ -45,8 +45,21 @@ import {
 } from 'lucide-react';
 import { Button } from './Button';
 import { PRODUCTS, MOCK_ORDERS, MOCK_USERS, Product } from '../constants';
-import { Order, User } from '../types';
-import { deleteProductRequest, fallbackData, getAdminOrdersRequest, getAdminUsersRequest, getProductsRequest, saveProductRequest } from '../services/api';
+import { CmsPage, InventoryMatrixRow, MediaAsset, Order, User } from '../types';
+import {
+  deleteCmsPageRequest,
+  deleteMediaAssetRequest,
+  deleteProductRequest,
+  fallbackData,
+  getAdminOrdersRequest,
+  getAdminUsersRequest,
+  getCmsPagesRequest,
+  getMediaAssetsRequest,
+  getProductsRequest,
+  saveCmsPageRequest,
+  saveProductRequest,
+  uploadMediaAssetRequest,
+} from '../services/api';
 
 // --- Types ---
 
@@ -78,11 +91,8 @@ interface PageSection {
 
 // --- Mock Data ---
 
-const MOCK_PAGES = [
-  { id: 1, title: 'Home', slug: '/', status: 'Published', lastModified: '2023-10-25' },
-  { id: 2, title: 'About Us', slug: '/about', status: 'Published', lastModified: '2023-09-15' },
-  { id: 3, title: 'Products', slug: '/products', status: 'Published', lastModified: '2023-10-20' },
-  { id: 4, title: 'Contact', slug: '/contact', status: 'Draft', lastModified: '2023-10-26' },
+const MOCK_PAGES: CmsPage[] = [
+  { id: '1', title: 'Home', slug: 'home', status: 'published', sections: [] },
 ];
 
 const INITIAL_SECTIONS: PageSection[] = [
@@ -128,6 +138,53 @@ const INITIAL_SECTIONS: PageSection[] = [
   }
 ];
 
+const SECTION_TEMPLATES: Array<{ type: PageSection['type']; name: string; content: PageSection['content'] }> = [
+  {
+    type: 'hero',
+    name: 'Hero Banner',
+    content: {
+      title: 'Powering Your Project with Confidence',
+      subtitle: 'Trusted electrical supplies for residential, commercial, and industrial works.',
+      buttonText: 'Explore Products',
+      image: '/pdf-images/page-019-1.jpg',
+    },
+  },
+  {
+    type: 'text-image',
+    name: 'Split Content',
+    content: {
+      title: 'From Planning to Installation',
+      subtitle: 'Get technical guidance, quality brands, and inventory support from one supplier.',
+      image: '/pdf-images/page-023-1.jpg',
+      buttonText: 'Contact Sales',
+    },
+  },
+  {
+    type: 'features',
+    name: 'Three Features',
+    content: {
+      title: 'Why Contractors Choose Focus',
+      subtitle: 'Fast fulfilment, certified products, and practical support.',
+      features: [
+        { title: 'Fast Delivery', desc: 'Dispatch-ready stock for urgent sites.', icon: 'truck' },
+        { title: 'Certified Quality', desc: 'SIRIM and project-grade options.', icon: 'check' },
+        { title: 'Technical Support', desc: 'Selection help for real site needs.', icon: 'phone' },
+      ],
+    },
+  },
+];
+
+const emptyInventoryRow = (): InventoryMatrixRow => ({
+  sku: '',
+  variant: '',
+  color: '',
+  size: '',
+  length: '',
+  weight: '',
+  stock: 0,
+  details: '',
+});
+
 // --- Helper Components ---
 
 const ColorPicker = ({ label, value, onChange }: { label: string, value: string, onChange: (val: string) => void }) => (
@@ -161,28 +218,39 @@ export const AdminDashboard: React.FC = () => {
   const [editingProduct, setEditingProduct] = useState<Partial<Product> | null>(null);
 
   // -- Visual Editor State --
+  const [pages, setPages] = useState<CmsPage[]>(MOCK_PAGES);
+  const [editingPage, setEditingPage] = useState<Partial<CmsPage> | null>(null);
   const [sections, setSections] = useState<PageSection[]>(INITIAL_SECTIONS);
   const [selectedSectionId, setSelectedSectionId] = useState<string | null>(null);
   const [previewMode, setPreviewMode] = useState<'desktop' | 'mobile'>('desktop');
+  const [mediaAssets, setMediaAssets] = useState<MediaAsset[]>([]);
+  const [isMediaLibraryOpen, setIsMediaLibraryOpen] = useState(false);
+  const [mediaTarget, setMediaTarget] = useState<{ type: 'section-image' | 'product-image'; sectionId?: string } | null>(null);
 
   const selectedSection = sections.find(s => s.id === selectedSectionId);
 
   useEffect(() => {
     const loadAdminData = async () => {
       try {
-        const [apiProducts, apiOrders, apiUsers] = await Promise.all([
+        const [apiProducts, apiOrders, apiUsers, apiPages, apiMedia] = await Promise.all([
           getProductsRequest(),
           getAdminOrdersRequest(),
           getAdminUsersRequest(),
+          getCmsPagesRequest(),
+          getMediaAssetsRequest(),
         ]);
 
         setProducts(apiProducts);
         setOrders(apiOrders);
         setUsers(apiUsers);
+        setPages(apiPages.length ? apiPages : MOCK_PAGES);
+        setMediaAssets(apiMedia);
       } catch {
         setProducts(fallbackData.products);
         setOrders(fallbackData.orders);
         setUsers(fallbackData.users);
+        setPages(MOCK_PAGES);
+        setMediaAssets([]);
       }
     };
 
@@ -205,15 +273,16 @@ export const AdminDashboard: React.FC = () => {
   };
 
   const addSection = (type: PageSection['type']) => {
+    const template = SECTION_TEMPLATES.find(item => item.type === type);
     const newSection: PageSection = {
       id: `sec-${Date.now()}`,
       type,
-      name: `New ${type.charAt(0).toUpperCase() + type.slice(1)}`,
-      content: {
+      name: template?.name || `New ${type.charAt(0).toUpperCase() + type.slice(1)}`,
+      content: template?.content || {
         title: 'New Section Title',
         subtitle: 'Add your content here.',
         buttonText: 'Click Me',
-        image: 'https://picsum.photos/800/400',
+        image: '/pdf-images/page-019-1.jpg',
         videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
       },
       style: {
@@ -227,6 +296,25 @@ export const AdminDashboard: React.FC = () => {
     };
     setSections([...sections, newSection]);
     setSelectedSectionId(newSection.id);
+  };
+
+  const duplicateSection = (id: string) => {
+    const target = sections.find(section => section.id === id);
+    if (!target) return;
+
+    const clone: PageSection = {
+      ...target,
+      id: `sec-${Date.now()}`,
+      name: `${target.name} Copy`,
+      content: { ...target.content, features: target.content.features ? [...target.content.features] : undefined },
+      style: { ...target.style },
+    };
+
+    const idx = sections.findIndex(section => section.id === id);
+    const next = [...sections];
+    next.splice(idx + 1, 0, clone);
+    setSections(next);
+    setSelectedSectionId(clone.id);
   };
 
   const deleteSection = (id: string) => {
@@ -257,7 +345,7 @@ export const AdminDashboard: React.FC = () => {
         if (editingProduct.id) {
           setProducts(prev => prev.map(p => p.id === editingProduct.id ? { ...p, ...editingProduct } as Product : p));
         } else {
-          const newProduct = { ...editingProduct, id: Date.now().toString(), rating: 0, availableAt: ['hq'] } as Product;
+          const newProduct = { ...editingProduct, id: Date.now().toString(), rating: 0, availableAt: ['hq'], inventoryMatrix: editingProduct.inventoryMatrix || [] } as Product;
           setProducts(prev => [...prev, newProduct]);
         }
       }
@@ -279,6 +367,136 @@ export const AdminDashboard: React.FC = () => {
 
   const handleOrderStatusChange = (orderId: string, status: Order['status']) => {
     setOrders(prev => prev.map(o => o.id === orderId ? { ...o, status } : o));
+  };
+
+  const openPageEditor = (page?: CmsPage) => {
+    const source = page || pages[0] || { id: undefined, title: 'New Page', slug: 'new-page', status: 'draft', sections: INITIAL_SECTIONS };
+    setEditingPage({
+      id: source.id,
+      title: source.title,
+      slug: source.slug,
+      status: source.status,
+      sections: source.sections,
+    });
+    setSections((source.sections as PageSection[])?.length ? (source.sections as PageSection[]) : INITIAL_SECTIONS);
+    setSelectedSectionId(null);
+    setActiveSubView('editor');
+  };
+
+  const handleSavePage = async (status: 'draft' | 'published') => {
+    if (!editingPage) return;
+
+    const payload: Partial<CmsPage> = {
+      id: editingPage.id,
+      title: editingPage.title || 'Untitled Page',
+      slug: (editingPage.slug || 'untitled-page').replace(/^\/+/, ''),
+      status,
+      sections,
+    };
+
+    try {
+      const saved = await saveCmsPageRequest(payload);
+      setPages(prev => {
+        const exists = prev.some(page => page.id === saved.id);
+        return exists ? prev.map(page => (page.id === saved.id ? saved : page)) : [saved, ...prev];
+      });
+      setEditingPage(saved);
+    } catch {
+      const fallbackSaved: CmsPage = {
+        id: String(editingPage.id || Date.now()),
+        title: payload.title || 'Untitled Page',
+        slug: payload.slug || 'untitled-page',
+        status,
+        sections,
+      };
+
+      setPages(prev => {
+        const exists = prev.some(page => page.id === fallbackSaved.id);
+        return exists ? prev.map(page => (page.id === fallbackSaved.id ? fallbackSaved : page)) : [fallbackSaved, ...prev];
+      });
+      setEditingPage(fallbackSaved);
+    }
+  };
+
+  const handleDeletePage = async (id: string) => {
+    try {
+      await deleteCmsPageRequest(id);
+    } catch {
+      // Offline fallback update below.
+    }
+
+    setPages(prev => prev.filter(page => page.id !== id));
+  };
+
+  const openMediaLibrary = (target: { type: 'section-image' | 'product-image'; sectionId?: string }) => {
+    setMediaTarget(target);
+    setIsMediaLibraryOpen(true);
+  };
+
+  const applySelectedMedia = (asset: MediaAsset) => {
+    if (!mediaTarget) return;
+
+    if (mediaTarget.type === 'product-image') {
+      setEditingProduct(prev => ({ ...prev, image: asset.url }));
+    }
+
+    if (mediaTarget.type === 'section-image' && mediaTarget.sectionId) {
+      updateSection(mediaTarget.sectionId, { image: asset.url });
+    }
+
+    setIsMediaLibraryOpen(false);
+    setMediaTarget(null);
+  };
+
+  const handleMediaUpload = async (file: File) => {
+    try {
+      const uploaded = await uploadMediaAssetRequest(file);
+      setMediaAssets(prev => [uploaded, ...prev]);
+    } catch {
+      const localAsset: MediaAsset = {
+        id: String(Date.now()),
+        filename: file.name,
+        original_name: file.name,
+        mime_type: file.type,
+        size_bytes: file.size,
+        disk: 'browser',
+        path: file.name,
+        url: URL.createObjectURL(file),
+      };
+      setMediaAssets(prev => [localAsset, ...prev]);
+    }
+  };
+
+  const handleDeleteMedia = async (id: string) => {
+    try {
+      await deleteMediaAssetRequest(id);
+    } catch {
+      // fallback local-only removal below.
+    }
+
+    setMediaAssets(prev => prev.filter(asset => asset.id !== id));
+  };
+
+  const updateInventoryMatrixRow = (index: number, updates: Partial<InventoryMatrixRow>) => {
+    setEditingProduct(prev => {
+      const matrix = [...(prev?.inventoryMatrix || [])];
+      matrix[index] = { ...matrix[index], ...updates, stock: Number(updates.stock ?? matrix[index]?.stock ?? 0) };
+      return { ...prev, inventoryMatrix: matrix };
+    });
+  };
+
+  const addInventoryMatrixRow = () => {
+    setEditingProduct(prev => ({
+      ...prev,
+      inventoryMatrix: [...(prev?.inventoryMatrix || []), emptyInventoryRow()],
+    }));
+  };
+
+  const deleteInventoryMatrixRow = (index: number) => {
+    setEditingProduct(prev => ({
+      ...prev,
+      inventoryMatrix: (prev?.inventoryMatrix || []).filter((_, idx) => idx !== index),
+    }));
   };
 
   // --- Render Functions ---
@@ -309,6 +527,7 @@ export const AdminDashboard: React.FC = () => {
         {isSelected && (
            <div className="absolute top-2 right-2 flex gap-1 z-50 bg-white dark:bg-slate-800 p-1 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 animate-in fade-in zoom-in duration-200">
               <button onClick={(e) => { e.stopPropagation(); moveSection(section.id, 'up'); }} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-500"><MoveVertical className="w-3 h-3" /></button>
+              <button onClick={(e) => { e.stopPropagation(); duplicateSection(section.id); }} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-500"><Layers className="w-3 h-3" /></button>
               <button onClick={(e) => { e.stopPropagation(); deleteSection(section.id); }} className="p-1.5 hover:bg-red-50 hover:text-red-500 rounded text-slate-500"><Trash2 className="w-3 h-3" /></button>
            </div>
         )}
@@ -378,8 +597,22 @@ export const AdminDashboard: React.FC = () => {
             </button>
             <div>
                <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                 Home Page <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded-full">Live Editor</span>
+                 <input
+                   value={editingPage?.title || ''}
+                   onChange={(e) => setEditingPage(prev => ({ ...prev, title: e.target.value }))}
+                   className="bg-transparent border-b border-transparent focus:border-cyan-500 outline-none"
+                   placeholder="Page Title"
+                 />
+                 <span className={`text-xs px-2 py-0.5 rounded-full ${(editingPage?.status || 'draft') === 'published' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
+                   {(editingPage?.status || 'draft').toUpperCase()}
+                 </span>
                </h1>
+               <input
+                 value={editingPage?.slug || ''}
+                 onChange={(e) => setEditingPage(prev => ({ ...prev, slug: e.target.value }))}
+                 className="text-xs text-slate-500 bg-transparent border-b border-transparent focus:border-cyan-500 outline-none"
+                 placeholder="page-slug"
+               />
             </div>
          </div>
          <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
@@ -387,7 +620,8 @@ export const AdminDashboard: React.FC = () => {
             <button onClick={() => setPreviewMode('mobile')} className={`p-2 rounded-md transition-all ${previewMode === 'mobile' ? 'bg-white dark:bg-slate-700 shadow text-cyan-600' : 'text-slate-500 hover:text-slate-700'}`}><Smartphone className="w-4 h-4" /></button>
          </div>
          <div className="flex items-center gap-3">
-            <Button size="sm" className="gap-2"><Save className="w-4 h-4" /> Publish</Button>
+          <Button size="sm" variant="outline" className="gap-2" onClick={() => handleSavePage('draft')}><Save className="w-4 h-4" /> Save Draft</Button>
+          <Button size="sm" className="gap-2" onClick={() => handleSavePage('published')}><Save className="w-4 h-4" /> Publish</Button>
          </div>
       </div>
       <div className="flex-1 flex overflow-hidden">
@@ -425,7 +659,15 @@ export const AdminDashboard: React.FC = () => {
                        {selectedSection.content.title !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Heading</label><input type="text" value={selectedSection.content.title} onChange={(e) => updateSection(selectedSection.id, { title: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
                        {selectedSection.content.subtitle !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Subtitle</label><textarea rows={3} value={selectedSection.content.subtitle} onChange={(e) => updateSection(selectedSection.id, { subtitle: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
                        {selectedSection.content.buttonText !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Button Label</label><input type="text" value={selectedSection.content.buttonText} onChange={(e) => updateSection(selectedSection.id, { buttonText: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
-                       {selectedSection.content.image !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Image URL</label><div className="flex gap-2"><input type="text" value={selectedSection.content.image} onChange={(e) => updateSection(selectedSection.id, { image: e.target.value })} className="flex-1 p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white truncate" /><button className="p-2 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700"><Upload className="w-4 h-4 text-slate-500" /></button></div></div>)}
+                       {selectedSection.content.image !== undefined && (
+                         <div>
+                           <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Image URL</label>
+                           <div className="flex gap-2">
+                             <input type="text" value={selectedSection.content.image} onChange={(e) => updateSection(selectedSection.id, { image: e.target.value })} className="flex-1 p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white truncate" />
+                             <button onClick={() => openMediaLibrary({ type: 'section-image', sectionId: selectedSection.id })} className="p-2 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700"><ImageIcon className="w-4 h-4 text-slate-500" /></button>
+                           </div>
+                         </div>
+                       )}
                     </div>
                     <hr className="border-slate-100 dark:border-slate-800" />
                     <div className="space-y-4">
@@ -530,13 +772,18 @@ export const AdminDashboard: React.FC = () => {
                      </div>
                    )}
                 </div>
-                <input 
-                  type="text" 
-                  className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white mb-4"
-                  placeholder="https://..."
-                  value={editingProduct?.image || ''}
-                  onChange={e => setEditingProduct(prev => ({ ...prev, image: e.target.value }))}
-                />
+                <div className="flex gap-2 mb-4">
+                  <input 
+                    type="text" 
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                    placeholder="https://..."
+                    value={editingProduct?.image || ''}
+                    onChange={e => setEditingProduct(prev => ({ ...prev, image: e.target.value }))}
+                  />
+                  <Button variant="outline" onClick={() => openMediaLibrary({ type: 'product-image' })}>
+                    <ImageIcon className="w-4 h-4" />
+                  </Button>
+                </div>
                 <div className="flex gap-4">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input type="checkbox" className="w-4 h-4 rounded text-cyan-600" checked={editingProduct?.isSale || false} onChange={e => setEditingProduct(prev => ({ ...prev, isSale: e.target.checked }))} />
@@ -548,6 +795,45 @@ export const AdminDashboard: React.FC = () => {
                   </label>
                 </div>
              </div>
+          </div>
+          <div className="mt-8 border-t border-slate-100 dark:border-slate-800 pt-8">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Inventory Matrix</h3>
+                <p className="text-sm text-slate-500">Manage stock by variant, color, size, length, weight, and custom details.</p>
+              </div>
+              <Button variant="outline" className="gap-2" onClick={addInventoryMatrixRow}><Plus className="w-4 h-4" /> Add Row</Button>
+            </div>
+
+            <div className="overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-xl">
+              <table className="w-full text-xs text-slate-600 dark:text-slate-300">
+                <thead className="bg-slate-50 dark:bg-slate-950/50 text-slate-900 dark:text-white">
+                  <tr>
+                    {['SKU', 'Variant', 'Color', 'Size', 'Length', 'Weight', 'Stock', 'Details', ''].map((head) => (
+                      <th key={head} className="px-2 py-2 text-left font-semibold">{head}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(editingProduct?.inventoryMatrix || []).map((row, index) => (
+                    <tr key={index} className="border-t border-slate-100 dark:border-slate-800">
+                      <td className="p-1"><input className="w-24 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.sku || ''} onChange={e => updateInventoryMatrixRow(index, { sku: e.target.value })} /></td>
+                      <td className="p-1"><input className="w-24 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.variant || ''} onChange={e => updateInventoryMatrixRow(index, { variant: e.target.value })} /></td>
+                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.color || ''} onChange={e => updateInventoryMatrixRow(index, { color: e.target.value })} /></td>
+                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.size || ''} onChange={e => updateInventoryMatrixRow(index, { size: e.target.value })} /></td>
+                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.length || ''} onChange={e => updateInventoryMatrixRow(index, { length: e.target.value })} /></td>
+                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.weight || ''} onChange={e => updateInventoryMatrixRow(index, { weight: e.target.value })} /></td>
+                      <td className="p-1"><input type="number" min={0} className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.stock ?? 0} onChange={e => updateInventoryMatrixRow(index, { stock: Number(e.target.value) })} /></td>
+                      <td className="p-1"><input className="w-40 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.details || ''} onChange={e => updateInventoryMatrixRow(index, { details: e.target.value })} /></td>
+                      <td className="p-1"><button className="p-2 text-red-500 hover:bg-red-50 rounded" onClick={() => deleteInventoryMatrixRow(index)}><Trash2 className="w-4 h-4" /></button></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {(editingProduct?.inventoryMatrix || []).length === 0 && (
+                <div className="p-4 text-xs text-slate-500">No inventory rows yet. Add rows to manage stock by variant and attributes.</div>
+              )}
+            </div>
           </div>
           <div className="border-t border-slate-100 dark:border-slate-800 mt-8 pt-8 flex justify-end gap-4">
              <Button variant="outline" onClick={() => { setEditingProduct(null); setActiveSubView(null); }}>Cancel</Button>
@@ -790,7 +1076,63 @@ export const AdminDashboard: React.FC = () => {
      </div>
   );
 
+  const renderMediaLibraryModal = () => {
+    if (!isMediaLibraryOpen) return null;
+
+    return (
+      <div className="fixed inset-0 z-[120] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-slate-900 w-full max-w-5xl rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
+          <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Media Library</h3>
+            <button className="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" onClick={() => setIsMediaLibraryOpen(false)}><X className="w-4 h-4" /></button>
+          </div>
+
+          <div className="p-6 border-b border-slate-100 dark:border-slate-800">
+            <label className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-cyan-500">
+              <Upload className="w-4 h-4" /> Upload Media
+              <input
+                type="file"
+                accept="image/*,.pdf"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    handleMediaUpload(file);
+                  }
+                }}
+              />
+            </label>
+          </div>
+
+          <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-4 max-h-[60vh] overflow-y-auto">
+            {mediaAssets.map((asset) => (
+              <div key={asset.id} className="group border border-slate-200 dark:border-slate-700 rounded-lg p-2">
+                <button onClick={() => applySelectedMedia(asset)} className="w-full">
+                  <div className="bg-slate-100 dark:bg-slate-800 h-32 rounded overflow-hidden mb-2 flex items-center justify-center">
+                    {asset.mime_type?.startsWith('image/') ? (
+                      <img src={asset.url} alt={asset.alt_text || asset.original_name} className="w-full h-full object-cover" />
+                    ) : (
+                      <FileText className="w-8 h-8 text-slate-500" />
+                    )}
+                  </div>
+                </button>
+                <div className="text-[11px] text-slate-500 truncate">{asset.original_name}</div>
+                <div className="mt-2 flex justify-end">
+                  <button onClick={() => handleDeleteMedia(asset.id)} className="p-1 text-red-500 hover:bg-red-50 rounded"><Trash2 className="w-4 h-4" /></button>
+                </div>
+              </div>
+            ))}
+            {mediaAssets.length === 0 && (
+              <div className="col-span-full text-sm text-slate-500">No media yet. Upload files to start building reusable assets.</div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
+    <>
     <div className="min-h-screen pt-20 bg-slate-50 dark:bg-slate-950 flex transition-colors duration-300">
       
       {/* Sidebar - Same as before */}
@@ -852,7 +1194,7 @@ export const AdminDashboard: React.FC = () => {
                 <div className="space-y-6 animate-in fade-in duration-500">
                   <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Pages</h2>
-                    <Button className="gap-2" onClick={() => setActiveSubView('editor')}><Plus className="w-4 h-4" /> Add Page</Button>
+                    <Button className="gap-2" onClick={() => openPageEditor()}><Plus className="w-4 h-4" /> Add Page</Button>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
                     <table className="w-full text-left text-sm text-slate-600 dark:text-slate-400">
@@ -865,14 +1207,15 @@ export const AdminDashboard: React.FC = () => {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
-                        {MOCK_PAGES.map(page => (
+                        {pages.map(page => (
                           <tr key={page.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                             <td className="px-6 py-4 font-medium text-slate-900 dark:text-white">{page.title}</td>
-                            <td className="px-6 py-4 text-slate-500">{page.slug}</td>
-                            <td className="px-6 py-4"><span className="px-2 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">{page.status}</span></td>
+                            <td className="px-6 py-4 text-slate-500">/{page.slug}</td>
+                            <td className="px-6 py-4"><span className={`px-2 py-1 rounded-full text-xs font-bold ${page.status === 'published' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'}`}>{page.status}</span></td>
                             <td className="px-6 py-4 text-right">
                               <div className="flex justify-end gap-2">
-                                <button onClick={() => setActiveSubView('editor')} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-cyan-600"><Pencil className="w-4 h-4" /></button>
+                                <button onClick={() => openPageEditor(page)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-cyan-600"><Pencil className="w-4 h-4" /></button>
+                                <button onClick={() => handleDeletePage(page.id)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                               </div>
                             </td>
                           </tr>
@@ -893,5 +1236,7 @@ export const AdminDashboard: React.FC = () => {
       </main>
 
     </div>
+    {renderMediaLibraryModal()}
+    </>
   );
 };

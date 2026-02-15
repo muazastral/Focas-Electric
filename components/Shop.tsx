@@ -47,6 +47,16 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAdd
     };
   }, []);
 
+  const optionGroups = [
+    { title: 'Model Codes', values: product.modelCodes },
+    { title: 'Variants', values: product.variants },
+    { title: 'Colors', values: product.colors },
+    { title: 'Sizes', values: product.sizes },
+    { title: 'Lengths', values: product.lengths },
+    { title: 'Types', values: product.types },
+    { title: 'Choices', values: product.choices },
+  ].filter(group => group.values && group.values.length);
+
   return (
     <div 
       className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200"
@@ -109,6 +119,26 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAdd
                 Standard industry warranty included.
               </p>
             </div>
+
+            {optionGroups.length > 0 && (
+              <div className="mb-8 p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Available Options</h4>
+                <div className="space-y-3">
+                  {optionGroups.map(group => (
+                    <div key={group.title}>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">{group.title}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {group.values?.map((value) => (
+                          <span key={value} className="px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60">
+                            {value}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             
             <div className="mb-8 p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
@@ -226,7 +256,9 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          product.brand.toLowerCase().includes(searchQuery.toLowerCase());
+                          product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          (product.modelCodes || []).some(code => code.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                          (product.variants || []).some(variant => variant.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
     const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
@@ -392,6 +424,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
+              <>
               <div 
                 key={product.id} 
                 className="group relative bg-white dark:bg-slate-900 rounded-[20px] p-4 transition-all duration-300 hover:shadow-2xl border border-transparent hover:border-slate-100 dark:hover:border-slate-800 cursor-pointer flex flex-col h-full"
@@ -443,20 +476,21 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
 
                 {/* Footer: Colors/Specs & Actions */}
                 <div className="px-2 pb-2 mt-auto">
-                   {/* Color Dots (Mock) */}
+                   {/* Product Colors */}
                    <div className="flex gap-1.5 mb-4 justify-center md:justify-start">
-                      <div className="w-3 h-3 rounded-full bg-slate-800 ring-1 ring-offset-1 ring-slate-300 dark:ring-slate-700 dark:ring-offset-slate-900"></div>
-                      <div className="w-3 h-3 rounded-full bg-slate-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-cyan-500"></div>
+                     {(product.colors?.slice(0, 4) || ['Standard']).map((color) => (
+                      <span key={color} className="px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 text-[10px] font-semibold text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/70">
+                        {color}
+                      </span>
+                     ))}
                    </div>
 
                    <div className="flex items-center justify-between mb-4 pt-2 border-t border-slate-100 dark:border-slate-800">
-                      {/* Left: Size/Spec Mock */}
+                     {/* Left: Size/Spec */}
                       <div className="flex gap-2 text-xs font-bold text-slate-400">
-                         <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">S</span>
-                         <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer text-slate-900 dark:text-white">M</span>
-                         <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">L</span>
+                       {(product.sizes?.slice(0, 3) || product.lengths?.slice(0, 3) || ['View options']).map((spec) => (
+                        <span key={spec} className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">{spec}</span>
+                       ))}
                       </div>
 
                       {/* Right: Actions */}
@@ -482,6 +516,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                 </div>
 
               </div>
+              </>
             ))}
           </div>
         ) : (
