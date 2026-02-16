@@ -4,7 +4,7 @@ import { StoreBanner } from './components/StoreBanner';
 import { CategoryNav } from './components/CategoryNav';
 import { Hero } from './components/Hero';
 import { BrandStrip } from './components/BrandStrip';
-import { FeaturedProducts } from './components/FeaturedProducts'; // Replaced Metrics
+import { FeaturedProducts } from './components/FeaturedProducts';
 import { Inventory } from './components/Inventory';
 import { QualityBrands } from './components/QualityBrands';
 import { Services } from './components/Services';
