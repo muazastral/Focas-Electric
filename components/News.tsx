@@ -43,17 +43,17 @@ export const News: React.FC<NewsProps> = ({ onNavigate }) => {
                   alt={item.title} 
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur text-xs font-bold text-cyan-600 dark:text-cyan-400 px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur text-xs font-bold text-red-600 dark:text-red-400 px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
                   {item.category}
                 </div>
               </div>
               <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
                 <span>{item.date}</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors mb-2">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors mb-2">
                 {item.title}
               </h3>
-              <span className="inline-flex items-center text-sm font-medium text-cyan-600 dark:text-cyan-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <span className="inline-flex items-center text-sm font-medium text-red-600 dark:text-red-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                 Read More <ArrowRight className="w-4 h-4 ml-1" />
               </span>
             </div>
@@ -84,7 +84,7 @@ export const News: React.FC<NewsProps> = ({ onNavigate }) => {
               <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-6 pt-16">
                 <div className="flex items-center gap-3 text-white/90 text-sm mb-2">
                   <span className="flex items-center gap-1 font-medium"><Calendar className="w-4 h-4" /> {selectedNews.date}</span>
-                  <span className="flex items-center gap-1 bg-cyan-500/20 px-2 py-0.5 rounded text-cyan-300 border border-cyan-500/30 font-medium text-xs uppercase tracking-wide"><Tag className="w-3 h-3" /> {selectedNews.category}</span>
+                  <span className="flex items-center gap-1 bg-red-500/15 px-2 py-0.5 rounded text-red-100 border border-red-400/40 font-medium text-xs uppercase tracking-wide"><Tag className="w-3 h-3" /> {selectedNews.category}</span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight shadow-sm">{selectedNews.title}</h3>
               </div>

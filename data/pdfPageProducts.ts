@@ -7,9 +7,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-019-1.jpg",
-    "description": "PDF catalog page 19: LEDReccessed PanelLight byH IK ARI Daylight ( 6 5 0 0 K ) Commercial , retail , art studios , livingroom CoolWhite ( 4 0 0 0 K ) Kitchen , study , bathroom , cupboard , office , retail WarmWhite ( 3 0 0 0 K ) Livingro...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-019/img-001.jpeg",
+    "description": "PDF catalog page 19: LED RECESSED Panel Light by HIKARI Daylight (6500K) Commercial, retail, art studios, living room Cool White (4000K) Kitchen, study, bathroom, cupboard, office, retail Warm White (3000K) Living room, bedroom, hallway F...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -18,8 +18,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
+    "variants": [
+      "Indoor",
+      "Recessed"
+    ],
+    "colors": [
+      "3000K",
+      "4000K",
+      "6500K",
+      "Cool White",
+      "Daylight",
+      "Warm White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -33,13 +43,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1001",
-    "name": "LED Recessed Panel Light Specs (Page 20)",
+    "name": "LED Recessed Panel Light (Page 20)",
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-020-1.png",
-    "description": "PDF catalog page 20: Model Power Inch Lumen Size Color Quantity AFG - 4 D L R - 1 2 l 1 2 Watt 4 ' ’ 8 6 0 1 4 0 x 3 3 . 5 mm Daylight 6 0 p c s / ctn AFG - 4 C W R - 1 2 l 1 2 Watt 4 \" 8 6 0 1 4 0 x 3 3 . 5 mm CoolWhite 6 0 p c s / ctn A...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-020/img-001.png",
+    "description": "PDF catalog page 20: Model Power Inch Lumen Size Color Quantity AFG-4DLR-12l 12Watt 4'’ 860 140 x 33.5mm Daylight 60 pcs/ctn AFG-4CWR-12l 12Watt 4\" 860 140 x 33.5mm Cool White 60 pcs/ctn AFG-4WWR-12l 12Watt 4 860 140 x 33.5mm Warm White 6...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -48,9 +58,24 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
-    "sizes": [],
+    "variants": [
+      "Indoor",
+      "Recessed",
+      "Round",
+      "Square"
+    ],
+    "colors": [
+      "Cool White",
+      "Daylight",
+      "Warm White"
+    ],
+    "sizes": [
+      "110mm",
+      "140mm",
+      "145mm",
+      "185mm",
+      "33.5mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 20"
@@ -59,7 +84,19 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-4CWR-12L",
+      "AFG-4DLR-12L",
+      "AFG-4DLS-12L",
+      "AFG-4WWR-12L",
+      "AFG-4WWS-12L",
+      "AFG-6CWR-18L",
+      "AFG-6CWS-18L",
+      "AFG-6DLR-18L",
+      "AFG-6DLS-18L",
+      "AFG-6WWR-18L",
+      "AFG-6WWS-18L"
+    ]
   },
   {
     "id": "1002",
@@ -67,9 +104,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-021-1.jpg",
-    "description": "PDF catalog page 21: b y H IK ARI Daylight ( 6 5 0 0 K ) Commercial , retail , art studios , livingroom CoolWhite ( 4 0 0 0 K ) Kitchen , study , bathroom , cupboard , office , retail WarmWhite ( 3 0 0 0 K ) Livingroom , bedroom , hallway...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-021/img-001.jpeg",
+    "description": "PDF catalog page 21: by HIKARI Daylight (6500K) Commercial, retail, art studios, living room Cool White (4000K) Kitchen, study, bathroom, cupboard, office, retail Warm White (3000K) Living room, bedroom, hallway Features Safe and easy ins...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -78,8 +115,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
+    "variants": [
+      "Indoor",
+      "Surface"
+    ],
+    "colors": [
+      "3000K",
+      "4000K",
+      "6500K",
+      "Cool White",
+      "Daylight",
+      "Warm White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -97,9 +144,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-022-1.png",
-    "description": "PDF catalog page 22: Model Power Inch Lumen Size Color Quantity AFG - 2 4 S R 2 4 Watt 8 ' ’ 1 6 8 0 2 1 9 x 3 2 mm Daylight 2 0 p c s / ctn AFG - 2 4 S R 2 4 Watt 8 \" 1 6 8 0 2 1 9 x 3 2 mm WarmWhite 2 0 p c s / ctn Model Power Inch Lume...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-022/img-001.png",
+    "description": "PDF catalog page 22: Model Power Inch Lumen Size Color Quantity AFG-24SR 24Watt 8'’ 1 680 219 x 32mm Daylight 20 pcs/ctn AFG-24SR 24Watt 8\" 1 680 219 x 32mm Warm White 20 pcs/ctn Model Power Inch Lumen Size Color Quantity AFG-24SS 24Watt ...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -108,9 +155,22 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
-    "sizes": [],
+    "variants": [
+      "Indoor",
+      "Round",
+      "Square",
+      "Surface"
+    ],
+    "colors": [
+      "Daylight",
+      "Warm White"
+    ],
+    "sizes": [
+      "218mm",
+      "219mm",
+      "285mm",
+      "32mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 22"
@@ -119,7 +179,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-24SR",
+      "AFG-24SS"
+    ]
   },
   {
     "id": "1004",
@@ -127,9 +190,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-023-1.jpg",
-    "description": "PDF catalog page 23: LEDFloodLight byH IK ARI Operating Temperature - 2 0 ° C ~ 4 0 ° C Quality LEDChips Suruhanjaya Tenaga APPROVE Features Safeandeasyinstallation QualityLEDChips SIRIMAPPROVAL NoUV & IRRadiation Saveover 8 0 % onelectri...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-023/img-001.jpeg",
+    "description": "PDF catalog page 23: LED Flood Light by HIKARI Operating Temperature -20°C ~ 40°C Quality LED Chips Suruhanjaya Tenaga APPROVE Features Safe and easy installation Quality LED Chips SIRIM APPROVAL No UV & IR Radiation Save over 80% on elec...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -139,7 +202,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "3000K",
+      "6500K",
+      "Daylight",
+      "Warm White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -157,9 +225,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-024-1.png",
-    "description": "PDF catalog page 24: ModelAFG - F L - 5 0 A F G - F L - 1 0 0 A F G - F L - 1 5 0 A F G - F L - 2 0 0 Power 5 0 Watt 1 0 0 Watt 1 5 0 Watt 2 0 0 Watt Lumen PowerFactor Color Quantity Size 5 0 0 0 1 0 0 0 0 1 5 0 0 0 2 0 0 0 0 0 . 9 0 . 9 ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-024/img-001.png",
+    "description": "PDF catalog page 24: Model AFG-FL-50 AFG-FL-100 AFG-FL-150 AFG-FL-200 Power 50Watt 100Watt 150Watt 200Watt Lumen Power Factor Color Quantity Size 5 000 10 000 15 000 20 000 0.9 0.9 0.9 0.9 Daylight / Warm White Daylight / Warm White Dayli...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -169,8 +237,22 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Daylight",
+      "Warm White"
+    ],
+    "sizes": [
+      "100W",
+      "150W",
+      "185mm",
+      "200W",
+      "220mm",
+      "240mm",
+      "275mm",
+      "295mm",
+      "30mm",
+      "335mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 24"
@@ -179,7 +261,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-FL-100",
+      "AFG-FL-150",
+      "AFG-FL-200",
+      "AFG-FL-50"
+    ]
   },
   {
     "id": "1006",
@@ -187,9 +274,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-025-1.jpg",
-    "description": "PDF catalog page 25: LEDT 8 Tube ( Glass ) b y H IK ARI Features Safeandeasyinstallation PremiumQuality SIRIMAPPROVAL NoUV & IRRadiation SuperBright Bestchoiceforindoor NoDimmable Non Dimmable BestChoice ForIndoor Premium Quality EasyTo I...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-025/img-001.jpeg",
+    "description": "PDF catalog page 25: LED T8 Tube (Glass) by HIKARI Features Safe and easy installation Premium Quality SIRIM APPROVAL No UV & IR Radiation Super Bright Best choice for indoor No Dimmable Non Dimmable Best Choice For Indoor Premium Quality...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -198,8 +285,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
+    "variants": [
+      "Indoor",
+      "Premium"
+    ],
+    "colors": [
+      "3000K",
+      "4000K",
+      "6500K",
+      "Cool White",
+      "Daylight",
+      "Warm White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -217,9 +314,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-026-1.png",
-    "description": "PDF catalog page 26: Model Power Lumen Cap / Base Length Color Quantity AFG - 1 0 T D 1 0 Watt 1 0 0 0 G 1 3 2 8 x 6 0 2 mm Daylight 3 0 p c s / ctn Model Power Lumen Cap / Base Length Color Quantity AFG - 2 2 T D 2 2 Watt 2 2 0 0 G 1 3 2...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-026/img-001.png",
+    "description": "PDF catalog page 26: Model Power Lumen Cap / Base Length Color Quantity AFG-10TD 10Watt 1 000 G13 28 x 602mm Daylight 30 pcs/ctn Model Power Lumen Cap / Base Length Color Quantity AFG-22TD 22Watt 2 200 G13 28 x 1212mm Daylight 30 pcs/ctn ...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -229,8 +326,19 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Cool White",
+      "Daylight",
+      "Warm White"
+    ],
+    "sizes": [
+      "10W",
+      "1212mm",
+      "20W",
+      "22W",
+      "32W",
+      "602mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 26"
@@ -239,7 +347,14 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-10TD",
+      "AFG-20TD",
+      "AFG-22TC",
+      "AFG-22TD",
+      "AFG-22TW",
+      "AFG-32TD"
+    ]
   },
   {
     "id": "1008",
@@ -247,9 +362,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-027-1.jpg",
-    "description": "PDF catalog page 27: LEDStick byH IK ARI Daylight ( 6 5 0 0 K ) Commercial , retail , art studios , livingroom CoolWhite ( 4 0 0 0 K ) Kitchen , study , bathroom , cupboard , office , retail WarmWhite ( 3 0 0 0 K ) Livingroom , bedroom , ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-027/img-001.jpeg",
+    "description": "PDF catalog page 27: LED Stick by HIKARI Daylight (6500K) Commercial, retail, art studios, living room Cool White (4000K) Kitchen, study, bathroom, cupboard, office, retail Warm White (3000K) Living room, bedroom, hallway Features Safe an...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -258,8 +373,17 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
+    "variants": [
+      "Indoor"
+    ],
+    "colors": [
+      "3000K",
+      "4000K",
+      "6500K",
+      "Cool White",
+      "Daylight",
+      "Warm White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -277,9 +401,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-028-1.png",
-    "description": "PDF catalog page 28: Model Power Lumen Voltage Base Length Color Quantity AFG - 1 0 2 7 D L 1 0 Watt 8 6 0 2 2 0 - 2 4 0 V ~ 5 0 / 6 0 H z E 2 7 1 2 0 x 3 6 . 5 mm Daylight 1 0 0 p c s / ctn AFG - 1 0 2 7 W W 1 0 Watt 8 6 0 2 2 0 - 2 4 0 ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-028/img-001.png",
+    "description": "PDF catalog page 28: Model Power Lumen Voltage Base Length Color Quantity AFG-1027DL 10Watt 860 220-240V ~ 50/60Hz E27 120 x 36.5mm Daylight 100 pcs/ctn AFG-1027WW 10Watt 860 220-240V ~ 50/60Hz E27 120 x 36.5mm Warm White 100 pcs/ctn Mode...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -288,9 +412,21 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
-    "sizes": [],
+    "variants": [
+      "Indoor"
+    ],
+    "colors": [
+      "Daylight",
+      "Warm White"
+    ],
+    "sizes": [
+      "10W",
+      "120mm",
+      "145mm",
+      "15W",
+      "36.5mm",
+      "49mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 28"
@@ -299,7 +435,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-1027DL",
+      "AFG-1027WW",
+      "AFG-1527DL",
+      "AFG-1527WW"
+    ]
   },
   {
     "id": "1010",
@@ -307,9 +448,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-029-1.jpg",
-    "description": "PDF catalog page 29: LEDHighBay byH IK A R I 10kV10kV Surge ProtectorSurge Protector Daylight ( 6 5 0 0 K ) Commercial , retail , art studios , livingroom Features Safeandeasyinstallation Saveover 8 0 % onelectricitybilloflighting SIRIMAP...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-029/img-001.jpeg",
+    "description": "PDF catalog page 29: LED High Bay by HIKARI 10kV 10kV Surge Protector Surge Protector Daylight (6500K) Commercial, retail, art studios, living room Features Safe and easy installation Save over 80% on electricity bill of lighting SIRIM AP...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -318,8 +459,14 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
+    "variants": [
+      "Indoor",
+      "Outdoor"
+    ],
+    "colors": [
+      "6500K",
+      "Daylight"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -337,9 +484,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-030-1.png",
-    "description": "PDF catalog page 30: Model Power Lumen PowerFactor Size Color Quantity AFG - H B - 1 0 0 1 0 0 Watt 1 0 0 0 0 0 . 9 2 6 0 x 2 6 0 x 3 4 mm Daylight 5 p c s / ctn Model Power Lumen PowerFactor Size Color Quantity AFG - H B - 1 5 0 1 5 0 Wa...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-030/img-001.png",
+    "description": "PDF catalog page 30: Model Power Lumen Power Factor Size Color Quantity AFG-HB-100 100Watt 10 000 0.9 260 x 260 x 34mm Daylight 5 pcs/ctn Model Power Lumen Power Factor Size Color Quantity AFG-HB-150 150Watt 15 000 0.9 302 x 302 x 34mm Da...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -349,8 +496,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Daylight"
+    ],
+    "sizes": [
+      "100W",
+      "150W",
+      "200W",
+      "260mm",
+      "302mm",
+      "332mm",
+      "34mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 30"
@@ -359,7 +516,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-HB-100",
+      "AFG-HB-150",
+      "AFG-HB-200"
+    ]
   },
   {
     "id": "1012",
@@ -367,9 +528,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-031-1.png",
-    "description": "PDF catalog page 31: Model Specification Voltage Type Size Quantity AFG - P C 1 0 A 1 0 A 3 8 0 V ScrewClamp 1 1 7 x 2 0 x 1 5 m m 1 0 p c s / pack Model Specification Voltage Type Size Quantity AFG - P C 1 5 A 1 5 A 3 8 0 V ScrewClamp 1 ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-031/img-001.png",
+    "description": "PDF catalog page 31: Model Specification Voltage Type Size Quantity AFG-PC10A 10A 380V Screw Clamp 117 x 20 x 15mm 10 pcs/pack Model Specification Voltage Type Size Quantity AFG-PC15A 15A 380V Screw Clamp 129 x 20 x 15mm 10 pcs/pack Model...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -380,7 +541,16 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "10A",
+      "117mm",
+      "129mm",
+      "15A",
+      "15mm",
+      "20mm",
+      "40W",
+      "4ft"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 31"
@@ -389,7 +559,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-140AFT",
+      "AFG-PC10A",
+      "AFG-PC15A"
+    ]
   },
   {
     "id": "1013",
@@ -397,9 +571,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-032-1.png",
-    "description": "PDF catalog page 32: ModelAFG - P - TAPE - BLKAFG - P - TAPE - BLUEAFG - P - TAPE - GAFG - P - TAPE - RAFG - P - TAPE - Y MaterialPVCPVCPVCPVCPVC Thickness 0 . 1 3 m m 0 . 1 3 m m 0 . 1 3 m m 0 . 1 3 m m 0 . 1 3 mm ColorBlackBlueGreenRedY...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-032/img-001.png",
+    "description": "PDF catalog page 32: Model AFG-P-TAPE-BLK AFG-P-TAPE-BLUE AFG-P-TAPE-G AFG-P-TAPE-R AFG-P-TAPE-Y Material PVC PVC PVC PVC PVC Thickness 0.13mm 0.13mm 0.13mm 0.13mm 0.13mm Color Black Blue Green Red Yellow Quantity 10 pcs/pack 10 pcs/pack ...",
+    "brand": "HIKARI",
     "availableAt": [
       "hq",
       "kuantan",
@@ -409,8 +583,19 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Black",
+      "Blue",
+      "Green",
+      "Red",
+      "Yellow"
+    ],
+    "sizes": [
+      "0.13mm",
+      "18mm",
+      "38mm",
+      "5M"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 32"
@@ -419,7 +604,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "AFG-P-TAPE-BLK",
+      "AFG-P-TAPE-BLUE",
+      "AFG-P-TAPE-G",
+      "AFG-P-TAPE-R",
+      "AFG-P-TAPE-Y"
+    ]
   },
   {
     "id": "1014",
@@ -427,8 +618,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Tools",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-033-1.png",
-    "description": "PDF catalog page 33: ModelLength Flattened Width Measuring Range Ignition Voltage Colour Venvolta - T P 1 4 0 M M 3 M M 1 0 0 - 5 0 0 V 7 0 VGrey HandTools - TestPen 3 3 1 4 0 m m 3 m m TEST PEN 140MM",
+    "image": "/pdf-catalog/page-033/img-001.png",
+    "description": "PDF catalog page 33: Model Length Flattened Width Measuring Range Ignition Voltage Colour Venvolta-TP 140MM 3MM 100 - 500V 70V Grey Hand Tools - Test Pen 33 140mm 3mm TEST PEN 140MM",
     "brand": "Venvolta",
     "availableAt": [
       "hq",
@@ -439,8 +630,15 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Grey"
+    ],
+    "sizes": [
+      "140MM",
+      "140mm",
+      "3MM",
+      "3mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 33"
@@ -457,8 +655,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-034-render.png",
-    "description": "PDF catalog page 34: ARMOURED ( COPPER ) CABLES NON - ARMORED ( COPPER ) CABLES SIRIMCABLES JKRCABLES ARMOURED ( ALUMINIUM ) CABLE ALUMINIUMCABLE AERIALBUNDLECABLES ( A B C ) FLEXIBLECABLES TRSCABLES DATA , TELEPHONE , SPEAKER , ALARM , V...",
+    "image": "/pdf-catalog/page-034/page-034.png",
+    "description": "PDF catalog page 34: ARMOURED (COPPER) CABLES NON-ARMORED (COPPER) CABLES SIRIM CABLES JKR CABLES ARMOURED (ALUMINIUM) CABLE ALUMINIUM CABLE AERIAL BUNDLE CABLES (ABC) FLEXIBLE CABLES TRS CABLES DATA, TELEPHONE, SPEAKER, ALARM, VDE, RG CA...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -487,9 +685,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-035-1.jpg",
-    "description": "PDF catalog page 35: FocusElectricalMalaysia BRANDSIZES ( M M ) CORES MEGAKABEL TONNCABLE DNFCABLE UTAMACABLE SAMAKEBEL SOUTHERNCABLE SMARTCABLE MASTERTEC UMSCABLE 1 . 5 2 . 5 4 6 1 0 1 6 2 5 3 5 5 0 7 0 9 5 1 2 0 1 5 0 1 8 5 2 4 0 3 0 0 ...",
-    "brand": "Tonn Cable",
+    "image": "/pdf-catalog/page-035/img-001.jpeg",
+    "description": "PDF catalog page 35: Focus Electrical Malaysia BRAND SIZES (MM) CORES MEGA KABEL TONN CABLE DNF CABLE UTAMA CABLE SAMA KEBEL SOUTHERN CABLE SMART CABLE MASTER TEC UMS CABLE 1.5 2.5 4 6 10 16 25 35 50 70 95 120 150 185 240 300 500 630 2 3 ...",
+    "brand": "Mega Kabel",
     "availableAt": [
       "hq",
       "kuantan",
@@ -517,9 +715,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-036-1.jpg",
-    "description": "PDF catalog page 36: FocusElectricalMalaysia BRANDSIZES ( M M ) CORES MEGAKABEL TONNCABLE DNFCABLE UTAMACABLE SAMAKEBEL SOUTHERNCABLE SMARTCABLE MASTERTEC UMSCABLE 1 . 5 2 . 5 4 6 1 0 1 6 2 5 3 5 5 0 7 0 9 5 1 2 0 1 5 0 1 8 5 2 4 0 3 0 0 ...",
-    "brand": "Tonn Cable",
+    "image": "/pdf-catalog/page-036/img-001.jpeg",
+    "description": "PDF catalog page 36: Focus Electrical Malaysia BRAND SIZES (MM) CORES MEGA KABEL TONN CABLE DNF CABLE UTAMA CABLE SAMA KEBEL SOUTHERN CABLE SMART CABLE MASTER TEC UMS CABLE 1.5 2.5 4 6 10 16 25 35 50 70 95 120 150 185 240 300 500 630 2 3 ...",
+    "brand": "Mega Kabel",
     "availableAt": [
       "hq",
       "kuantan",
@@ -547,8 +745,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-037-1.jpg",
-    "description": "PDF catalog page 37: FocusElectricalMalaysia CableTypeSizes ( m m ² ) CoreOptionsCertification PVC / S W A / P V C ( P S P ) 1 . 5 , 2 . 5 , 4 , 6 , 1 0 , 1 6 & 2 5 2 , 3 & 4 Core JKRCer ti fied Non - Armored PVC / P V C 1 . 5 , 2 . 5 , 4...",
+    "image": "/pdf-catalog/page-037/img-001.png",
+    "description": "PDF catalog page 37: Focus Electrical Malaysia Cable Type Sizes (mm²) Core Options Certification PVC/SWA/PVC (PSP) 1.5, 2.5, 4, 6, 10, 16 & 25 2, 3 & 4 Core JKR Certified Non-Armored PVC/PVC 1.5, 2.5, 4, 6, 10, 16 & 25 2, 3 & 4 Core Cable...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -577,8 +775,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-038-1.jpg",
-    "description": "PDF catalog page 38: FocusElectricalMalaysia BRANDCOLOURS AvailableSizes ( m m ) CABLELINKBlack 1 . 5 2 . 5 4 6 1 0 1 6 2 5 PIPCRed MERLINGreen SUNYellow ECO Blue White ( Onlyfor 1 . 5 M M ) LVCables 3 8 SIRIMCABLE ( 9 0 m / coil )",
+    "image": "/pdf-catalog/page-038/img-001.png",
+    "description": "PDF catalog page 38: Focus Electrical Malaysia BRAND COLOURS Available Sizes (mm) CABLE LINK Black 1.5 2.5 4 6 10 16 25 PIPC Red MERLIN Green SUN Yellow ECO Blue White (Only for 1.5MM) LV Cables 38 SIRIM CABLE (90m/coil)",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -589,8 +787,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Black",
+      "Blue",
+      "Green",
+      "Red",
+      "White",
+      "Yellow"
+    ],
+    "sizes": [
+      "1.5MM",
+      "90m"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 38"
@@ -607,9 +815,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-039-1.jpg",
-    "description": "PDF catalog page 39: FocusElectricalMalaysia BRANDCOLOURSSIZES ( M M ) MEGAKABEL TONNCABLES Black Blue Red Green Yellow White 1 . 5 2 . 5 4 6 1 0 1 6 2 5 3 5 5 0 7 0 9 5 LVCables 3 9 JKRCABLES ( 1 0 0 m / coil )",
-    "brand": "Tonn Cable",
+    "image": "/pdf-catalog/page-039/img-001.jpeg",
+    "description": "PDF catalog page 39: Focus Electrical Malaysia BRAND COLOURS SIZES (MM) MEGA KABEL TONN CABLES Black Blue Red Green Yellow White 1.5 2.5 4 6 10 16 25 35 50 70 95 LV Cables 39 JKR CABLES (100m/coil)",
+    "brand": "Mega Kabel",
     "availableAt": [
       "hq",
       "kuantan",
@@ -619,8 +827,17 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "Black",
+      "Blue",
+      "Green",
+      "Red",
+      "White",
+      "Yellow"
+    ],
+    "sizes": [
+      "100m"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 39"
@@ -637,8 +854,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-040-1.jpg",
-    "description": "PDF catalog page 40: FocusElectricalMalaysia BRANDSIZES ( M M ) CORES TONNCABLE DNFCABLE UTAMACABLE SOUTHERNCABLE SMARTCABLE MASTERTEC OLYMPICCABLE 1 . 5 2 . 5 4 6 1 0 1 6 2 5 3 5 5 0 7 0 9 5 1 2 0 1 5 0 1 8 5 2 4 0 3 0 0 2 3 4 LVCables 4...",
+    "image": "/pdf-catalog/page-040/img-001.jpeg",
+    "description": "PDF catalog page 40: Focus Electrical Malaysia BRAND SIZES (MM) CORES TONN CABLE DNF CABLE UTAMA CABLE SOUTHERN CABLE SMART CABLE MASTER TEC OLYMPIC CABLE 1.5 2.5 4 6 10 16 25 35 50 70 95 120 150 185 240 300 2 3 4 LV Cables 40 Armored (Al...",
     "brand": "Tonn Cable",
     "availableAt": [
       "hq",
@@ -667,8 +884,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-041-1.jpg",
-    "description": "PDF catalog page 41: FocusElectricalMalaysia BRANDSIZES ( M M ) LH HKW 6 1 0 1 6 2 5 3 5 LVCables 4 1 AluminiumCables ( 2 0 0 m / coil )",
+    "image": "/pdf-catalog/page-041/img-001.jpeg",
+    "description": "PDF catalog page 41: Focus Electrical Malaysia BRAND SIZES (MM) LH HKW 6 10 16 25 35 LV Cables 41 Aluminium Cables (200m/coil)",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -680,7 +897,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "200m"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 41"
@@ -697,8 +916,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-042-1.jpg",
-    "description": "PDF catalog page 42: FocusElectricalMalaysia BRANDSIZES ( M M ) SOUTHERN TONN MASTERTEC 1 2 0 M M ² X 3 C + 7 0 M M ² X 1 C 1 6 M M ² X 1 C + 2 5 M M ² X 1 C 1 6 M M ² X 3 C + 2 5 M M ² X 1 C 1 8 5 M M ² X 3 C + 1 2 0 M M ² X 1 C + 1 6 M ...",
+    "image": "/pdf-catalog/page-042/img-001.jpeg",
+    "description": "PDF catalog page 42: Focus Electrical Malaysia BRAND SIZES (MM) SOUTHERN TONN MASTER TEC 120MM² X 3C + 70MM² X 1C 16MM² X 1C + 25MM² X 1C 16MM² X 3C + 25MM² X 1C 185MM² X 3C + 120MM² X 1C + 16MM² X 1C 35MM² X 3C + 25MM² X 1C 50MM² X 3C + ...",
     "brand": "Tonn Cable",
     "availableAt": [
       "hq",
@@ -727,8 +946,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-043-1.jpg",
-    "description": "PDF catalog page 43: FocusElectricalMalaysia BRANDSIZES ( m m ) CORES FAJAR UMS 0 . 5 0 0 . 7 5 1 . 0 1 . 5 2 . 5 4 6 3 1 . 0 1 . 5 2 . 5 4 6 4 1 . 0 1 . 5 2 . 5 4 6 5 LVCables 4 3 FLEXIBLECABLES",
+    "image": "/pdf-catalog/page-043/img-001.png",
+    "description": "PDF catalog page 43: Focus Electrical Malaysia BRAND SIZES (mm) CORES FAJAR UMS 0.50 0.75 1.0 1.5 2.5 4 6 3 1.0 1.5 2.5 4 6 4 1.0 1.5 2.5 4 6 5 LV Cables 43 FLEXIBLE CABLES",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -757,8 +976,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-044-1.jpg",
-    "description": "PDF catalog page 44: FocusElectricalMalaysia BRANDSIZES ( m m ) CORES FAJAR UMS 0 . 5 0 0 . 7 5 1 . 0 1 . 5 2 . 5 4 6 3 1 . 0 1 . 5 2 . 5 4 6 4 1 . 0 1 . 5 2 . 5 4 6 5 LVCables 4 4 TRSCABLES",
+    "image": "/pdf-catalog/page-044/img-001.png",
+    "description": "PDF catalog page 44: Focus Electrical Malaysia BRAND SIZES (mm) CORES FAJAR UMS 0.50 0.75 1.0 1.5 2.5 4 6 3 1.0 1.5 2.5 4 6 4 1.0 1.5 2.5 4 6 5 LV Cables 44 TRS CABLES",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -787,8 +1006,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-045-1.jpg",
-    "description": "PDF catalog page 45: FocusElectricalMalaysia Cable Category Brand Model / Type Sizes ( m m ) TelephoneSOUTHERN – 0 . 6 3 x 2 P VDE COMWAY FAJAR – 2 3 / 0 . 1 5 Data MAXWAY BELDEN SCHNEIDER CAT 6 C A T 5 - SpeakerFAJAR – 4 2 / 0 . 1 5 Alar...",
+    "image": "/pdf-catalog/page-045/img-001.png",
+    "description": "PDF catalog page 45: Focus Electrical Malaysia Cable Category Brand Model / Type Sizes (mm) Telephone SOUTHERN – 0.63x2P VDE COMWAY FAJAR – 23/0.15 Data MAXWAY BELDEN SCHNEIDER CAT6 CAT5 - Speaker FAJAR – 42/0.15 Alarm FAJAR – 7/0.20 RG E...",
     "brand": "Schneider Electric",
     "availableAt": [
       "hq",
@@ -817,8 +1036,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-046-1.jpg",
-    "description": "PDF catalog page 46: FocusElectricalMalaysia BrandsCoreTypeAvailableSizes ( m m ² ) RIFENG DELTA WINKA 1 C 1 . 5 2 . 5 4 6 1 0 1 6 2 5 3 5 5 0 7 0 9 5 1 2 0 1 5 0 1 8 5 2 4 0 3 0 0 2 C 3 C 4 C LVCables 4 6 NEOPRENECABLE",
+    "image": "/pdf-catalog/page-046/img-001.png",
+    "description": "PDF catalog page 46: Focus Electrical Malaysia Brands Core Type Available Sizes (mm²) RIFENG DELTA WINKA 1C 1.5 2.5 4 6 10 16 25 35 50 70 95 120 150 185 240 300 2C 3C 4C LV Cables 46 NEOPRENE CABLE",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -847,8 +1066,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-047-1.jpg",
-    "description": "PDF catalog page 47: FocusElectricalMalaysia BRANDSIZES ( M M ) SOLARFLEX 6 1 0 4 7 LVCables SOLARCABLE",
+    "image": "/pdf-catalog/page-047/img-001.png",
+    "description": "PDF catalog page 47: Focus Electrical Malaysia BRAND SIZES (MM) SOLARFLEX 6 10 47 LV Cables SOLAR CABLE",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -877,8 +1096,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-048-1.jpg",
-    "description": "PDF catalog page 48: FocusElectricalMalaysia Type Available Sizes ( m m ² ) Certification FLAME RETARDANT FIRE RESISTANT 1 . 5 2 . 5 1 6 2 5 7 0 9 5 BOMBACertified LVCables 4 8 FRCABLES * OtherSizesAvailableforQuotation",
+    "image": "/pdf-catalog/page-048/img-001.png",
+    "description": "PDF catalog page 48: Focus Electrical Malaysia Type Available Sizes (mm²) Certification FLAME RETARDANT FIRE RESISTANT 1.5 2.5 16 25 70 95 BOMBA Certified LV Cables 48 FR CABLES *Other Sizes Available for Quotation",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -907,8 +1126,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-049-1.jpg",
-    "description": "PDF catalog page 49: FocusElectricalMalaysia Brand Available Sizes Colours FAJAR 14/026 28/026 35/026 44/026 65/026 Red Blue Black Yellow Green LVCables 4 9 AUTOCABLES",
+    "image": "/pdf-catalog/page-049/img-001.jpeg",
+    "description": "PDF catalog page 49: Focus Electrical Malaysia Brand Available Sizes Colours FAJAR 14/026 28/026 35/026 44/026 65/026 Red Blue Black Yellow Green LV Cables 49 AUTO CABLES",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -919,7 +1138,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "Blue",
+      "Green",
+      "Red",
+      "Yellow"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -937,8 +1162,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-050-render.png",
-    "description": "PDF catalog page 50: FLUSHSWITCHESDESIGN 5 1 FLUSHSWITCHESCOLOURS 5 3 DOUBLEPOLESWITCHES DESIGN 5 5 SOCKETOUTLETSDESIGN 5 6 TELECOMMUNICATION OUTLETSDESIGN 5 8 METALCLADSERIES 5 9 BRANDSANDSERIES 6 0 SWITCHES",
+    "image": "/pdf-catalog/page-050/page-050.png",
+    "description": "PDF catalog page 50: FLUSH SWITCHES DESIGN 51 FLUSH SWITCHES COLOURS 53 DOUBLE POLE SWITCHES DESIGN 55 SOCKET OUTLETS DESIGN 56 TELECOMMUNICATION OUTLETS DESIGN 58 METAL CLAD SERIES 59 BRANDS AND SERIES 60 SWITCHES",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -967,8 +1192,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-051-1.png",
-    "description": "PDF catalog page 51: FocusElectricalMalaysia SWITCHES FLUSHSWITCHES 5 1 DESIGNAVAILABILITY",
+    "image": "/pdf-catalog/page-051/img-001.png",
+    "description": "PDF catalog page 51: Focus Electrical Malaysia SWITCHES FLUSH SWITCHES 51 DESIGN AVAILABILITY",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -997,8 +1222,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-052-1.png",
-    "description": "PDF catalog page 52: FocusElectricalMalaysia FLUSHSWITCHES SWITCHES 5 2 1 Gang 1 WaySwitch 1 Gang 2 WaySwitch 1 GangIntermediate Switch 2 Gang 1 WaySwitch 2 Gang 2 WaySwitch 3 Gang 1 WaySwitch 3 Gang 2 WaySwitch 4 Gang 1 WaySwitch 4 Gang ...",
+    "image": "/pdf-catalog/page-052/img-001.png",
+    "description": "PDF catalog page 52: Focus Electrical Malaysia FLUSH SWITCHES SWITCHES 52 1 Gang 1 Way Switch 1 Gang 2 Way Switch 1 Gang Intermediate Switch 2 Gang 1 Way Switch 2 Gang 2 Way Switch 3 Gang 1 Way Switch 3 Gang 2 Way Switch 4 Gang 1 Way Swit...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1027,8 +1252,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-053-1.png",
-    "description": "PDF catalog page 53: FocusElectricalMalaysia AVATARON ZENCELO / VIVACE PIENO AFFLEPLUS DARK GREY GOLD HAIRLINE WINE GOLD LIGHT WOOD DARK WOOD WHITE SILVER SATIN SILVER BRONZE WHITE LAVENDER SILVER WINE GOLD MATTE BLACK WHITE WHITE FLUSHSW...",
+    "image": "/pdf-catalog/page-053/img-001.png",
+    "description": "PDF catalog page 53: Focus Electrical Malaysia AVATARON ZENCELO/ VIVACE PIENO AFFLE PLUS DARK GREY GOLD HAIRLINE WINE GOLD LIGHT WOOD DARK WOOD WHITE SILVER SATIN SILVER BRONZE WHITE LAVENDER SILVER WINE GOLD MATTE BLACK WHITE WHITE FLUSH...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1039,7 +1264,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "Gold",
+      "Grey",
+      "Silver",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1057,8 +1288,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-054-1.png",
-    "description": "PDF catalog page 54: FocusElectricalMalaysia RELFASERIES DELTASERIES LAVENDER SILVER WINE GOLD MATTE BLACK WHITE MQSERIES / 2 K Customersmaycustomizetherockerorplatedesign , with whitebeingthestandardcoloroption . YELLOW RED BLACK GREY WH...",
+    "image": "/pdf-catalog/page-054/img-001.png",
+    "description": "PDF catalog page 54: Focus Electrical Malaysia RELFA SERIES DELTA SERIES LAVENDER SILVER WINE GOLD MATTE BLACK WHITE MQ SERIES/2K Customers may customize the rocker or plate design, with white being the standard color option. YELLOW RED B...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1068,8 +1299,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
+    "variants": [
+      "Standard"
+    ],
+    "colors": [
+      "Black",
+      "Gold",
+      "Grey",
+      "Red",
+      "Silver",
+      "White",
+      "Yellow"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1083,12 +1324,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1036",
-    "name": "Double Pole Switches (Page 55)",
+    "name": "Catalog Reference (Page 55)",
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-055-1.png",
-    "description": "PDF catalog page 55: FocusElectricalMalaysia SWITCHES DOUBLEPOLESWITCHES 5 5 DESIGNAVAILABILITY",
+    "image": "/pdf-catalog/page-055/img-001.png",
+    "description": "PDF catalog page 55: Focus Electrical Malaysia SWITCHES DOUBLE POLE SWITCHES 55 DESIGN AVAILABILITY",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1117,8 +1358,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-056-1.png",
-    "description": "PDF catalog page 56: FocusElectricalMalaysia SWITCHES SOCKETOUTLETS 5 6",
+    "image": "/pdf-catalog/page-056/img-001.png",
+    "description": "PDF catalog page 56: Focus Electrical Malaysia SWITCHES SOCKET OUTLETS 56",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1147,8 +1388,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-057-1.png",
-    "description": "PDF catalog page 57: FocusElectricalMalaysia SWITCHES SOCKETOUTLETS 5 7 1 GangSwitchSocket Outlet 1 GangSwitchSocket OutletwithLED SwitchSocketOutlet 1 GangSPSwitchSocket with 2 U S B 1 GangInternational SwitchSocket 1 GangInternational S...",
+    "image": "/pdf-catalog/page-057/img-001.png",
+    "description": "PDF catalog page 57: Focus Electrical Malaysia SWITCHES SOCKET OUTLETS 57 1 Gang Switch Socket Outlet 1 Gang Switch Socket Outlet with LED Switch Socket Outlet 1 Gang SP Switch Socket with 2 USB 1 Gang International Switch Socket 1 Gang I...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1177,8 +1418,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-058-1.png",
-    "description": "PDF catalog page 58: FocusElectricalMalaysia SWITCHES TELECOMMUNICATIONOUTLETS 5 8 1 GangTVSocket 1 GangTV , FConnection Socket ( Astro ) 1 GangRJ 1 1 TelephoneSocket 2 GangRJ 1 1 TelephoneSocket 1 GangRJ 4 5 C A T 5 e / C A T 6 DataSocke...",
+    "image": "/pdf-catalog/page-058/img-001.png",
+    "description": "PDF catalog page 58: Focus Electrical Malaysia SWITCHES TELECOMMUNICATION OUTLETS 58 1 Gang TV Socket 1 Gang TV, F Connection Socket (Astro) 1 Gang RJ11 Telephone Socket 2 Gang RJ11 Telephone Socket 1 Gang RJ45 CAT5e/CAT6 Data Socket 2 Ga...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1207,8 +1448,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-059-1.png",
-    "description": "PDF catalog page 59: FocusElectricalMalaysia METALCLADSERIES SWITCHES 5 9 1 Gang 1 WaySwitch 1 Gang 2 WaySwitch 1 GangIntermediateSwitch 2 Gang 1 WaySwitch 2 Gang 2 WaySwitch 3 Gang 1 WaySwitch 3 Gang 2 WaySwitch 4 Gang 1 WaySwitch 4 Gang...",
+    "image": "/pdf-catalog/page-059/img-001.png",
+    "description": "PDF catalog page 59: Focus Electrical Malaysia METAL CLAD SERIES SWITCHES 59 1 Gang 1 Way Switch 1 Gang 2 Way Switch 1 Gang Intermediate Switch 2 Gang 1 Way Switch 2 Gang 2 Way Switch 3 Gang 1 Way Switch 3 Gang 2 Way Switch 4 Gang 1 Way S...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1218,7 +1459,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Surface"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -1233,12 +1476,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1041",
-    "name": "Switch Brands & Series (Page 60)",
+    "name": "Metal Clad Series (Page 60)",
     "category": "Switches",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-060-1.png",
-    "description": "PDF catalog page 60: FocusElectricalMalaysia BRANDSSERIES 3 , 6 , 9 , MetalClad 2 K , M Q , MetalClad DELTARelfa AvatarOn , AvatarOnC , Vivace , Zencelo , Pieno , AfflePlus MetalClad BRANDS & SERIES SWITCHES 6 0",
+    "image": "/pdf-catalog/page-060/img-001.png",
+    "description": "PDF catalog page 60: Focus Electrical Malaysia BRANDS SERIES 3, 6, 9, Metal Clad 2K, MQ, Metal Clad DELTA Relfa AvatarOn, AvatarOn C, Vivace, Zencelo, Pieno, Affle Plus Metal Clad BRANDS & SERIES SWITCHES 60",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1267,8 +1510,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-061-render.png",
-    "description": "PDF catalog page 61: BREAKERS ELCB 6 2 M C B 6 3 CONTACTOR 6 4 MCCB 6 5 T . O . R . 6 6",
+    "image": "/pdf-catalog/page-061/page-061.png",
+    "description": "PDF catalog page 61: BREAKERS ELCB 62 MCB 63 CONTACTOR 64 MCCB 65 T.O.R. 66",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1297,8 +1540,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Distribution Boards",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-062-1.png",
-    "description": "PDF catalog page 62: FocusElectricalMalaysia AMP 2 5 A , 4 0 A , 6 3 A , 1 0 0 A POLE 2 & 4 TRIPSENSITIVITY 1 0 m A , 3 0 m A , 1 0 0 m A , 3 0 0 mA TYPEA & A C 6 3 A 4 P 0 . 1 A ELCB 6 2 EarthLeakageCircuitBreaker",
+    "image": "/pdf-catalog/page-062/img-001.png",
+    "description": "PDF catalog page 62: Focus Electrical Malaysia AMP 25A, 40A, 63A, 100A POLE 2 & 4 TRIP SENSITIVITY 10mA, 30 mA, 100 mA, 300 mA TYPE A & AC 63A 4P 0.1A ELCB 62 Earth Leakage Circuit Breaker",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1310,7 +1553,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "0.1A",
+      "100A",
+      "25A",
+      "40A",
+      "63A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 62"
@@ -1327,8 +1576,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Distribution Boards",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-063-1.png",
-    "description": "PDF catalog page 63: FocusElectricalMalaysia AMP 6 A → 3 2 A , 4 0 A → 6 3 A POLE 1 / 2 / 3 RATING 6 k A , 1 0 kA TYPEB & C 3 2 A 1 P 6 kA MCB 6 3 MiniatureCircuitBreaker",
+    "image": "/pdf-catalog/page-063/img-001.png",
+    "description": "PDF catalog page 63: Focus Electrical Malaysia AMP 6A → 32A, 40A → 63A POLE 1 / 2 / 3 RATING 6kA, 10kA TYPE B & C 32A 1P 6kA MCB 63 Miniature Circuit Breaker",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1340,7 +1589,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "32A",
+      "40A",
+      "63A",
+      "6A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 63"
@@ -1357,8 +1611,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Distribution Boards",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-064-1.png",
-    "description": "PDF catalog page 64: FocusElectricalMalaysia TypeCurrentRangeVoltageBrands Mini 9 – 2 5 A 2 4 0 VKozuka Standard 3 2 – 1 0 0 A 4 1 5 VABB , Chint HeavyDuty 1 2 5 – 3 0 0 A 4 1 5 VLS Modular 1 6 – 4 0 A 2 4 0 VSchneider 6 4 3 2 A 3 P 2 4 0...",
+    "image": "/pdf-catalog/page-064/img-001.png",
+    "description": "PDF catalog page 64: Focus Electrical Malaysia Type Current Range Voltage Brands Mini 9–25A 240V Kozuka Standard 32–100A 415V ABB, Chint Heavy Duty 125–300A 415V LS Modular 16–40A 240V Schneider 64 32A 3P 240V CONTACTOR",
     "brand": "Schneider Electric",
     "availableAt": [
       "hq",
@@ -1368,9 +1622,19 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Heavy Duty",
+      "Mini",
+      "Standard"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "100A",
+      "25A",
+      "300A",
+      "32A",
+      "40A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 64"
@@ -1387,8 +1651,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Distribution Boards",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-065-1.png",
-    "description": "PDF catalog page 65: FocusElectricalMalaysia TypeRatedCurrent ( A ) Poles Compact 3 2 – 1 0 0 3 P / 4 P Standard 1 2 5 – 4 0 0 3 P / 4 P HeavyDuty 6 3 0 – 1 6 0 0 3 P / 4 P 6 5 3 2 A 3 P 6 kA MCCB MoldedCaseCircuitBreaker",
+    "image": "/pdf-catalog/page-065/img-001.png",
+    "description": "PDF catalog page 65: Focus Electrical Malaysia Type Rated Current (A) Poles Compact 32–100 3P/4P Standard 125–400 3P/4P Heavy Duty 630–1600 3P/4P 65 32A 3P 6kA MCCB Molded Case Circuit Breaker",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1398,9 +1662,14 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Heavy Duty",
+      "Standard"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "32A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 65"
@@ -1417,8 +1686,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Distribution Boards",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-066-1.png",
-    "description": "PDF catalog page 66: FocusElectricalMalaysia BrandAmpCoverage ( A ) ABB 0.4 – 380 CHINT 0.4 – 200 FUJI 0.1 – 13 LS 0.4 – 85 SCHNEIDER 0.25 – 104 TAIAN 0.9 – 31 N X R - 1 0 0 3 0 - 4 0 A 6 6 T . O . R . ThermalOverloadRelay",
+    "image": "/pdf-catalog/page-066/img-001.png",
+    "description": "PDF catalog page 66: Focus Electrical Malaysia Brand Amp Coverage (A) ABB 0.4 – 380 CHINT 0.4 – 200 FUJI 0.1 – 13 LS 0.4 – 85 SCHNEIDER 0.25 – 104 TAIAN 0.9 – 31 NXR-100 30-40A 66 T.O.R. Thermal Overload Relay",
     "brand": "Schneider Electric",
     "availableAt": [
       "hq",
@@ -1430,7 +1699,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "40A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 66"
@@ -1439,16 +1710,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": []
+    "modelCodes": [
+      "NXR-100"
+    ]
   },
   {
     "id": "1048",
-    "name": "PVC Conduit & Accessories (Page 67)",
+    "name": "Catalog Reference (Page 67)",
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-067-render.png",
-    "description": "PDF catalog page 67: P V C & ACCESSORIES ACCESSORIES - WHITE 6 8 ACCESSORIES - ORANGE 6 9 ACCESSORIES - BLACK 7 0 ACCESSORIES - ALLSIZES 7 2 PVCGREYPIPE 7 3 HIGHIMPACTCONDUIT 7 4 REDHDPEPIPE 7 5 BRANDS & COLOURS 7 6",
+    "image": "/pdf-catalog/page-067/page-067.png",
+    "description": "PDF catalog page 67: PVC & ACCESSORIES ACCESSORIES - WHITE 68 ACCESSORIES - ORANGE 69 ACCESSORIES - BLACK 70 ACCESSORIES - ALL SIZES 72 PVC GREY PIPE 73 HIGH IMPACT CONDUIT 74 RED HDPE PIPE 75 BRANDS & COLOURS 76",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1459,7 +1732,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "Grey",
+      "Red",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1477,8 +1755,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-068-1.png",
-    "description": "PDF catalog page 68: FocusElectricalMalaysia PVCACCESSORIES 6 8 SOCKET BARSADDLE CLIPSADDLE REDUCER FEMALEADAPTER INSPECTIONTEE INSPECTIONELBOW INSPECTIONBEND CIRCULARONEWAY ENDBOX CIRCULARTWO WAYBOX CIRCULARTHREE WAYBOX CIRCULARFOUR WAYB...",
+    "image": "/pdf-catalog/page-068/img-001.png",
+    "description": "PDF catalog page 68: Focus Electrical Malaysia PVC ACCESSORIES 68 SOCKET BAR SADDLE CLIP SADDLE REDUCER FEMALE ADAPTER INSPECTION TEE INSPECTION ELBOW INSPECTION BEND CIRCULAR ONE WAY END BOX CIRCULAR TWO WAY BOX CIRCULAR THREE WAY BOX CI...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1489,7 +1767,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1507,8 +1787,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-069-1.png",
-    "description": "PDF catalog page 69: FocusElectricalMalaysia PVCACCESSORIES 6 9 SOCKET BARSADDLE CLIPSADDLE REDUCER FEMALEADAPTER INSPECTIONTEE INSPECTIONELBOW INSPECTIONBEND CIRCULARONEWAY ENDBOX CIRCULARTWO WAYBOX CIRCULARTHREE WAYBOX CIRCULARFOUR WAYB...",
+    "image": "/pdf-catalog/page-069/img-001.png",
+    "description": "PDF catalog page 69: Focus Electrical Malaysia PVC ACCESSORIES 69 SOCKET BAR SADDLE CLIP SADDLE REDUCER FEMALE ADAPTER INSPECTION TEE INSPECTION ELBOW INSPECTION BEND CIRCULAR ONE WAY END BOX CIRCULAR TWO WAY BOX CIRCULAR THREE WAY BOX CI...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1537,8 +1817,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-070-1.png",
-    "description": "PDF catalog page 70: FocusElectricalMalaysia PVCACCESSORIES 7 0 SOCKET BARSADDLE CLIPSADDLE REDUCER FEMALEADAPTER INSPECTIONTEE INSPECTIONELBOW INSPECTIONBEND CIRCULARONEWAY ENDBOX CIRCULARTWO WAYBOX CIRCULARTHREE WAYBOX CIRCULARFOUR WAYB...",
+    "image": "/pdf-catalog/page-070/img-001.png",
+    "description": "PDF catalog page 70: Focus Electrical Malaysia PVC ACCESSORIES 70 SOCKET BAR SADDLE CLIP SADDLE REDUCER FEMALE ADAPTER INSPECTION TEE INSPECTION ELBOW INSPECTION BEND CIRCULAR ONE WAY END BOX CIRCULAR TWO WAY BOX CIRCULAR THREE WAY BOX CI...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1549,7 +1829,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1567,8 +1849,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-071-1.png",
-    "description": "PDF catalog page 71: FocusElectricalMalaysia PVCAC CE SSORIES 7 1 CONCEALBOX NUTBOX PARTITIONBOX METALBOX DOMECOVER WIREPULLER DOMECOVER WIREPULLER ORANGE WHITE DOMECOVER BLACK",
+    "image": "/pdf-catalog/page-071/img-001.png",
+    "description": "PDF catalog page 71: Focus Electrical Malaysia PVC ACCESSORIES 71 CONCEAL BOX NUT BOX PARTITION BOX METAL BOX DOME COVER WIRE PULLER DOME COVER WIRE PULLER ORANGE WHITE DOME COVER BLACK",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1579,7 +1861,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1597,8 +1882,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-072-render.png",
-    "description": "PDF catalog page 72: FocusElectricalMalaysia PRODUCTSIZES PARTITION / METALBOX 3 \" x 3 \" | 3 \" x 6 \" | 3 \" x 7 \" CONCEALBOX 3 \" x 3 \" x 1 ½ | 3 \" x 3 \" x 2 | 3 \" x 3 “ 3 \" x 6 \" | 3 \" x 7 \" | 3 \" x 1 0 \" NUTBOX 3 \" x 3 \" | 3 \" x 6 \" | 3 \"...",
+    "image": "/pdf-catalog/page-072/page-072.png",
+    "description": "PDF catalog page 72: Focus Electrical Malaysia PRODUCT SIZES PARTITION/ METAL BOX 3\" x 3\" | 3\" x 6\" | 3\" x 7\" CONCEAL BOX 3\" x 3\" x 1½ | 3\" x 3\" x 2 | 3\" x 3“ 3\" x 6\" | 3\" x 7\" | 3\" x 10\" NUT BOX 3\" x 3\" | 3\" x 6\" | 3\" x 7\" 3\" x 10\" | 3\" ...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1610,7 +1895,16 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "100 MM",
+      "150 MM",
+      "20 MM",
+      "22 MM",
+      "25 MM",
+      "32 MM",
+      "40 MM",
+      "50 MM"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 72"
@@ -1623,12 +1917,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1054",
-    "name": "PVC Grey Pipe (Page 73)",
+    "name": "Catalog Reference (Page 73)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-073-1.png",
-    "description": "PDF catalog page 73: FocusElectricalMalaysia SIZES ( m m ) LENGTH ( m t r ) 1 5 32 0 2 5 P V C GRE YPIPE 7 3",
+    "image": "/pdf-catalog/page-073/img-001.png",
+    "description": "PDF catalog page 73: Focus Electrical Malaysia SIZES (mm) LENGTH (mtr) 15 3 20 25 PVC GREY PIPE 73",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1639,7 +1933,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Grey"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1653,12 +1949,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1055",
-    "name": "High Impact Conduit (Page 74)",
+    "name": "Catalog Reference (Page 74)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-074-1.png",
-    "description": "PDF catalog page 74: FocusElectricalMalaysia SIZES ( m m ) LENGTH ( m t r ) 2 0 2 5 3 H I GH IMPACTCOND UI T 7 4",
+    "image": "/pdf-catalog/page-074/img-001.png",
+    "description": "PDF catalog page 74: Focus Electrical Malaysia SIZES (mm) LENGTH (mtr) 20 25 3 HIGH IMPACT CONDUIT 74",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1683,12 +1979,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1056",
-    "name": "Red HDPE Pipe (Page 75)",
+    "name": "Catalog Reference (Page 75)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-075-1.png",
-    "description": "PDF catalog page 75: FocusElectricalMalaysia SIZES ( m m ) LENGTH ( m t r ) 1 1 0 1 6 0 6 REDHDPEPIPE 7 5",
+    "image": "/pdf-catalog/page-075/img-001.png",
+    "description": "PDF catalog page 75: Focus Electrical Malaysia SIZES (mm) LENGTH (mtr) 110 160 6 RED HDPE PIPE 75",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1699,7 +1995,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Red"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1713,12 +2011,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1057",
-    "name": "PVC Pipe & Accessories Brands (Page 76)",
+    "name": "Catalog Reference (Page 76)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-076-1.png",
-    "description": "PDF catalog page 76: FocusElectricalMalaysia BRANDSCERTIFICATION COLOR AVAILABILITY FIGHTER SIRIM ( PIPEONLY ) WHITE ORANGE BLACK PVCMAN SUPERA SIRIM ( PIPEONLY ) WHITE FOTON JKR WHITE ORANGE SAGA WIREMANSIRIM ( PIPEONLY )P V C - LINK 7 6...",
+    "image": "/pdf-catalog/page-076/img-001.png",
+    "description": "PDF catalog page 76: Focus Electrical Malaysia BRANDS CERTIFICATION COLOR AVAILABILITY FIGHTER SIRIM (PIPE ONLY) WHITE ORANGE BLACK PVC MAN SUPER A SIRIM (PIPE ONLY) WHITE FOTON JKR WHITE ORANGE SAGA WIREMAN SIRIM (PIPE ONLY) PVC-LINK 76 ...",
     "brand": "Fighter",
     "availableAt": [
       "hq",
@@ -1729,7 +2027,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1747,8 +2048,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-077-render.png",
-    "description": "PDF catalog page 77: G I & ACCESSORIES GIFLEXIBLECONDUIT ( UNCOATED ) 7 8 GIFLEXIBLECONDUIT ( COATED ) 7 8 HEAVYGAUGEWATER - TIGHTFLEXIBLECONDUIT 7 9",
+    "image": "/pdf-catalog/page-077/page-077.png",
+    "description": "PDF catalog page 77: GI & ACCESSORIES GI FLEXIBLE CONDUIT (UNCOATED) 78 GI FLEXIBLE CONDUIT (COATED) 78 HEAVY GAUGE WATER- TIGHT FLEXIBLE CONDUIT 79",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1777,8 +2078,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-078-1.png",
-    "description": "PDF catalog page 78: FocusElectricalMalaysia Brand / ModelSize ( Inch ) Size ( m m ) LengthType AFG 3 / 4 \" 2 0 m m 5 0 F T ( 1 5 m ) StandardCoil 1 \" 2 5 m m 5 0 F T ( 1 5 m ) StandardCoil TS 3 / 4 \" 2 0 m m 5 0 F T ( 1 5 m ) Coil 3 / 4 ...",
+    "image": "/pdf-catalog/page-078/img-001.png",
+    "description": "PDF catalog page 78: Focus Electrical Malaysia Brand / Model Size (Inch) Size (mm) Length Type AFG 3/4\" 20mm 50FT (15m) Standard Coil 1\" 25mm 50FT (15m) Standard Coil TS 3/4\" 20mm 50FT (15m) Coil 3/4\" 20mm – Loose 1\" 25mm 50FT (15m) Coil ...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1788,9 +2089,19 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Indoor",
+      "Outdoor",
+      "Standard"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "15m",
+      "20mm",
+      "25mm",
+      "32mm",
+      "50FT"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 78"
@@ -1800,7 +2111,6 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "ECOND",
       "TOYO"
     ]
   },
@@ -1810,9 +2120,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-079-render.png",
-    "description": "PDF catalog page 79: FocusElectricalMalaysia 7 9 ModelSize ( Inch ) Size ( m m ) Length LSE 3 / 4 \" 2 0 m m 3 0 m MPCFC 0 4 1 / 2 \" 1 3 m m 3 0 m MPCFC 0 5 5 / 8 \" 1 6 m m 3 0 m MPCFC 0 6 3 / 4 \" 2 0 m m 3 0 m MPCFC 1 0 1 \" 2 5 m m 3 0 m ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-079/page-079.png",
+    "description": "PDF catalog page 79: Focus Electrical Malaysia 79 Model Size (Inch) Size (mm) Length LSE 3/4\" 20mm 30m MPCFC04 1/2\" 13mm 30m MPCFC05 5/8\" 16mm 30m MPCFC06 3/4\" 20mm 30m MPCFC10 1\" 25mm 30m MPCFC12 1-1/4\" 32mm 15m MPCFC14 1-1/2\" 40mm 15m M...",
+    "brand": "PVC LINK",
     "availableAt": [
       "hq",
       "kuantan",
@@ -1821,9 +2131,22 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Outdoor"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "13mm",
+      "15m",
+      "16mm",
+      "20m",
+      "20mm",
+      "25mm",
+      "30m",
+      "32mm",
+      "40mm",
+      "50mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 79"
@@ -1833,18 +2156,24 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "ECOND",
-      "MPCFC"
+      "MPCFC04",
+      "MPCFC05",
+      "MPCFC06",
+      "MPCFC10",
+      "MPCFC12",
+      "MPCFC14",
+      "MPCFC20",
+      "PBA206714"
     ]
   },
   {
     "id": "1061",
-    "name": "Ventilation (Page 80)",
+    "name": "Ventilation Fan (Page 80)",
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-080-render.png",
-    "description": "PDF catalog page 80: VENTILATION REGULATORFAN - JKR CERTIFIED 8 1 REGULATORFAN 8 2 ALTERNATINGCURRENT ( A C ) MOTOR 8 3 DIRECTCURRENT ( D C ) MOTOR 8 4 WALLFAN - JKRCERTIFIED 8 5 WALLFAN 8 6 AUTOFANS - JKRCERTIFIED 8 7 AUTOFANS 8 8 EXHAUS...",
+    "image": "/pdf-catalog/page-080/page-080.png",
+    "description": "PDF catalog page 80: VENTILATION REGULATOR FAN - JKR CERTIFIED 81 REGULATOR FAN 82 ALTERNATING CURRENT (AC) MOTOR 83 DIRECT CURRENT (DC) MOTOR 84 WALL FAN - JKR CERTIFIED 85 WALL FAN 86 AUTO FANS - JKR CERTIFIED 87 AUTO FANS 88 EXHAUST FA...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1873,8 +2202,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-081-1.png",
-    "description": "PDF catalog page 81: FocusElectricalMalaysia MODEL Sizes ( inch ) N o . of Blades Speed Settings Colour KDKK 1 5 V C 6 0 \" 3 5 WHITE KDKK 1 5 W 0 - S RegulatorFan - JKRCertified CeilingFans 8 1",
+    "image": "/pdf-catalog/page-081/img-001.png",
+    "description": "PDF catalog page 81: Focus Electrical Malaysia MODEL Sizes (inch) No. of Blades Speed Settings Colour KDK K15VC 60\" 3 5 WHITE KDK K15W0-S Regulator Fan - JKR Certified Ceiling Fans 81",
     "brand": "KDK",
     "availableAt": [
       "hq",
@@ -1885,7 +2214,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1895,9 +2226,7 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": [
-      "KDKK"
-    ]
+    "modelCodes": []
   },
   {
     "id": "1063",
@@ -1905,8 +2234,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-082-1.png",
-    "description": "PDF catalog page 82: FocusElectricalMalaysia SizesNo . ofBlades Speed Settings Colour 4 8 \" 3 5 KDKCOLORS WHITE BROWN COPPERBROWN SILVER PMCOLORS WHITE DARKGREY MILDGOLD 6 0 \" 3 5 RegulatorFan CeilingFans 8 2",
+    "image": "/pdf-catalog/page-082/img-001.png",
+    "description": "PDF catalog page 82: Focus Electrical Malaysia Sizes No. of Blades Speed Settings Colour 48\" 3 5 KDK COLORS WHITE BROWN COPPER BROWN SILVER PM COLORS WHITE DARK GREY MILD GOLD 60\" 3 5 Regulator Fan Ceiling Fans 82",
     "brand": "KDK",
     "availableAt": [
       "hq",
@@ -1917,7 +2246,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Gold",
+      "Grey",
+      "Silver",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1927,18 +2261,16 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": [
-      "KDKCOLORS"
-    ]
+    "modelCodes": []
   },
   {
     "id": "1064",
-    "name": "AC Motor Ceiling Fans (Page 83)",
+    "name": "Ceiling Fan (Page 83)",
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-083-1.png",
-    "description": "PDF catalog page 83: FocusElectricalMalaysia SizesNo . ofBladesSpeedSettingsColour 4 4 \" 3 3 White Grey 5 6 \" 3 3 Black Grey 5 6 \" 4 5 SilverGrey Black White 6 0 \" 5 5 CopperBronze SilverGrey PlatinumSilver DarkBrown AlternatingCurrent ( ...",
+    "image": "/pdf-catalog/page-083/img-001.png",
+    "description": "PDF catalog page 83: Focus Electrical Malaysia Sizes No. of Blades Speed Settings Colour 44\" 3 3 White Grey 56\" 3 3 Black Grey 56\" 4 5 Silver Grey Black White 60\" 5 5 Copper Bronze Silver Grey Platinum Silver Dark Brown Alternating Curren...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1949,7 +2281,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "Grey",
+      "Silver",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1963,12 +2300,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1065",
-    "name": "DC Motor Ceiling Fans (Page 84)",
+    "name": "Ceiling Fan (Page 84)",
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-084-1.png",
-    "description": "PDF catalog page 84: FocusElectricalMalaysia SizesNo . ofBlades Speed Settings Colour 4 2 \" 5 3 White , Grey , Black 4 6 \" 3 3 MattBlack , Black , Grey 4 8 \" 3 9 ElegantGrey 5 2 \" 3 5 Grey , DarkGrey 5 6 \" 3 / 4 / 5 5 / 9 / 1 2 MattBlack ...",
+    "image": "/pdf-catalog/page-084/img-001.png",
+    "description": "PDF catalog page 84: Focus Electrical Malaysia Sizes No. of Blades Speed Settings Colour 42\" 5 3 White, Grey, Black 46\" 3 3 Matt Black, Black, Grey 48\" 3 9 Elegant Grey 52\" 3 5 Grey, Dark Grey 56\" 3 / 4 / 5 5 / 9 / 12 Matt Black, Dark Gre...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -1979,7 +2316,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "Grey",
+      "Silver",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -1997,8 +2339,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-085-1.png",
-    "description": "PDF catalog page 85: FocusElectricalMalaysia Sizes ( inch ) SpeedSettingsColour 1 2 \" 3 White 1 6 \" 3 White Grey 1 8 \" 3 White DarkGrey WallFan 8 5 JKRCertified",
+    "image": "/pdf-catalog/page-085/img-001.png",
+    "description": "PDF catalog page 85: Focus Electrical Malaysia Sizes (inch) Speed Settings Colour 12\" 3 White 16\" 3 White Grey 18\" 3 White Dark Grey Wall Fan 85 JKR Certified",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2009,7 +2351,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Grey",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -2027,8 +2372,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-086-1.png",
-    "description": "PDF catalog page 86: FocusElectricalMalaysia SizesSpeedSettingsColour 1 2 \" 3 White 1 6 \" 3 / 5 White Grey Black DarkGrey 1 8 \" 5 White DarkGrey 2 0 \" 3 Black 2 6 \" 3 Black WallFan 8 6",
+    "image": "/pdf-catalog/page-086/img-001.png",
+    "description": "PDF catalog page 86: Focus Electrical Malaysia Sizes Speed Settings Colour 12\" 3 White 16\" 3 / 5 White Grey Black Dark Grey 18\" 5 White Dark Grey 20\" 3 Black 26\" 3 Black Wall Fan 86",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2039,7 +2384,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Black",
+      "Grey",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -2053,12 +2402,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1068",
-    "name": "Auto Fans (Page 87)",
+    "name": "Auto Fan (Page 87)",
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-087-1.png",
-    "description": "PDF catalog page 87: FocusElectricalMalaysia Sizes ( inch ) SpeedSettingsColour 1 6 \" 5 White AutoFans 8 7 JKRCertified",
+    "image": "/pdf-catalog/page-087/img-001.png",
+    "description": "PDF catalog page 87: Focus Electrical Malaysia Sizes (inch) Speed Settings Colour 16\" 5 White Auto Fans 87 JKR Certified",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2069,7 +2418,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -2083,12 +2434,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1069",
-    "name": "Auto Fans (Page 88)",
+    "name": "Auto Fan (Page 88)",
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-088-1.png",
-    "description": "PDF catalog page 88: FocusElectricalMalaysia Sizes ( inch ) SpeedSettingsColour 1 6 \" 5 White DarkGrey AutoFans 8 8 * OtherBrandAvailabletoQuote",
+    "image": "/pdf-catalog/page-088/img-001.png",
+    "description": "PDF catalog page 88: Focus Electrical Malaysia Sizes (inch) Speed Settings Colour 16\" 5 White Dark Grey Auto Fans 88 *Other Brand Available to Quote",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2099,7 +2450,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "chukai"
     ],
     "variants": [],
-    "colors": [],
+    "colors": [
+      "Grey",
+      "White"
+    ],
     "sizes": [],
     "lengths": [],
     "types": [
@@ -2117,8 +2471,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-089-1.png",
-    "description": "PDF catalog page 89: FocusElectricalMalaysia ModelSizesType KDK 2 0 A Q M 8 6 \" CeilingMount Indus tr ialFan Wall KDK 3 0 A Q M 8 PANASONICFV - 2 0 A U M 8 SELAMATMQ - V 8 8 \" KDK 25AQM7 SELAMAT MQ-10VS 1 0 \" K D K 3 0 AQM PANASONICFV - 3...",
+    "image": "/pdf-catalog/page-089/img-001.png",
+    "description": "PDF catalog page 89: Focus Electrical Malaysia Model Sizes Type KDK 20AQM8 6\" Ceiling Mount Industrial Fan Wall KDK 30AQM8 PANASONIC FV-20AUM8 SELAMAT MQ-V8 8\" KDK 25AQM7 SELAMAT MQ-10VS 10\" KDK 30AQM PANASONIC FV-30AUM8 SELAMAT MQ-12VS 1...",
     "brand": "KDK",
     "availableAt": [
       "hq",
@@ -2140,9 +2494,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "PANASONICFV",
-      "SELAMAT",
-      "SELAMATMQ"
+      "PANASONIC",
+      "SELAMAT"
     ]
   },
   {
@@ -2151,8 +2504,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-090-1.png",
-    "description": "PDF catalog page 90: FocusElectricalMalaysia SizesType 6 \" CeilingMounted WallMounted 8 \" 1 0 \" 1 2 \" ExhaustFan 9 0 * OtherBrandsAvailabletoQuote",
+    "image": "/pdf-catalog/page-090/img-001.png",
+    "description": "PDF catalog page 90: Focus Electrical Malaysia Sizes Type 6\" Ceiling Mounted Wall Mounted 8\" 10\" 12\" Exhaust Fan 90 *Other Brands Available to Quote",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2181,8 +2534,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Fans",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-091-1.png",
-    "description": "PDF catalog page 91: FocusElectricalMalaysia TypeSizes WallFan 1 0 \" | 1 6 \" | 2 0 \" | 2 6 \" StandFan 1 8 \" | 2 0 \" | 2 5 \" | 2 6 \" ExhaustFan 1 2 \" | 1 4 \" | 1 6 \" | 1 8 \" | 2 4 \" Industrial & TurboFan 9 1 * OtherBrandAvailabletoQuote Tu...",
+    "image": "/pdf-catalog/page-091/img-001.png",
+    "description": "PDF catalog page 91: Focus Electrical Malaysia Type Sizes Wall Fan 10\" | 16\" | 20\" | 26\" Stand Fan 18\" | 20\" | 25\" | 26\" Exhaust Fan 12\" | 14\" | 16\" | 18\" | 24\" Industrial & Turbo Fan 91 *Other Brand Available to Quote Turbo Stand Fan 9\" ...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2207,12 +2560,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1073",
-    "name": "GI Conduit & Accessories (Page 92)",
+    "name": "Catalog Reference (Page 92)",
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-092-render.png",
-    "description": "PDF catalog page 92: GICONDUIT & ACCESSORIES KYODOPIPE SMART / SOUTHERN LANRIC ACCESSORIES BRANDS & SIZES 9 3 9 4 9 5 9 6 9 8",
+    "image": "/pdf-catalog/page-092/page-092.png",
+    "description": "PDF catalog page 92: GI CONDUIT & ACCESSORIES KYODO PIPE SMART/SOUTHERN LANRIC ACCESSORIES BRANDS & SIZES 93 94 95 96 98",
     "brand": "Kyodo",
     "availableAt": [
       "hq",
@@ -2237,12 +2590,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1074",
-    "name": "KYODO Pipe Conduit (Page 93)",
+    "name": "Catalog Reference (Page 93)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-093-1.png",
-    "description": "PDF catalog page 93: FocusElectricalMalaysia CommoditySizeColourSirimJKR PipeGI 3 / 4 \" X 1 2 . 5 F T ❌ ❌ 1 \" X 1 2 . 5 F T ❌ ❌ PipeColour 3 / 4 \" X 1 2 . 5 F T ❌ ❌ 1 \" X 1 2 . 5 F T ❌ ❌ B S 3 1 G I 3 / 4 \" X 1 2 . 5 F T ✅ ❌ 1 \" X 1 2 . 5...",
+    "image": "/pdf-catalog/page-093/img-001.png",
+    "description": "PDF catalog page 93: Focus Electrical Malaysia Commodity Size Colour Sirim JKR Pipe GI 3/4\" X 12.5FT ❌ ❌ 1\" X 12.5FT ❌ ❌ Pipe Colour 3/4\" X 12.5FT ❌ ❌ 1\" X 12.5FT ❌ ❌ BS31 GI 3/4\" X 12.5FT ✅ ❌ 1\" X 12.5FT ✅ ❌ BS31 Colour 3/4\" X 12.5FT ✅ ❌...",
     "brand": "Kyodo",
     "availableAt": [
       "hq",
@@ -2254,7 +2607,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "12.5FT",
+      "20MM",
+      "25MM"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 93"
@@ -2267,12 +2624,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1075",
-    "name": "SMART Pipe Conduit (Page 94)",
+    "name": "Catalog Reference (Page 94)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-094-1.png",
-    "description": "PDF catalog page 94: FocusElectricalMalaysia CommoditySizeColourSirimJKR PipeGI 3 / 4 \" X 1 0 F T ❌ ❌ 1 \" X 1 0 F T ❌ ❌ PipeColour 3 / 4 \" X 1 0 F T ❌ ❌ 1 \" X 1 0 F T ❌ ❌ B S 3 1 G I 3 / 4 \" X 1 0 F T ✅ ❌ 1 \" X 1 0 F T ✅ ❌ B S 3 1 Colour ...",
+    "image": "/pdf-catalog/page-094/img-001.png",
+    "description": "PDF catalog page 94: Focus Electrical Malaysia Commodity Size Colour Sirim JKR Pipe GI 3/4\" X 10FT ❌ ❌ 1\" X 10FT ❌ ❌ Pipe Colour 3/4\" X 10FT ❌ ❌ 1\" X 10FT ❌ ❌ BS31 GI 3/4\" X 10FT ✅ ❌ 1\" X 10FT ✅ ❌ BS31 Colour 3/4\" X 10FT ✅ ❌ 1\" X 10FT ✅ ❌...",
     "brand": "Smart",
     "availableAt": [
       "hq",
@@ -2284,7 +2641,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "10FT",
+      "20MM",
+      "25MM"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 94"
@@ -2297,12 +2658,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1076",
-    "name": "SMART Pipe Conduit Extended (Page 95)",
+    "name": "Catalog Reference (Page 95)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-095-1.png",
-    "description": "PDF catalog page 95: FocusElectricalMalaysia CommoditySizeColourSirimJKR PipeGI 3 / 4 \" X 1 2 . 5 F T ❌ ❌ 1 \" X 1 2 . 5 F T ❌ ❌ PipeColour 3 / 4 \" X 1 2 . 5 F T ❌ ❌ 1 \" X 1 2 . 5 F T ❌ ❌ B S 3 1 G I 3 / 4 \" X 1 2 . 5 F T ✅ ❌ 1 \" X 1 2 . 5...",
+    "image": "/pdf-catalog/page-095/img-001.png",
+    "description": "PDF catalog page 95: Focus Electrical Malaysia Commodity Size Colour Sirim JKR Pipe GI 3/4\" X 12.5FT ❌ ❌ 1\" X 12.5FT ❌ ❌ Pipe Colour 3/4\" X 12.5FT ❌ ❌ 1\" X 12.5FT ❌ ❌ BS31 GI 3/4\" X 12.5FT ✅ ❌ 1\" X 12.5FT ✅ ❌ BS31 Colour 3/4\" X 12.5FT ✅ ❌...",
     "brand": "Smart",
     "availableAt": [
       "hq",
@@ -2314,7 +2675,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "12.5FT",
+      "20MM",
+      "25MM"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 95"
@@ -2327,12 +2692,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1077",
-    "name": "GI Accessories (Page 96)",
+    "name": "Catalog Reference (Page 96)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-096-1.png",
-    "description": "PDF catalog page 96: FocusElectricalMalaysia G . IACCESSORIES 9 6 BARSADDLE SOCKET CIRCULARTHREE WAYENDBOX LOCKNUT CIRCULARFOUR WAYBOX CIRCULARONE WAYENDBOX ANGLEBOX CIRCULARTWO WAYBOX FLEXIBLEADAPTOR C / WLOCKNUT",
+    "image": "/pdf-catalog/page-096/img-001.png",
+    "description": "PDF catalog page 96: Focus Electrical Malaysia G.I ACCESSORIES 96 BAR SADDLE SOCKET CIRCULAR THREE WAY END BOX LOCK NUT CIRCULAR FOUR WAY BOX CIRCULAR ONE WAY END BOX ANGLE BOX CIRCULAR TWO WAY BOX FLEXIBLE ADAPTOR C/W LOCK NUT",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2357,12 +2722,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1078",
-    "name": "GI Accessories Extended (Page 97)",
+    "name": "Catalog Reference (Page 97)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-097-1.png",
-    "description": "PDF catalog page 97: FocusElectricalMalaysia G.I A C CE SSORIES 9 7 INSPECTIONTEE FLEXIBLEADAPTOR C / WLOCKNUT DOMECOVER LIDCOVER INSPECTIONBEND INSPECTIONELBOW",
+    "image": "/pdf-catalog/page-097/img-001.png",
+    "description": "PDF catalog page 97: Focus Electrical Malaysia G.I ACCESSORIES 97 INSPECTION TEE FLEXIBLE ADAPTOR C/W LOCK NUT DOME COVER LID COVER INSPECTION BEND INSPECTION ELBOW",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2387,12 +2752,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1079",
-    "name": "GI Accessories Sizes (Page 98)",
+    "name": "Catalog Reference (Page 98)",
     "category": "Cables",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-098-1.png",
-    "description": "PDF catalog page 98: FocusElectricalMalaysia ProductTypeSizes Maleto Fe maleThreadBrassPipe 1 / 8 \" → 1 / 8 \" , 1 / 8 \" → 1 / 4 \" , 1 / 8 \" → 3 / 8 \" , 1 / 8 \" → 1 / 2 \" 1 / 4 \" → 1 / 4 \" , 1 / 4 \" → 3 / 8 \" , 1 / 4 \" → 1 / 2 \" 1 / 2 \" → ...",
+    "image": "/pdf-catalog/page-098/img-001.png",
+    "description": "PDF catalog page 98: Focus Electrical Malaysia Product Type Sizes Male to Female Thread Brass Pipe 1/8\"→1/8\", 1/8\"→1/4\", 1/8\"→3/8\", 1/8\"→1/2\" 1/4\"→1/4\", 1/4\"→3/8\", 1/4\"→1/2\" 1/2\"→1/2\", 1/2\"→3/4\" 3/8\"→3/8\", 3/8\"→1/2\" 3/4\"→3/4\" G.I Boxes 3/...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2402,7 +2767,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Standard"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -2421,8 +2788,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-099-render.png",
-    "description": "PDF catalog page 99: E M - LITE PNE - EMERGENCY LUMINARIES 1 0 0 P N E - EXIT / KELUAR SIGNS 1 0 2 VITALITE - EXIT / KELUAR SIGNS 1 0 4",
+    "image": "/pdf-catalog/page-099/page-099.png",
+    "description": "PDF catalog page 99: EM-LITE PNE - EMERGENCY LUMINARIES 100 PNE - EXIT/KELUAR SIGNS 102 VITALITE - EXIT/KELUAR SIGNS 104",
     "brand": "PNE",
     "availableAt": [
       "hq",
@@ -2453,8 +2820,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-100-1.png",
-    "description": "PDF catalog page 100: FocusElectricalMalaysia IP - 2 0 I P - 2 0 I P - 2 0 I P - 2 0 I P - 2 0 I P - 6 5 1 0 0 PNESystemSdn . B h d . EmergencyLuminaries PNE - P E L 1 8 L E D / P N E - P E L 2 8 R - LED PNE - P T H 3 1 1 P N E - P T H 1 0...",
+    "image": "/pdf-catalog/page-100/img-001.png",
+    "description": "PDF catalog page 100: Focus Electrical Malaysia IP-20 IP-20 IP-20 IP-20 IP-20 IP-65 100 PNE System Sdn. Bhd. Emergency Luminaries PNE-PEL18LED / PNE-PEL28R-LED PNE-PTH311 PNE-PTH100 PNE-PTH322R PNE-PEJ108WP PNE-TEL30-LED",
     "brand": "PNE",
     "availableAt": [
       "hq",
@@ -2476,7 +2843,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "PNESYSTEMSDN"
+      "PNE-PEJ108WP",
+      "PNE-PEL18LED",
+      "PNE-PEL28R-LED",
+      "PNE-PTH100",
+      "PNE-PTH311",
+      "PNE-PTH322R",
+      "PNE-TEL30-LED"
     ]
   },
   {
@@ -2485,8 +2858,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-101-1.png",
-    "description": "PDF catalog page 101: FocusElectricalMalaysia ModelDescriptionDimensionVoltage PNE - P E L 1 8 LED PNEPEL - 1 8 LEDEMERGENCY LIGHT 3 6 0 L x 1 1 0 W x 7 0 H ( m m ) 2 4 0 V PNE - P E L 2 8 R - LED PNEPEL - 2 8 R - LED RECESSEDWHITESUPER BR...",
+    "image": "/pdf-catalog/page-101/img-001.png",
+    "description": "PDF catalog page 101: Focus Electrical Malaysia Model Description Dimension Voltage PNE-PEL18LED PNE PEL-18LED EMERGENCY LIGHT 360 L x 110 W x 70 H (mm) 240V PNE-PEL28R-LED PNE PEL-28R-LED RECESSED WHITE SUPER BRIGHT LED 410L x 165 W x 100...",
     "brand": "PNE",
     "availableAt": [
       "hq",
@@ -2496,9 +2869,25 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
-    "sizes": [],
+    "variants": [
+      "Recessed",
+      "Surface"
+    ],
+    "colors": [
+      "White"
+    ],
+    "sizes": [
+      "100mm",
+      "110 W",
+      "120mm",
+      "165 W",
+      "1W",
+      "3.0W",
+      "355mm",
+      "3W",
+      "73mm",
+      "75mm"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 101"
@@ -2508,21 +2897,23 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "PNEPEJ",
-      "PNEPEL",
-      "PNEPTH",
-      "PNESYSTEMSDN",
-      "PNETEL"
+      "PNE-PEJ108WP",
+      "PNE-PEL18LED",
+      "PNE-PEL28R-LED",
+      "PNE-PTH100",
+      "PNE-PTH311",
+      "PNE-PTH322R",
+      "PNE-TEL30-LED"
     ]
   },
   {
     "id": "1083",
-    "name": "Exit / Keluar Signs (Page 102)",
+    "name": "Catalog Reference (Page 102)",
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-102-1.png",
-    "description": "PDF catalog page 102: FocusElectricalMalaysia IP - 2 0 I P - 2 0 I P - 2 0 I P - 2 0 PNESystemSdn . B h d . Exit / KeluarSigns 1 0 2 P N E - P E X 2 1 5 LEDPNE - P E X 2 1 5 F - WP PNE - P E X 1 3 8 LED PNE - P E X 1 3 8 L E D - R PNE - P ...",
+    "image": "/pdf-catalog/page-102/img-001.png",
+    "description": "PDF catalog page 102: Focus Electrical Malaysia IP-20 IP-20 IP-20 IP-20 PNE System Sdn. Bhd. Exit / Keluar Signs 102 PNE-PEX215LED PNE-PEX215F-WP PNE-PEX138LED PNE-PEX138LED-R PNE-PEX138LED-D-RUN PNE-PEX138LED-RD- RUN PNE-PEX138LED(RA) PNE...",
     "brand": "PNE",
     "availableAt": [
       "hq",
@@ -2544,17 +2935,29 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "PNESYSTEMSDN"
+      "PNE-PEX138LED",
+      "PNE-PEX138LED(LA",
+      "PNE-PEX138LED(RA",
+      "PNE-PEX138LED-D",
+      "PNE-PEX138LED-D-RUN",
+      "PNE-PEX138LED-R",
+      "PNE-PEX138LED-RD",
+      "PNE-PEX138LED-SA",
+      "PNE-PEX138RLED(LA",
+      "PNE-PEX138RLED(RA",
+      "PNE-PEX138RLED-SA",
+      "PNE-PEX215F-WP",
+      "PNE-PEX215LED"
     ]
   },
   {
     "id": "1084",
-    "name": "Exit / Keluar Signs (Page 103)",
+    "name": "Catalog Reference (Page 103)",
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-103-1.png",
-    "description": "PDF catalog page 103: FocusElectricalMalaysia ModelDescriptionDimensionVoltage PNE - P E X 2 1 5 LED PNEPEX - 2 1 5 LEDWHITE SUPERBRIGHTLEDBOX TYPE 5 5 6 m m ( L ) x 5 2 m m ( W ) x 1 5 5 m m ( H ) 2 4 0 V PNE - P E X 2 1 5 F - WP PNEPEX -...",
+    "image": "/pdf-catalog/page-103/img-001.png",
+    "description": "PDF catalog page 103: Focus Electrical Malaysia Model Description Dimension Voltage PNE-PEX215LED PNE PEX-215LED WHITE SUPER BRIGHT LED BOX TYPE 556mm (L) x 52mm (W) x 155mm (H) 240V PNE-PEX215F-WP PNE PEX-215F-WP 2 X 8W FLUO TUBE WEATHERP...",
     "brand": "PNE",
     "availableAt": [
       "hq",
@@ -2564,9 +2967,22 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
-    "colors": [],
-    "sizes": [],
+    "variants": [
+      "Standard",
+      "Surface"
+    ],
+    "colors": [
+      "White"
+    ],
+    "sizes": [
+      "102mm",
+      "152mm",
+      "155mm",
+      "52mm",
+      "556mm",
+      "655mm",
+      "8W"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 103"
@@ -2576,18 +2992,29 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Quotation On Request"
     ],
     "modelCodes": [
-      "PNEPEX",
-      "PNESYSTEMSDN"
+      "PNE-PEX138LED",
+      "PNE-PEX138LED(LA",
+      "PNE-PEX138LED(RA",
+      "PNE-PEX138LED-D",
+      "PNE-PEX138LED-D-RUN",
+      "PNE-PEX138LED-R",
+      "PNE-PEX138LED-RD",
+      "PNE-PEX138LED-SA",
+      "PNE-PEX138RLED(LA",
+      "PNE-PEX138RLED(RA",
+      "PNE-PEX138RLED-SA",
+      "PNE-PEX215F-WP",
+      "PNE-PEX215LED"
     ]
   },
   {
     "id": "1085",
-    "name": "Exit / Keluar Signs (Page 104)",
+    "name": "Catalog Reference (Page 104)",
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-104-1.png",
-    "description": "PDF catalog page 104: FocusElectricalMalaysia ModelDescriptionDimensionVoltage VITALITE - V E L 3 3 0 / S 2 0 VITALITEVEL 3 3 0 / S T 2 0 XLED EMERGENCYLIGHT - SURFACE 3 3 0 L x 1 1 6 W x 6 8 H ( m m ) 2 4 0 V VITALITE - V E L 3 6 0 / R 2 ...",
+    "image": "/pdf-catalog/page-104/img-001.png",
+    "description": "PDF catalog page 104: Focus Electrical Malaysia Model Description Dimension Voltage VITALITE- VEL330/S20 VITALITE VEL330/ST 20XLED EMERGENCY LIGHT- SURFACE 330 L x 116 W x 68 H (mm) 240V VITALITE- VEL360/R20 VITALITE VEL 360/RT 20XLED EMER...",
     "brand": "VITALITE",
     "availableAt": [
       "hq",
@@ -2597,9 +3024,18 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Recessed",
+      "Round",
+      "Surface"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "116 W",
+      "145 W",
+      "200mm",
+      "55\nW"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 104"
@@ -2610,19 +3046,17 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "modelCodes": [
       "VITALITE",
-      "VITALITEINDUSTRYSDN",
-      "VITALITEVEL",
-      "VITALITEVELR"
+      "VITALITE-VELR75/R"
     ]
   },
   {
     "id": "1086",
-    "name": "Exit / Keluar Signs (Page 105)",
+    "name": "Catalog Reference (Page 105)",
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-105-1.png",
-    "description": "PDF catalog page 105: FocusElectricalMalaysia ModelDescriptionDimensionVoltage VITALITE - V K S 5 6 0 / B / RM VITALITEVKS 5 6 0 / B / R M 1 4 XLEDKELUARSIGN ( S T D : R . M A N ) 5 6 0 L x 5 6 W x 1 6 0 H ( m m ) 2 4 0 V VITALITE - V K S ...",
+    "image": "/pdf-catalog/page-105/img-001.png",
+    "description": "PDF catalog page 105: Focus Electrical Malaysia Model Description Dimension Voltage VITALITE- VKS560/B/RM VITALITE VKS560/B/RM 14XLED KELUAR SIGN (STD:R.MAN) 560 L x 56 W x 160 H (mm) 240V VITALITE- VKS560/B/S VITALITE VKS560/B/RM 14XLED K...",
     "brand": "VITALITE",
     "availableAt": [
       "hq",
@@ -2634,7 +3068,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "56 W"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 105"
@@ -2645,18 +3081,20 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "modelCodes": [
       "VITALITE",
-      "VITALITEINDUSTRYSDN",
-      "VITALITEVKS"
+      "VITALITE-VKS560/B/L",
+      "VITALITE-VKS560/B/R",
+      "VITALITE-VKS560/B/RM",
+      "VITALITE-VKS560/B/S"
     ]
   },
   {
     "id": "1087",
-    "name": "Exit / Keluar Signs (Page 106)",
+    "name": "Catalog Reference (Page 106)",
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-106-1.png",
-    "description": "PDF catalog page 106: FocusElectricalMalaysia ModelDescriptionDimensionVoltage VITALITE - V K S 5 5 5 / S T S / RM VITALITEVKS 5 5 5 / S T S / RM SLIMTYPELED - KELUAR ( S T D : R . M A N ) 5 5 5 L x 4 7 W x 2 4 1 H ( m m ) 2 4 0 V VITALITE...",
+    "image": "/pdf-catalog/page-106/img-001.png",
+    "description": "PDF catalog page 106: Focus Electrical Malaysia Model Description Dimension Voltage VITALITE- VKS555/STS/RM VITALITE VKS 555/STS/RM SLIM TYPE LED-KELUAR (STD:R.MAN) 555 L x 47 W x 241 H (mm) 240V VITALITE- VKS555/STS/SA VITALITE VKS 555/ST...",
     "brand": "VITALITE",
     "availableAt": [
       "hq",
@@ -2666,9 +3104,13 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Slim"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "47 W"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 106"
@@ -2679,18 +3121,19 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "modelCodes": [
       "VITALITE",
-      "VITALITEINDUSTRYSDN",
-      "VITALITEVKS"
+      "VITALITE-VKS555/STS/LRA",
+      "VITALITE-VKS555/STS/RM",
+      "VITALITE-VKS555/STS/SA"
     ]
   },
   {
     "id": "1088",
-    "name": "PVC Mini Trunking (Page 107)",
+    "name": "Catalog Reference (Page 107)",
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-107-render.png",
-    "description": "PDF catalog page 107: CASING FIGHTER 1 0 8",
+    "image": "/pdf-catalog/page-107/page-107.png",
+    "description": "PDF catalog page 107: CASING FIGHTER 108",
     "brand": "Fighter",
     "availableAt": [
       "hq",
@@ -2715,12 +3158,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1089",
-    "name": "Trunking & Accessories (Page 108)",
+    "name": "Catalog Reference (Page 108)",
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-108-1.png",
-    "description": "PDF catalog page 108: FocusElectricalMalaysia CodeSize ( INCH ) Size ( M M ) P T - 3 / 4 3 / 4 \" X 3 / 8 \" 2 0 M M X 1 0 MM PT - 1 1 \" X 1 / 2 \" 2 7 M M X 1 3 MM PT - 1 - 1 / 2 1 1 / 2 \" X 5 / 8 \" 4 0 M M X 1 6 MM PT - 1 - 1 / 2 X 3 / 4 1 ...",
+    "image": "/pdf-catalog/page-108/img-001.png",
+    "description": "PDF catalog page 108: Focus Electrical Malaysia Code Size (INCH) Size (MM) PT-3/4 3/4\" X 3/8\" 20MM X 10MM PT-1 1\" X 1/2\" 27MM X 13MM PT-1-1/2 1 1/2\" X 5/8\" 40MM X 16MM PT-1-1/2X3/4 1 1/2\" X 3/4\" 40MM X 20MM PT-1X2 2\" X 1\" 50MM X 30MM PT-2 ...",
     "brand": "Fighter",
     "availableAt": [
       "hq",
@@ -2730,9 +3173,22 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Mini"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "100MM",
+      "10MM",
+      "13MM",
+      "16MM",
+      "20MM",
+      "27MM",
+      "30MM",
+      "40MM",
+      "50 MM",
+      "50MM"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 108"
@@ -2749,8 +3205,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-109-render.png",
-    "description": "PDF catalog page 109: TRUNKING & ACCESSORIES METALTRUNKING - JKR CERTIFIED 1 1 1 HDGTRUNKING - NORMAL 1 1 2 TRUNKINGACCESSORIES 1 1 3",
+    "image": "/pdf-catalog/page-109/page-109.png",
+    "description": "PDF catalog page 109: TRUNKING & ACCESSORIES METAL TRUNKING - JKR CERTIFIED 111 HDG TRUNKING - NORMAL 112 TRUNKING ACCESSORIES 113",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2779,8 +3235,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-110-1.png",
-    "description": "PDF catalog page 110: TRUNKING METALTRUNKING MSIEC 6 1 0 8 4 ( TYPE 1 , J K R ) EPOXYPOWDERCOATED - CLASS 1 ( INDOOR ) HOTDIPPEDGALVANIZED - CLASS 2 ( OUTDOOR )",
+    "image": "/pdf-catalog/page-110/img-001.png",
+    "description": "PDF catalog page 110: TRUNKING METAL TRUNKING MS IEC 61084 (TYPE 1, JKR) EPOXY POWDER COATED - CLASS 1 (INDOOR) HOT DIPPED GALVANIZED - CLASS 2 (OUTDOOR)",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2790,7 +3246,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Indoor",
+      "Outdoor"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -2809,8 +3268,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-111-render.png",
-    "description": "PDF catalog page 111: SIZEDIAMETER 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 2 \" x 6 \" 2 \" x 8 \" 2 \" x 1 0 \" 2 \" x 1 2 \" 2 \" x 1 4 \" 3 \" x 3 \" 3 \" x 4 \" 3 \" x 6 \" 3 \" x 8 \" 3 \" x 1 0 \" 3 \" x 1 2 \" 3 \" x 1 4 \" 4 \" x 4 \" 4 \" x 6 \" 4 \" x 8 \" 4 \" x 1 0 \" ...",
+    "image": "/pdf-catalog/page-111/page-111.png",
+    "description": "PDF catalog page 111: SIZE DIAMETER 2\"x2\" 2\"x3\" 2\"x4\" 2\"x6\" 2\"x8\" 2\"x10\" 2\"x12\" 2\"x14\" 3\"x3\" 3\"x4\" 3\"x6\" 3\"x8\" 3\"x10\" 3\"x12\" 3\"x14\" 4\"x4\" 4\"x6\" 4\"x8\" 4\"x10\" 4\"x12\" 4\"x14\" 4\"x16\" 6\"x6\" 6\"x8\" 6\"x10\" 6\"x12\" 6\"x14\" 6\"x16\" 6\"x18\" 18G (1.0mm,1.2...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2820,9 +3279,22 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Indoor",
+      "Outdoor"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "1.0mm",
+      "1.2mm",
+      "1.5mm",
+      "1.6mm",
+      "2\"",
+      "2.0mm",
+      "3\"",
+      "4\"",
+      "6\""
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 111"
@@ -2835,12 +3307,12 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
   },
   {
     "id": "1093",
-    "name": "HDG Trunking Normal (Page 112)",
+    "name": "Catalog Reference (Page 112)",
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-112-1.png",
-    "description": "PDF catalog page 112: SIZEDIAMETER 1 \" x 2 \" 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 2 \" x 6 \" 3 \" x 3 \" 3 \" x 4 \" 3 \" x 6 \" 3 \" x 8 \" 4 \" x 4 \" 4 \" x 6 \" 4 \" x 8 \" 4 \" x 1 0 \" 4 \" x 1 2 \" 5 \" x 1 2 \" S W G 2 2 0 . 6 mm SWG 2 0 0 . 8 mm SWG 1 8 1 . ...",
+    "image": "/pdf-catalog/page-112/img-001.png",
+    "description": "PDF catalog page 112: SIZE DIAMETER 1\"x2\" 2\"x2\" 2\"x3\" 2\"x4\" 2\"x6\" 3\"x3\" 3\"x4\" 3\"x6\" 3\"x8\" 4\"x4\" 4\"x6\" 4\"x8\" 4\"x10\" 4\"x12\" 5\"x12\" SWG22 0.6mm SWG20 0.8mm SWG18 1.0mm SWG16 1.5mm HDG TRUNKING- NORMAL 112",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2852,7 +3324,17 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "0.6mm",
+      "0.8mm",
+      "1\"",
+      "1.0mm",
+      "1.5mm",
+      "2\"",
+      "3\"",
+      "4\"",
+      "5\""
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 112"
@@ -2869,8 +3351,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-113-1.png",
-    "description": "PDF catalog page 113: FocusElectricalMalaysia HORIZONTAL ELBOW 9 0 ° 1 x 2 2 x 2 2 x 3 2 x 4 3 x 4 HORIZONTAL ELBOW 4 5 ° ° 1 x 2 2 x 2 2 x 4 3 x 4 INTERNAL RISER 9 0 ° 1 x 2 2 x 2 2 x 3 2 x 4 3 x 4 TrunkingAccessoriesSizes 1 1 3 * Fortrun...",
+    "image": "/pdf-catalog/page-113/img-001.png",
+    "description": "PDF catalog page 113: Focus Electrical Malaysia HORIZONTAL ELBOW 90° 1 x 2 2 x 2 2 x 3 2 x 4 3 x 4 HORIZONTAL ELBOW 45°° 1 x 2 2 x 2 2 x 4 3 x 4 INTERNAL RISER 90° 1 x 2 2 x 2 2 x 3 2 x 4 3 x 4 Trunking Accessories Sizes 113 *For trunking ...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2899,8 +3381,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-114-1.png",
-    "description": "PDF catalog page 114: FocusElectricalMalaysia INTERNAL RISER 4 5 ° 2 \" x 2 \" 2 \" x 4 \" 3 \" x 4 \" EXTERNAL RISER 9 0 ° 1 \" x 2 \" 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 3 \" x 4 \" EXTERNAL RISER 4 5 ° 2 \" x 2 \" 2 \" x 4 \" 3 \" x 4 \" 1 1 4 TrunkingAccess...",
+    "image": "/pdf-catalog/page-114/img-001.png",
+    "description": "PDF catalog page 114: Focus Electrical Malaysia INTERNAL RISER 45° 2\" x 2\" 2\" x 4\" 3\" x 4\" EXTERNAL RISER 90° 1\" x 2\" 2\" x 2\" 2\" x 3\" 2\" x 4\" 3\" x 4\" EXTERNAL RISER 45° 2\" x 2\" 2\" x 4\" 3\" x 4\" 114 Trunking Accessories Sizes",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2929,8 +3411,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-115-1.png",
-    "description": "PDF catalog page 115: FocusElectricalMalaysia HORIZONTAL TEE 1 \" x 2 \" 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 3 \" x 4 \" FLATWISE TEE 2 \" x 2 \" 2 \" x 4 \" 3 \" x 4 \" HORIZONTAL CROSS 2 \" x 2 \" 2 \" x 4 \" 3 \" x 4 \" 1 1 5 TrunkingAccessoriesSizes",
+    "image": "/pdf-catalog/page-115/img-001.png",
+    "description": "PDF catalog page 115: Focus Electrical Malaysia HORIZONTAL TEE 1\" x 2\" 2\" x 2\" 2\" x 3\" 2\" x 4\" 3\" x 4\" FLATWISE TEE 2\" x 2\" 2\" x 4\" 3\" x 4\" HORIZONTAL CROSS 2\" x 2\" 2\" x 4\" 3\" x 4\" 115 Trunking Accessories Sizes",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2959,8 +3441,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-116-1.png",
-    "description": "PDF catalog page 116: FocusElectricalMalaysia FLATWISE CROSS 2 \" x 2 \" 2 \" x 4 \" 3 \" x 4 \" EDGEWISEELBOW ( LEFT / RIGHT ) 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 3 \" x 4 \" HORIZONTAL OFFSET 2 \" x 2 \" 2 \" x 4 \" 3 \" x 4 \" 1 1 6 TrunkingAccessoriesSizes",
+    "image": "/pdf-catalog/page-116/img-001.png",
+    "description": "PDF catalog page 116: Focus Electrical Malaysia FLATWISE CROSS 2\" x 2\" 2\" x 4\" 3\" x 4\" EDGEWISE ELBOW (LEFT/RIGHT) 2\" x 2\" 2\" x 3\" 2\" x 4\" 3\" x 4\" HORIZONTAL OFFSET 2\" x 2\" 2\" x 4\" 3\" x 4\" 116 Trunking Accessories Sizes",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -2989,8 +3471,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-117-1.png",
-    "description": "PDF catalog page 117: FocusElectricalMalaysia FLATWISE ELBOW 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 3 \" x 4 \" FLATWISE REVERSEZ 2 \" x 2 \" 3 \" x 4 \" TRUNKING COVER 2 \" x 2 \" 2 \" x 3 \" 2 \" x 4 \" 3 \" x 4 \" 4 \" x 6 \" 4 \" x 2 4 \" 1 1 7 TrunkingAccessori...",
+    "image": "/pdf-catalog/page-117/img-001.png",
+    "description": "PDF catalog page 117: Focus Electrical Malaysia FLATWISE ELBOW 2\" x 2\" 2\" x 3\" 2\" x 4\" 3\" x 4\" FLATWISE REVERSE Z 2\" x 2\" 3\" x 4\" TRUNKING COVER 2\" x 2\" 2\" x 3\" 2\" x 4\" 3\" x 4\" 4\" x 6\" 4\" x 24\" 117 Trunking Accessories Sizes",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -3019,8 +3501,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-118-render.png",
-    "description": "PDF catalog page 118: C A B LE TRAY BRANDS & FINISH SUPERDYMA HDG STANDARD 1 1 9 1 2 0 1 2 1 1 2 2",
+    "image": "/pdf-catalog/page-118/page-118.png",
+    "description": "PDF catalog page 118: CABLE TRAY BRANDS & FINISH SUPERDYMA HDG STANDARD 119 120 121 122",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -3030,7 +3512,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Standard"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -3049,8 +3533,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-119-1.png",
-    "description": "PDF catalog page 119: FocusElectricalMalaysia FINISHCOLOUR SUPERDYMA HDG STANDARD CableTray 1 1 9",
+    "image": "/pdf-catalog/page-119/img-001.png",
+    "description": "PDF catalog page 119: Focus Electrical Malaysia FINISH COLOUR SUPERDYMA HDG STANDARD Cable Tray 119",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -3060,7 +3544,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Standard"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -3079,8 +3565,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-120-1.png",
-    "description": "PDF catalog page 120: FocusElectricalMalaysia Size ( W × L ) Superdyma 1 8 G 2 \" × 2 . 4 4 M T R 3 \" × 2 . 4 4 M T R 4 \" × 2 . 4 4 M T R 6 \" × 2 . 4 4 MTR CableTraySizes 1 2 0 KeyBenefitsofSuperDyma ™ Product QUALITY : Bettercorrosionresis...",
+    "image": "/pdf-catalog/page-120/img-001.png",
+    "description": "PDF catalog page 120: Focus Electrical Malaysia Size (W × L) Superdyma 18G 2\" × 2.44MTR 3\" × 2.44MTR 4\" × 2.44MTR 6\" × 2.44MTR Cable Tray Sizes 120 Key Benefits of SuperDyma™ Product QUALITY: Better corrosion resistance compared to HDG zin...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -3090,7 +3576,10 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Indoor",
+      "Outdoor"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -3109,8 +3598,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-121-1.png",
-    "description": "PDF catalog page 121: FocusElectricalMalaysia Size ( W × L ) H D G 1 8 G 2 \" × 2 . 4 4 M T R 3 \" × 2 . 4 4 M T R 4 \" × 2 . 4 4 M T R 6 \" × 2 . 4 4 M T R 8 \" × 2 . 4 4 M T R 1 0 \" × 2 . 4 4 M T R 1 2 \" × 2 . 4 4 M T R 1 2 \" × 2 . 4 4 MTR Ca...",
+    "image": "/pdf-catalog/page-121/img-001.png",
+    "description": "PDF catalog page 121: Focus Electrical Malaysia Size (W × L) HDG 18G 2\" × 2.44MTR 3\" × 2.44MTR 4\" × 2.44MTR 6\" × 2.44MTR 8\" × 2.44MTR 10\" × 2.44MTR 12\" × 2.44MTR 12\" × 2.44MTR Cable Tray Sizes 121 Protects strongly against rust Long-lastin...",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -3139,8 +3628,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-122-1.png",
-    "description": "PDF catalog page 122: FocusElectricalMalaysia Size ( W × L ) Standard 2 \" × 2 . 4 4 M T R 3 \" × 2 . 4 4 M T R 4 \" × 2 . 4 4 M T R 5 \" × 2 . 4 4 M T R 6 \" × 2 . 4 4 M T R 8 \" × 2 . 4 4 M T R 1 0 \" × 2 . 4 4 M T R 1 2 \" × 2 . 4 4 MTR CableTr...",
+    "image": "/pdf-catalog/page-122/img-001.png",
+    "description": "PDF catalog page 122: Focus Electrical Malaysia Size (W × L) Standard 2\" × 2.44MTR 3\" × 2.44MTR 4\" × 2.44MTR 5\" × 2.44MTR 6\" × 2.44MTR 8\" × 2.44MTR 10\" × 2.44MTR 12\" × 2.44MTR Cable Tray Sizes 122",
     "brand": "Focus Electrical",
     "availableAt": [
       "hq",
@@ -3150,7 +3639,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Standard"
+    ],
     "colors": [],
     "sizes": [],
     "lengths": [],
@@ -3169,9 +3660,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Industrial",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-123-render.png",
-    "description": "PDF catalog page 123: GOODLITE SJLITE SJLITE - J K R 1 2 4 1 2 5 1 2 6 TOPMIRROR",
-    "brand": "Goodlite",
+    "image": "/pdf-catalog/page-123/page-123.png",
+    "description": "PDF catalog page 123: GOODLITE SJ LITE SJ LITE - JKR 124 125 126 TOP MIRROR",
+    "brand": "SJ Lite",
     "availableAt": [
       "hq",
       "kuantan",
@@ -3199,8 +3690,8 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-124-1.png",
-    "description": "PDF catalog page 124: MODELWXH ( M M ) LEDTUBE GMF 1 2 0 2 / A L / LED GMF 2 2 1 2 / A L / LED GMF 2 2 2 2 / A L / LED GMF 3 2 2 2 / A L / LED GMF 4 2 2 2 / A L / LED GMF 1 4 1 4 / A L / LED GMF 2 4 1 4 / A L / LED GMF 2 4 2 4 / A L / LED ...",
+    "image": "/pdf-catalog/page-124/img-001.png",
+    "description": "PDF catalog page 124: MODEL W X H (MM) LED TUBE GMF 1202/AL/LED GMF 2212/AL/LED GMF 2222/AL/LED GMF 3222/AL/LED GMF 4222/AL/LED GMF 1414/AL/LED GMF 2414/AL/LED GMF 2424/AL/LED GMF 3424/AL/LED GMF 4424/AL/LED GMF 1202/AL/MM/LED GMF 2212/AL/...",
     "brand": "Goodlite",
     "availableAt": [
       "hq",
@@ -3210,9 +3701,15 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "batu",
       "chukai"
     ],
-    "variants": [],
+    "variants": [
+      "Recessed",
+      "Surface"
+    ],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "2ft",
+      "4ft"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 124"
@@ -3229,9 +3726,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-125-1.png",
-    "description": "PDF catalog page 125: MODELL / L 1 ( M M ) W / W 1 ( M M ) ECOSAC 2 A 2 2 0 / WMOL ECOSAC 2 C 2 4 0 / WMOL ( 1 x 4 ) ECOSAC 2 C 2 4 0 / WMOL ECOSAC 3 C 3 4 0 / WMOL ECOSAC 2 A 2 2 0 / SMOL ECOSAC 2 C 2 4 0 / SMOL ( 1 x 4 ) ECO SAC 2 C 2 4 ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-125/img-001.png",
+    "description": "PDF catalog page 125: MODEL L / L1(MM) W / W1 (MM) ECO SAC 2A 220/W MOL ECO SAC 2C 240/W MOL (1x4) ECO SAC 2C 240/W MOL ECO SAC 3C 340/W MOL ECO SAC 2A 220/S MOL ECO SAC 2C 240/S MOL (1x4) ECO SAC 2C 240/S MOL ECO SAC 3C 340/S MOL ECO SAC ...",
+    "brand": "SJ Lite",
     "availableAt": [
       "hq",
       "kuantan",
@@ -3242,7 +3739,11 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "2A",
+      "3A",
+      "4A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 125"
@@ -3251,9 +3752,7 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
       "Reference",
       "Quotation On Request"
     ],
-    "modelCodes": [
-      "ECOSAC"
-    ]
+    "modelCodes": []
   },
   {
     "id": "1107",
@@ -3261,9 +3760,9 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     "category": "Lighting",
     "price": 0.0,
     "rating": 4,
-    "image": "/pdf-images/page-126-render.png",
-    "description": "PDF catalog page 126: MODELL ( M M ) W ( M M ) S A C 3 A 3 2 0 MOL SAC 3 C 3 4 0 MOL SAC 2 A 2 2 0 MOL SAC 2 C 2 4 0 MOL SAC 3 C 3 4 0 M O L ( M M ) S A C 2 A 2 2 0 M O L ( M M ) S A C 2 C 2 4 0 M O L ( M M ) S A C 3 A 3 2 0 M O L ( M M ) ...",
-    "brand": "Focus Electrical",
+    "image": "/pdf-catalog/page-126/page-126.png",
+    "description": "PDF catalog page 126: MODEL L (MM) W (MM) SAC 3A 320 MOL SAC 3C 340 MOL SAC 2A 220 MOL SAC 2C 240 MOL SAC 3C 340 MOL (MM) SAC 2A 220 MOL (MM) SAC 2C 240 MOL (MM) SAC 3A 320 MOL (MM) SAC 2A 220 S MOL SAC 2C 240 S MOL SAC 2C 240 S MOL (1X4) ...",
+    "brand": "SJ Lite",
     "availableAt": [
       "hq",
       "kuantan",
@@ -3274,7 +3773,14 @@ export const PDF_PAGE_PRODUCTS: Product[] = [
     ],
     "variants": [],
     "colors": [],
-    "sizes": [],
+    "sizes": [
+      "220 W",
+      "240 W",
+      "2A",
+      "320 W",
+      "340 W",
+      "3A"
+    ],
     "lengths": [],
     "types": [
       "Catalog Page 126"

@@ -46,11 +46,11 @@ export const StoreBanner: React.FC = () => {
                Power up your <br/>
                next big renovation.
              </h2>
-             <div className="flex flex-col gap-2 items-center md:items-end text-sm font-medium text-cyan-600 dark:text-cyan-400">
-               <a href="#" className="flex items-center hover:underline hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors">
+             <div className="flex flex-col gap-2 items-center md:items-end text-sm font-medium text-red-600 dark:text-red-400">
+               <a href="#" className="flex items-center hover:underline hover:text-red-700 dark:hover:text-red-300 transition-colors">
                  Connect with a Specialist <ChevronRight className="w-3 h-3 ml-1" />
                </a>
-               <a href="#" className="flex items-center hover:underline hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors">
+               <a href="#" className="flex items-center hover:underline hover:text-red-700 dark:hover:text-red-300 transition-colors">
                  Find a Store near you <ChevronRight className="w-3 h-3 ml-1" />
                </a>
              </div>

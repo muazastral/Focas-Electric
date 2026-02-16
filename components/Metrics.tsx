@@ -21,7 +21,7 @@ export const Metrics: React.FC = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
               Electrical Supply, <br />
-              <span className="text-cyan-600 dark:text-cyan-400">Made Reliable</span>
+              <span className="text-red-600 dark:text-red-400">Made Reliable</span>
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
                We track our performance to ensure your projects never stop. High availability and rapid local delivery define our service.
@@ -50,7 +50,7 @@ export const Metrics: React.FC = () => {
                     {data.map((entry, index) => (
                       <Cell 
                         key={`cell-${index}`} 
-                        className={index % 2 === 0 ? "fill-cyan-500 dark:fill-cyan-500" : "fill-slate-300 dark:fill-slate-700"}
+                        className={index % 2 === 0 ? "fill-red-500 dark:fill-red-500" : "fill-slate-300 dark:fill-slate-700"}
                       />
                     ))}
                   </Bar>

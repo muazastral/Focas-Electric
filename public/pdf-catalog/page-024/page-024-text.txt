@@ -1,0 +1,64 @@
+Model 
+AFG-FL-50
+AFG-FL-100
+AFG-FL-150
+AFG-FL-200
+Power
+50Watt
+100Watt
+150Watt
+200Watt
+Lumen
+Power Factor
+Color
+Quantity
+Size
+5 000
+10 000
+15 000
+20 000
+0.9
+0.9
+0.9
+0.9
+Daylight /
+Warm White
+Daylight /
+Warm White
+Daylight /
+Warm White
+Daylight /
+Warm White
+30 pcs/ctn
+20 pcs/ctn
+20 pcs/ctn
+10 pcs/ctn
+185 x 220 x 30mm
+240 x 275 x 30mm
+275 x 295 x 30mm
+335 x 350 x 30mm
+220mm
+185mm
+30mm
+240mm
+30mm
+275mm
+275mm
+30mm
+295mm
+335mm
+30mm
+350mm
+by HIKARI
+LED Flood Light
+50W
+100W
+150W
+200W
+IP66
+VOLT
+100-240
+PF0.9
+CRI
+>80
+24

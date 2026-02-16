@@ -5,7 +5,7 @@ import { Button } from './Button';
 export const Location: React.FC = () => {
   return (
     <section id="location" className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
-      <div className="absolute inset-0 bg-cyan-50 dark:bg-cyan-900/5 opacity-50 skew-y-3 transform origin-bottom-right"></div>
+      <div className="absolute inset-0 bg-red-50 dark:bg-red-900/5 opacity-50 skew-y-3 transform origin-bottom-right"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="glass-panel rounded-3xl overflow-hidden shadow-2xl">
@@ -22,7 +22,7 @@ export const Location: React.FC = () => {
               
               <div className="space-y-6 mb-10">
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-cyan-600 dark:text-cyan-400 mt-1" />
+                  <MapPin className="w-6 h-6 text-red-600 dark:text-red-400 mt-1" />
                   <div>
                     <h4 className="text-slate-900 dark:text-white font-semibold">Semambu Industrial Area</h4>
                     <p className="text-slate-600 dark:text-slate-400">Lot 123, Jalan Industri Semambu 5,<br/>25300 Kuantan, Pahang.</p>
@@ -30,7 +30,7 @@ export const Location: React.FC = () => {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <Clock className="w-6 h-6 text-cyan-600 dark:text-cyan-400 mt-1" />
+                  <Clock className="w-6 h-6 text-red-600 dark:text-red-400 mt-1" />
                   <div>
                     <h4 className="text-slate-900 dark:text-white font-semibold">Opening Hours</h4>
                     <p className="text-slate-600 dark:text-slate-400">Mon - Fri: 8:30 AM - 5:30 PM</p>
@@ -39,7 +39,7 @@ export const Location: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-cyan-600 dark:text-cyan-400 mt-1" />
+                  <Phone className="w-6 h-6 text-red-600 dark:text-red-400 mt-1" />
                   <div>
                     <h4 className="text-slate-900 dark:text-white font-semibold">Contact</h4>
                     <p className="text-slate-600 dark:text-slate-400">+60 9-555 1234</p>
@@ -52,7 +52,7 @@ export const Location: React.FC = () => {
 
             <div className="h-[400px] lg:h-auto bg-slate-100 dark:bg-slate-800 relative">
               <img 
-                src="https://picsum.photos/1000/1000?grayscale&blur=2" 
+                src="/pdf-catalog/page-001/img-001.png" 
                 alt="Store Map" 
                 className="w-full h-full object-cover opacity-50"
               />

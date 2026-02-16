@@ -7,7 +7,7 @@ export const IndustryUseCases: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Serving Every <span className="text-cyan-600 dark:text-cyan-400">Electrical Need</span>
+            Serving Every <span className="text-red-600 dark:text-red-400">Electrical Need</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg">Trusted by professionals across various sectors.</p>
         </div>
@@ -24,7 +24,7 @@ export const IndustryUseCases: React.FC = () => {
               
               <div className="absolute bottom-0 left-0 p-6 w-full">
                 <div className="flex items-center gap-3 mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="p-2 bg-cyan-600 dark:bg-cyan-500 rounded-lg">
+                  <div className="p-2 bg-red-600 dark:bg-red-500 rounded-lg">
                     <item.icon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white">{item.title}</h3>

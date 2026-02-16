@@ -36,10 +36,10 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({ onNavigate }) => {
               onClick={() => onNavigate('products', item.category)}
               className="snap-center group flex flex-col items-center min-w-[70px] gap-3 cursor-pointer focus:outline-none"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 group-hover:shadow-md group-hover:border-cyan-500/30 dark:group-hover:border-cyan-500/30 group-hover:-translate-y-1 transition-all duration-300">
-                 <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600 dark:text-slate-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 stroke-[1.5] transition-colors" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 group-hover:shadow-md group-hover:border-red-500/30 dark:group-hover:border-red-500/30 group-hover:-translate-y-1 transition-all duration-300">
+                 <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600 dark:text-slate-400 group-hover:text-red-600 dark:group-hover:text-red-400 stroke-[1.5] transition-colors" />
               </div>
-              <span className="text-[11px] sm:text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-cyan-700 dark:group-hover:text-cyan-400 whitespace-nowrap text-center transition-colors">
+              <span className="text-[11px] sm:text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-red-700 dark:group-hover:text-red-400 whitespace-nowrap text-center transition-colors">
                 {item.label}
               </span>
             </button>

@@ -47,8 +47,8 @@ export const Login: React.FC<LoginProps> = ({ onNavigate }) => {
       <div className="bg-white dark:bg-slate-900 w-full max-w-md p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 animate-in fade-in slide-in-from-bottom-4 duration-500">
         
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-500/10 mb-4">
-            <Zap className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-red-500/10 mb-4">
+            <Zap className="w-6 h-6 text-red-600 dark:text-red-400" />
           </div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Welcome Back</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-2">Sign in to access your account</p>
@@ -72,7 +72,7 @@ export const Login: React.FC<LoginProps> = ({ onNavigate }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-cyan-500 outline-none transition-all dark:text-white"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-red-500 outline-none transition-all dark:text-white"
                 placeholder="you@example.com"
               />
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -84,7 +84,7 @@ export const Login: React.FC<LoginProps> = ({ onNavigate }) => {
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                 Password
               </label>
-              <a href="#" className="text-xs font-medium text-cyan-600 dark:text-cyan-400 hover:underline">Forgot password?</a>
+              <a href="#" className="text-xs font-medium text-red-600 dark:text-red-400 hover:underline">Forgot password?</a>
             </div>
             <div className="relative">
               <input 
@@ -92,7 +92,7 @@ export const Login: React.FC<LoginProps> = ({ onNavigate }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-cyan-500 outline-none transition-all dark:text-white"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-red-500 outline-none transition-all dark:text-white"
                 placeholder="••••••••"
               />
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -113,7 +113,7 @@ export const Login: React.FC<LoginProps> = ({ onNavigate }) => {
 
         <div className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
           Don't have an account?{' '}
-          <button className="font-medium text-cyan-600 dark:text-cyan-400 hover:underline">
+          <button className="font-medium text-red-600 dark:text-red-400 hover:underline">
             Create Account
           </button>
         </div>

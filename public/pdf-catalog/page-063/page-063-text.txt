@@ -1,0 +1,15 @@
+Focus Electrical Malaysia
+AMP
+6A → 32A, 40A → 63A
+POLE
+1 / 2 / 3
+RATING
+6kA, 10kA
+TYPE
+B & C
+32A
+1P
+6kA
+MCB
+63
+Miniature Circuit Breaker

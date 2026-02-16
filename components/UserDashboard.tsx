@@ -61,7 +61,7 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{user.name}</h3>
              <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">Member since Oct 2023</p>
              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-               <span className="px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 text-xs font-bold">Standard Member</span>
+               <span className="px-3 py-1 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-300 text-xs font-bold">Standard Member</span>
                <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">Verified</span>
              </div>
            </div>
@@ -72,14 +72,14 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
              <div>
                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
                <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                 <Mail className="w-5 h-5 text-cyan-500" />
+                 <Mail className="w-5 h-5 text-red-500" />
                  {user.email}
                </div>
              </div>
              <div>
                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Phone Number</label>
                <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                 <Phone className="w-5 h-5 text-cyan-500" />
+                 <Phone className="w-5 h-5 text-red-500" />
                  {user.phone || 'Not set'}
                </div>
              </div>
@@ -88,7 +88,7 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
            <div>
              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Delivery Address</label>
              <div className="flex items-start gap-3 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-950/50 p-4 rounded-lg">
-               <MapPin className="w-5 h-5 text-cyan-500 mt-0.5" />
+               <MapPin className="w-5 h-5 text-red-500 mt-0.5" />
                <p>{user.address || 'No address set. Please update your profile.'}</p>
              </div>
            </div>
@@ -109,10 +109,10 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
                 <p className="text-sm text-slate-500">{order.date}</p>
               </div>
               <div className="text-right">
-                <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg">RM {order.total.toFixed(2)}</p>
+                <p className="font-bold text-red-600 dark:text-red-400 text-lg">RM {order.total.toFixed(2)}</p>
                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mt-1 ${
                   order.status === 'Delivered' ? 'bg-green-100 text-green-700' : 
-                  order.status === 'Processing' ? 'bg-blue-100 text-blue-700' : 
+                  order.status === 'Processing' ? 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300' : 
                   'bg-amber-100 text-amber-700'
                 }`}>
                   {order.status}
@@ -146,20 +146,20 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
            {cart.length > 0 ? cart.map(item => (
-             <div key={item.id} className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex gap-4 items-center">
+             <div key={item.cartKey} className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex gap-4 items-center">
                <img src={item.image} alt={item.name} className="w-20 h-20 rounded-lg object-cover bg-slate-50" />
                <div className="flex-1">
                  <h3 className="font-bold text-slate-900 dark:text-white">{item.name}</h3>
                  <p className="text-sm text-slate-500 mb-2">RM {item.price.toFixed(2)}</p>
                  <div className="flex items-center gap-3">
-                   <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm font-bold">-</button>
+                   <button onClick={() => updateQuantity(item.cartKey, item.quantity - 1)} className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm font-bold">-</button>
                    <span className="text-sm font-medium w-4 text-center">{item.quantity}</span>
-                   <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm font-bold">+</button>
+                   <button onClick={() => updateQuantity(item.cartKey, item.quantity + 1)} className="w-6 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm font-bold">+</button>
                  </div>
                </div>
                <div className="text-right">
                  <p className="font-bold text-slate-900 dark:text-white mb-2">RM {(item.price * item.quantity).toFixed(2)}</p>
-                 <button onClick={() => removeFromCart(item.id)} className="text-xs text-red-500 hover:underline">Remove</button>
+                 <button onClick={() => removeFromCart(item.cartKey)} className="text-xs text-red-500 hover:underline">Remove</button>
                </div>
              </div>
            )) : (
@@ -201,15 +201,15 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
         <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Current Password</label>
-            <input type="password" className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:text-white" />
+            <input type="password" className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:text-white" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">New Password</label>
-            <input type="password" className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:text-white" />
+            <input type="password" className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:text-white" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Confirm New Password</label>
-            <input type="password" className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:text-white" />
+            <input type="password" className="w-full p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:text-white" />
           </div>
           <Button type="submit" className="w-full mt-4">Update Password</Button>
         </form>
@@ -239,7 +239,7 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
                     <button
                       key={item.id}
                       onClick={() => setActiveTab(item.id)}
-                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === item.id ? 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === item.id ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
                     >
                       <item.icon className="w-4 h-4" />
                       {item.label}
@@ -248,7 +248,7 @@ export const UserDashboard: React.FC<{ onNavigate: (page: string) => void }> = (
                   <div className="pt-2 mt-2 border-t border-slate-100 dark:border-slate-800">
                     <button 
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors"
+                      className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-600 dark:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors"
                     >
                       <LogOut className="w-4 h-4" />
                       Sign Out

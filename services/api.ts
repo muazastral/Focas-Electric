@@ -2,14 +2,16 @@ import { MOCK_ORDERS, MOCK_USERS, NEWS_ITEMS, Product, PRODUCTS } from '../const
 import { CmsPage, MediaAsset, NewsItem, Order, User } from '../types';
 import { PDF_PAGE_PRODUCTS } from '../data/pdfPageProducts';
 
-declare global {
-  interface ImportMeta {
-    readonly env: Record<string, string | undefined>;
+const resolveApiBaseUrl = (): string => {
+  const browserGlobal = (globalThis as { __FOCUS_API_BASE_URL__?: string }).__FOCUS_API_BASE_URL__;
+  if (browserGlobal) {
+    return browserGlobal;
   }
-}
 
-const viteEnv = import.meta.env || {};
-const API_BASE_URL = viteEnv.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+  return 'http://127.0.0.1:8000/api';
+};
+
+const API_BASE_URL = resolveApiBaseUrl();
 const AUTH_TOKEN_KEY = 'focus-electrical-token';
 
 interface ApiError extends Error {
@@ -253,6 +255,33 @@ export const getCmsPagesRequest = async (): Promise<CmsPage[]> => {
     sections: Array.isArray(page.sections) ? page.sections : [],
     updated_at: page.updated_at,
   }));
+};
+
+export const getPublicCmsPageRequest = async (slug: string): Promise<CmsPage> => {
+  try {
+    const page = await request<any>(`/pages/${slug}`);
+
+    return {
+      id: String(page.id),
+      title: page.title,
+      slug: page.slug,
+      status: page.status,
+      sections: Array.isArray(page.sections) ? page.sections : [],
+      updated_at: page.updated_at,
+    };
+  } catch (err: any) {
+    // Page doesn't exist yet — return empty placeholder instead of throwing
+    if (err?.status === 404) {
+      return {
+        id: '',
+        title: slug.charAt(0).toUpperCase() + slug.slice(1),
+        slug,
+        status: 'draft',
+        sections: [],
+      };
+    }
+    throw err;
+  }
 };
 
 export const saveCmsPageRequest = async (page: Partial<CmsPage>): Promise<CmsPage> => {

@@ -39,7 +39,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onNavigate }
           </div>
           <button 
             onClick={() => onNavigate('products')}
-            className="group flex items-center gap-1 text-cyan-600 dark:text-cyan-400 font-semibold hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors"
+            className="group flex items-center gap-1 text-red-600 dark:text-red-400 font-semibold hover:text-red-700 dark:hover:text-red-300 transition-colors"
           >
             View all models <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
@@ -102,7 +102,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onNavigate }
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 transform active:scale-95 ${
                     addedEffect === product.id 
                     ? 'bg-green-600 text-white' 
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                    : 'bg-red-600 text-white hover:bg-red-700'
                   }`}
                 >
                   {addedEffect === product.id ? 'Added' : 'Buy'}

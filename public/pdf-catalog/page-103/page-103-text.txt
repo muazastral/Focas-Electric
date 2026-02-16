@@ -1,0 +1,62 @@
+Focus Electrical Malaysia
+Model
+Description
+Dimension
+Voltage
+PNE-PEX215LED
+PNE PEX-215LED WHITE
+SUPER BRIGHT LED BOX
+TYPE
+556mm (L) x
+52mm (W) x
+155mm (H)
+240V
+PNE-PEX215F-WP
+PNE PEX-215F-WP 2 X 8W
+FLUO TUBE
+WEATHERPROOF
+655mm (L) x
+152mm (W) x
+102mm (H)
+240V
+103
+PNE System Sdn. Bhd.
+Exit / Keluar Signs
+Model
+PNE-PEX138LED
+(Surface)
+PNE-PEX138LED-R
+(Recess)
+Volt.
+Normal
+ (Standard)
+PNE-PEX138LED
+PNE-PEX138LED-R
+240V
+Single-side
+Arrow To Right
+PNE-PEX138LED(RA)
+PNE-PEX138RLED(RA)
+240V
+Single-side
+Arrow To Left
+PNE-PEX138LED(LA)
+PNE-PEX138RLED(LA)
+240V
+Single-side
+Arrow Straight
+Ahead
+PNE-PEX138LED-SA
+PNE-PEX138RLED-SA
+240V
+Double-side
+with Arrow
+PNE-PEX138LED-D
+PNE-PEX138LED-RD
+240V
+Double-side
+with Run
+PNE-PEX138LED-D-RUN
+PNE-PEX138LED-RD-
+RUN
+240V

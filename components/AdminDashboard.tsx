@@ -41,7 +41,13 @@ import {
   Clock,
   DollarSign,
   Truck,
-  AlertCircle
+  AlertCircle,
+  Heading,
+  PilcrowSquare,
+  SlidersHorizontal,
+  ShoppingBag,
+  Minus,
+  ColumnsIcon
 } from 'lucide-react';
 import { Button } from './Button';
 import { PRODUCTS, MOCK_ORDERS, MOCK_USERS, Product } from '../constants';
@@ -76,7 +82,7 @@ interface PageSectionStyle {
 
 interface PageSection {
   id: string;
-  type: 'hero' | 'features' | 'text-image' | 'video' | 'cta';
+  type: 'hero' | 'features' | 'text-image' | 'video' | 'cta' | 'image' | 'title' | 'paragraph' | 'slideshow' | 'product-grid' | 'spacer' | 'columns';
   name: string;
   content: {
     title?: string;
@@ -85,6 +91,13 @@ interface PageSection {
     videoUrl?: string;
     buttonText?: string;
     features?: Array<{ title: string; desc: string; icon: string }>;
+    bodyText?: string;
+    caption?: string;
+    headingLevel?: 'h1' | 'h2' | 'h3' | 'h4';
+    slides?: string[];
+    productIds?: string[];
+    spacerHeight?: string;
+    columnsData?: Array<{ title: string; text: string; image?: string }>;
   };
   style: PageSectionStyle;
 }
@@ -93,6 +106,9 @@ interface PageSection {
 
 const MOCK_PAGES: CmsPage[] = [
   { id: '1', title: 'Home', slug: 'home', status: 'published', sections: [] },
+  { id: '2', title: 'About Us', slug: 'about', status: 'published', sections: [] },
+  { id: '3', title: 'Products', slug: 'products', status: 'published', sections: [] },
+  { id: '4', title: 'News', slug: 'news', status: 'published', sections: [] },
 ];
 
 const INITIAL_SECTIONS: PageSection[] = [
@@ -104,7 +120,7 @@ const INITIAL_SECTIONS: PageSection[] = [
       title: 'Powering Your World', 
       subtitle: 'The leading distributor of electrical components in Malaysia.', 
       buttonText: 'Shop Now',
-      image: 'https://picsum.photos/1200/600?random=1'
+      image: '/pdf-catalog/page-001/img-001.png'
     }, 
     style: { 
       backgroundColor: '#ffffff', 
@@ -146,7 +162,7 @@ const SECTION_TEMPLATES: Array<{ type: PageSection['type']; name: string; conten
       title: 'Powering Your Project with Confidence',
       subtitle: 'Trusted electrical supplies for residential, commercial, and industrial works.',
       buttonText: 'Explore Products',
-      image: '/pdf-images/page-019-1.jpg',
+      image: '/pdf-catalog/page-019/img-001.jpeg',
     },
   },
   {
@@ -155,7 +171,7 @@ const SECTION_TEMPLATES: Array<{ type: PageSection['type']; name: string; conten
     content: {
       title: 'From Planning to Installation',
       subtitle: 'Get technical guidance, quality brands, and inventory support from one supplier.',
-      image: '/pdf-images/page-023-1.jpg',
+      image: '/pdf-catalog/page-023/img-001.jpeg',
       buttonText: 'Contact Sales',
     },
   },
@@ -170,6 +186,82 @@ const SECTION_TEMPLATES: Array<{ type: PageSection['type']; name: string; conten
         { title: 'Certified Quality', desc: 'SIRIM and project-grade options.', icon: 'check' },
         { title: 'Technical Support', desc: 'Selection help for real site needs.', icon: 'phone' },
       ],
+    },
+  },
+  {
+    type: 'image',
+    name: 'Image Block',
+    content: {
+      image: '/pdf-catalog/page-019/img-001.jpeg',
+      caption: 'Quality electrical products for every project',
+    },
+  },
+  {
+    type: 'title',
+    name: 'Section Title',
+    content: {
+      title: 'Our Services',
+      subtitle: 'What we offer to contractors and businesses',
+      headingLevel: 'h2',
+    },
+  },
+  {
+    type: 'paragraph',
+    name: 'Text Block',
+    content: {
+      bodyText: 'Focus Electrical has been serving the Malaysian market with quality electrical components since 2005. We partner with top brands to deliver reliable products for residential, commercial, and industrial applications.',
+    },
+  },
+  {
+    type: 'slideshow',
+    name: 'Image Slideshow',
+    content: {
+      title: 'Product Gallery',
+      slides: ['/pdf-catalog/page-019/img-001.jpeg', '/pdf-catalog/page-023/img-001.jpeg', '/pdf-catalog/page-031/img-001.png', '/pdf-catalog/page-037/img-001.png'],
+    },
+  },
+  {
+    type: 'product-grid',
+    name: 'Product Showcase',
+    content: {
+      title: 'Featured Products',
+      subtitle: 'Browse our best sellers',
+      productIds: ['1', '2', '3', '5'],
+    },
+  },
+  {
+    type: 'spacer',
+    name: 'Spacer',
+    content: {
+      spacerHeight: '60px',
+    },
+  },
+  {
+    type: 'columns',
+    name: 'Multi-Column Layout',
+    content: {
+      columnsData: [
+        { title: 'Quality Brands', text: 'Authorized dealer for Schneider, Panasonic, KDK, ABB, and more.', image: '/pdf-catalog/page-019/img-001.jpeg' },
+        { title: 'Fast Delivery', text: 'Dispatch-ready stock for urgent project sites across Pahang.', image: '/pdf-catalog/page-023/img-001.jpeg' },
+        { title: 'Expert Support', text: 'Technical guidance from experienced electrical specialists.', image: '/pdf-catalog/page-031/img-001.png' },
+      ],
+    },
+  },
+  {
+    type: 'video',
+    name: 'Video Section',
+    content: {
+      title: 'Watch Our Story',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    },
+  },
+  {
+    type: 'cta',
+    name: 'Call To Action',
+    content: {
+      title: 'Ready to Order?',
+      subtitle: 'Contact our sales team for quotes and project pricing.',
+      buttonText: 'Get in Touch',
     },
   },
 ];
@@ -257,6 +349,41 @@ export const AdminDashboard: React.FC = () => {
     loadAdminData();
   }, []);
 
+  // Listen for "edit current page" requests from floating button
+  useEffect(() => {
+    const handleEditPageEvent = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (!detail?.slug) return;
+      const slug = detail.slug;
+
+      // Find existing page by slug, or create a new one
+      const existingPage = pages.find(p => p.slug === slug);
+      if (existingPage) {
+        openPageEditor(existingPage);
+      } else {
+        // Create a new page for this slug
+        const titleMap: Record<string, string> = {
+          home: 'Home',
+          about: 'About Us',
+          products: 'Products',
+          news: 'News',
+        };
+        const newPage: CmsPage = {
+          id: undefined as any,
+          title: titleMap[slug] || slug.charAt(0).toUpperCase() + slug.slice(1),
+          slug,
+          status: 'draft',
+          sections: [],
+        };
+        openPageEditor(newPage);
+      }
+      setActiveTab('pages');
+    };
+
+    window.addEventListener('admin-edit-page', handleEditPageEvent);
+    return () => window.removeEventListener('admin-edit-page', handleEditPageEvent);
+  }, [pages]);
+
   // --- Actions ---
 
   const updateSection = (id: string, updates: Partial<PageSection> | Partial<PageSectionStyle> | Partial<PageSection['content']>) => {
@@ -265,7 +392,7 @@ export const AdminDashboard: React.FC = () => {
       if ('backgroundColor' in updates || 'textColor' in updates || 'textAlign' in updates || 'height' in updates || 'fontFamily' in updates || 'backgroundGradient' in updates || 'padding' in updates) {
         return { ...sec, style: { ...sec.style, ...updates } };
       }
-      if ('title' in updates || 'subtitle' in updates || 'buttonText' in updates || 'image' in updates || 'videoUrl' in updates) {
+      if ('title' in updates || 'subtitle' in updates || 'buttonText' in updates || 'image' in updates || 'videoUrl' in updates || 'bodyText' in updates || 'caption' in updates || 'headingLevel' in updates || 'slides' in updates || 'productIds' in updates || 'spacerHeight' in updates || 'columnsData' in updates) {
         return { ...sec, content: { ...sec.content, ...updates } };
       }
       return { ...sec, ...updates } as PageSection;
@@ -282,7 +409,7 @@ export const AdminDashboard: React.FC = () => {
         title: 'New Section Title',
         subtitle: 'Add your content here.',
         buttonText: 'Click Me',
-        image: '/pdf-images/page-019-1.jpg',
+        image: '/pdf-catalog/page-019/img-001.jpeg',
         videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
       },
       style: {
@@ -306,7 +433,13 @@ export const AdminDashboard: React.FC = () => {
       ...target,
       id: `sec-${Date.now()}`,
       name: `${target.name} Copy`,
-      content: { ...target.content, features: target.content.features ? [...target.content.features] : undefined },
+      content: { 
+        ...target.content, 
+        features: target.content.features ? [...target.content.features] : undefined,
+        slides: target.content.slides ? [...target.content.slides] : undefined,
+        productIds: target.content.productIds ? [...target.content.productIds] : undefined,
+        columnsData: target.content.columnsData ? target.content.columnsData.map(c => ({ ...c })) : undefined,
+      },
       style: { ...target.style },
     };
 
@@ -499,6 +632,63 @@ export const AdminDashboard: React.FC = () => {
     }));
   };
 
+  const uniqueOptions = (values: Array<string | number | undefined | null>): string[] => {
+    return Array.from(
+      new Set(
+        values
+          .map((value) => String(value ?? '').trim())
+          .filter(Boolean)
+      )
+    );
+  };
+
+  const inventoryFieldOptions = {
+    sku: uniqueOptions([
+      ...(editingProduct?.modelCodes || []),
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.sku)),
+    ]),
+    variant: uniqueOptions([
+      ...(editingProduct?.variants || []),
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.variant)),
+    ]),
+    color: uniqueOptions([
+      ...(editingProduct?.colors || []),
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.color)),
+    ]),
+    size: uniqueOptions([
+      ...(editingProduct?.sizes || []),
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.size)),
+    ]),
+    length: uniqueOptions([
+      ...(editingProduct?.lengths || []),
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.length)),
+    ]),
+    weight: uniqueOptions([
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.weight)),
+      '0.5kg',
+      '1kg',
+      '2kg',
+      '5kg',
+      '10kg',
+    ]),
+    stock: uniqueOptions([
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.stock)),
+      0,
+      1,
+      5,
+      10,
+      25,
+      50,
+      100,
+      500,
+    ]),
+    details: uniqueOptions([
+      ...(editingProduct?.choices || []),
+      ...(editingProduct?.types || []),
+      ...((editingProduct?.inventoryMatrix || []).map((row) => row.details)),
+    ]),
+  };
+
   // --- Render Functions ---
 
   const renderSectionPreview = (section: PageSection) => {
@@ -512,7 +702,7 @@ export const AdminDashboard: React.FC = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     };
-    const classes = `relative w-full ${style.height} ${style.padding} transition-all duration-200 ${isSelected ? 'ring-2 ring-cyan-500 ring-inset z-10' : 'hover:ring-1 hover:ring-cyan-300 ring-inset'}`;
+    const classes = `relative w-full ${style.height} ${style.padding} transition-all duration-200 ${isSelected ? 'ring-2 ring-red-500 ring-inset z-10' : 'hover:ring-1 hover:ring-red-300 ring-inset'}`;
 
     return (
       <div 
@@ -583,6 +773,74 @@ export const AdminDashboard: React.FC = () => {
                 </div>
              </div>
           )}
+          {section.type === 'image' && (
+            <div className="w-full max-w-4xl mx-auto">
+              {content.image && <img src={content.image} alt={content.caption || 'Image'} className="w-full rounded-xl shadow-lg object-cover max-h-[500px]" />}
+              {content.caption && <p className="text-sm opacity-70 mt-3 italic">{content.caption}</p>}
+            </div>
+          )}
+          {section.type === 'title' && (
+            <div className="w-full max-w-4xl mx-auto">
+              {content.headingLevel === 'h1' && <h1 className="text-5xl md:text-6xl font-black mb-2">{content.title}</h1>}
+              {content.headingLevel === 'h2' && <h2 className="text-4xl md:text-5xl font-bold mb-2">{content.title}</h2>}
+              {(content.headingLevel === 'h3' || !content.headingLevel) && <h3 className="text-3xl font-bold mb-2">{content.title}</h3>}
+              {content.headingLevel === 'h4' && <h4 className="text-2xl font-semibold mb-2">{content.title}</h4>}
+              {content.subtitle && <p className="text-lg opacity-80">{content.subtitle}</p>}
+            </div>
+          )}
+          {section.type === 'paragraph' && (
+            <div className="w-full max-w-3xl mx-auto prose prose-slate dark:prose-invert">
+              <p className="text-base leading-relaxed opacity-90 whitespace-pre-line">{content.bodyText}</p>
+            </div>
+          )}
+          {section.type === 'slideshow' && (
+            <div className="w-full max-w-4xl mx-auto">
+              {content.title && <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>}
+              <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
+                {(content.slides || []).map((slide, idx) => (
+                  <img key={idx} src={slide} alt={`Slide ${idx + 1}`} className="snap-center shrink-0 w-80 h-52 object-cover rounded-xl shadow-lg" />
+                ))}
+              </div>
+            </div>
+          )}
+          {section.type === 'product-grid' && (
+            <div className="w-full">
+              {content.title && <h2 className="text-3xl font-bold mb-2">{content.title}</h2>}
+              {content.subtitle && <p className="opacity-80 mb-8">{content.subtitle}</p>}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {(content.productIds || []).map((pid) => {
+                  const prod = products.find(p => p.id === pid);
+                  return prod ? (
+                    <div key={pid} className="p-4 rounded-xl bg-white/5 border border-current/10 text-center">
+                      <img src={prod.image} alt={prod.name} className="w-full h-32 object-contain mb-3 rounded" />
+                      <h4 className="font-bold text-sm mb-1 line-clamp-2">{prod.name}</h4>
+                      <p className="text-sm font-bold opacity-90">RM {prod.price.toFixed(2)}</p>
+                    </div>
+                  ) : (
+                    <div key={pid} className="p-4 rounded-xl bg-white/5 border border-current/10 text-center opacity-50">
+                      <p className="text-sm">Product #{pid}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          {section.type === 'spacer' && (
+            <div style={{ height: content.spacerHeight || '60px' }} className="w-full flex items-center justify-center">
+              <div className="border-t border-dashed border-current/20 w-1/2" />
+            </div>
+          )}
+          {section.type === 'columns' && (
+            <div className={`w-full grid gap-6 ${(content.columnsData?.length || 3) <= 2 ? 'md:grid-cols-2' : (content.columnsData?.length || 3) >= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
+              {(content.columnsData || []).map((col, idx) => (
+                <div key={idx} className="p-6 rounded-xl bg-white/5 border border-current/10">
+                  {col.image && <img src={col.image} alt={col.title} className="w-full h-40 object-cover rounded-lg mb-4" />}
+                  <h3 className="font-bold text-lg mb-2">{col.title}</h3>
+                  <p className="text-sm opacity-80">{col.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -600,7 +858,7 @@ export const AdminDashboard: React.FC = () => {
                  <input
                    value={editingPage?.title || ''}
                    onChange={(e) => setEditingPage(prev => ({ ...prev, title: e.target.value }))}
-                   className="bg-transparent border-b border-transparent focus:border-cyan-500 outline-none"
+                   className="bg-transparent border-b border-transparent focus:border-red-500 outline-none"
                    placeholder="Page Title"
                  />
                  <span className={`text-xs px-2 py-0.5 rounded-full ${(editingPage?.status || 'draft') === 'published' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
@@ -610,14 +868,14 @@ export const AdminDashboard: React.FC = () => {
                <input
                  value={editingPage?.slug || ''}
                  onChange={(e) => setEditingPage(prev => ({ ...prev, slug: e.target.value }))}
-                 className="text-xs text-slate-500 bg-transparent border-b border-transparent focus:border-cyan-500 outline-none"
+                 className="text-xs text-slate-500 bg-transparent border-b border-transparent focus:border-red-500 outline-none"
                  placeholder="page-slug"
                />
             </div>
          </div>
          <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
-            <button onClick={() => setPreviewMode('desktop')} className={`p-2 rounded-md transition-all ${previewMode === 'desktop' ? 'bg-white dark:bg-slate-700 shadow text-cyan-600' : 'text-slate-500 hover:text-slate-700'}`}><Monitor className="w-4 h-4" /></button>
-            <button onClick={() => setPreviewMode('mobile')} className={`p-2 rounded-md transition-all ${previewMode === 'mobile' ? 'bg-white dark:bg-slate-700 shadow text-cyan-600' : 'text-slate-500 hover:text-slate-700'}`}><Smartphone className="w-4 h-4" /></button>
+            <button onClick={() => setPreviewMode('desktop')} className={`p-2 rounded-md transition-all ${previewMode === 'desktop' ? 'bg-white dark:bg-slate-700 shadow text-red-600' : 'text-slate-500 hover:text-slate-700'}`}><Monitor className="w-4 h-4" /></button>
+            <button onClick={() => setPreviewMode('mobile')} className={`p-2 rounded-md transition-all ${previewMode === 'mobile' ? 'bg-white dark:bg-slate-700 shadow text-red-600' : 'text-slate-500 hover:text-slate-700'}`}><Smartphone className="w-4 h-4" /></button>
          </div>
          <div className="flex items-center gap-3">
           <Button size="sm" variant="outline" className="gap-2" onClick={() => handleSavePage('draft')}><Save className="w-4 h-4" /> Save Draft</Button>
@@ -625,11 +883,25 @@ export const AdminDashboard: React.FC = () => {
          </div>
       </div>
       <div className="flex-1 flex overflow-hidden">
-         <div className="w-16 md:w-20 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center py-6 gap-4 z-10">
+         <div className="w-16 md:w-20 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center py-6 gap-3 z-10 overflow-y-auto custom-scrollbar">
             <div className="mb-2"><span className="text-[10px] font-bold text-slate-400 uppercase">Add</span></div>
-            {[{ type: 'hero', icon: LayoutTemplate, label: 'Hero' }, { type: 'text-image', icon: ImageIcon, label: 'Content' }, { type: 'features', icon: Grid, label: 'Grid' }, { type: 'video', icon: Video, label: 'Video' }, { type: 'cta', icon: Megaphone, label: 'CTA' }].map((item) => (
-              <button key={item.type} onClick={() => addSection(item.type as PageSection['type'])} className="group relative w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:border-cyan-500 hover:shadow-md transition-all">
-                <item.icon className="w-5 h-5" />
+            {[
+              { type: 'hero', icon: LayoutTemplate, label: 'Hero' },
+              { type: 'title', icon: Heading, label: 'Title' },
+              { type: 'paragraph', icon: PilcrowSquare, label: 'Text' },
+              { type: 'image', icon: ImageIcon, label: 'Image' },
+              { type: 'text-image', icon: Columns, label: 'Split' },
+              { type: 'features', icon: Grid, label: 'Grid' },
+              { type: 'columns', icon: ColumnsIcon || Grid, label: 'Cols' },
+              { type: 'slideshow', icon: SlidersHorizontal, label: 'Slides' },
+              { type: 'product-grid', icon: ShoppingBag, label: 'Products' },
+              { type: 'video', icon: Video, label: 'Video' },
+              { type: 'cta', icon: Megaphone, label: 'CTA' },
+              { type: 'spacer', icon: Minus, label: 'Space' },
+            ].map((item) => (
+              <button key={item.type} onClick={() => addSection(item.type as PageSection['type'])} title={item.label} className="group relative w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center text-slate-500 hover:text-red-600 hover:border-red-500 hover:shadow-md transition-all">
+                <item.icon className="w-4 h-4" />
+                <span className="text-[8px] mt-0.5 font-medium">{item.label}</span>
               </button>
             ))}
          </div>
@@ -658,6 +930,9 @@ export const AdminDashboard: React.FC = () => {
                        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2"><Type className="w-3 h-3" /> Content</h4>
                        {selectedSection.content.title !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Heading</label><input type="text" value={selectedSection.content.title} onChange={(e) => updateSection(selectedSection.id, { title: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
                        {selectedSection.content.subtitle !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Subtitle</label><textarea rows={3} value={selectedSection.content.subtitle} onChange={(e) => updateSection(selectedSection.id, { subtitle: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
+                       {selectedSection.content.bodyText !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Body Text</label><textarea rows={6} value={selectedSection.content.bodyText} onChange={(e) => updateSection(selectedSection.id, { bodyText: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
+                       {selectedSection.content.headingLevel !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Heading Level</label><select value={selectedSection.content.headingLevel} onChange={(e) => updateSection(selectedSection.id, { headingLevel: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white"><option value="h1">H1 - Main Title</option><option value="h2">H2 - Section Title</option><option value="h3">H3 - Sub Title</option><option value="h4">H4 - Small Title</option></select></div>)}
+                       {selectedSection.content.caption !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Caption</label><input type="text" value={selectedSection.content.caption} onChange={(e) => updateSection(selectedSection.id, { caption: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
                        {selectedSection.content.buttonText !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Button Label</label><input type="text" value={selectedSection.content.buttonText} onChange={(e) => updateSection(selectedSection.id, { buttonText: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white" /></div>)}
                        {selectedSection.content.image !== undefined && (
                          <div>
@@ -668,13 +943,66 @@ export const AdminDashboard: React.FC = () => {
                            </div>
                          </div>
                        )}
+                       {selectedSection.content.videoUrl !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Video URL (embed)</label><input type="text" value={selectedSection.content.videoUrl} onChange={(e) => updateSection(selectedSection.id, { videoUrl: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white" /></div>)}
+                       {selectedSection.content.spacerHeight !== undefined && (<div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Spacer Height</label><select value={selectedSection.content.spacerHeight} onChange={(e) => updateSection(selectedSection.id, { spacerHeight: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white"><option value="20px">Small (20px)</option><option value="40px">Medium (40px)</option><option value="60px">Default (60px)</option><option value="80px">Large (80px)</option><option value="120px">Extra Large (120px)</option></select></div>)}
+                       {selectedSection.content.slides !== undefined && (
+                         <div>
+                           <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Slides ({selectedSection.content.slides.length})</label>
+                           <div className="space-y-2">
+                             {selectedSection.content.slides.map((slide, idx) => (
+                               <div key={idx} className="flex gap-1">
+                                 <input type="text" value={slide} onChange={(e) => { const newSlides = [...(selectedSection.content.slides || [])]; newSlides[idx] = e.target.value; updateSection(selectedSection.id, { slides: newSlides }); }} className="flex-1 p-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white" />
+                                 <button onClick={() => { const newSlides = [...(selectedSection.content.slides || [])]; newSlides.splice(idx, 1); updateSection(selectedSection.id, { slides: newSlides }); }} className="p-1 text-red-500"><Trash2 className="w-3 h-3" /></button>
+                               </div>
+                             ))}
+                             <button onClick={() => updateSection(selectedSection.id, { slides: [...(selectedSection.content.slides || []), '/pdf-catalog/page-019/img-001.jpeg'] })} className="text-xs text-red-600 hover:underline flex items-center gap-1"><Plus className="w-3 h-3" /> Add Slide</button>
+                           </div>
+                         </div>
+                       )}
+                       {selectedSection.content.productIds !== undefined && (
+                         <div>
+                           <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Product IDs</label>
+                           <div className="space-y-2">
+                             {(selectedSection.content.productIds || []).map((pid, idx) => (
+                               <div key={idx} className="flex gap-1">
+                                 <select value={pid} onChange={(e) => { const newIds = [...(selectedSection.content.productIds || [])]; newIds[idx] = e.target.value; updateSection(selectedSection.id, { productIds: newIds }); }} className="flex-1 p-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white">
+                                   {products.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+                                 </select>
+                                 <button onClick={() => { const newIds = [...(selectedSection.content.productIds || [])]; newIds.splice(idx, 1); updateSection(selectedSection.id, { productIds: newIds }); }} className="p-1 text-red-500"><Trash2 className="w-3 h-3" /></button>
+                               </div>
+                             ))}
+                             <div className="flex items-center gap-3">
+                               <button onClick={() => updateSection(selectedSection.id, { productIds: [...(selectedSection.content.productIds || []), products[0]?.id || '1'] })} className="text-xs text-red-600 hover:underline flex items-center gap-1"><Plus className="w-3 h-3" /> Add Product</button>
+                               <button onClick={() => updateSection(selectedSection.id, { productIds: products.map(p => p.id) })} className="text-xs text-red-600 hover:underline flex items-center gap-1"><Plus className="w-3 h-3" /> Add All ({products.length})</button>
+                               {(selectedSection.content.productIds || []).length > 0 && (
+                                 <button onClick={() => updateSection(selectedSection.id, { productIds: [] })} className="text-xs text-slate-400 hover:text-red-500 hover:underline flex items-center gap-1"><Trash2 className="w-3 h-3" /> Clear</button>
+                               )}
+                             </div>
+                           </div>
+                         </div>
+                       )}
+                       {selectedSection.content.columnsData !== undefined && (
+                         <div>
+                           <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Columns ({selectedSection.content.columnsData.length})</label>
+                           <div className="space-y-3">
+                             {(selectedSection.content.columnsData || []).map((col, idx) => (
+                               <div key={idx} className="p-2 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 space-y-1">
+                                 <input type="text" placeholder="Title" value={col.title} onChange={(e) => { const newCols = [...(selectedSection.content.columnsData || [])]; newCols[idx] = { ...newCols[idx], title: e.target.value }; updateSection(selectedSection.id, { columnsData: newCols }); }} className="w-full p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white" />
+                                 <textarea rows={2} placeholder="Text" value={col.text} onChange={(e) => { const newCols = [...(selectedSection.content.columnsData || [])]; newCols[idx] = { ...newCols[idx], text: e.target.value }; updateSection(selectedSection.id, { columnsData: newCols }); }} className="w-full p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded text-xs dark:text-white" />
+                                 <div className="flex justify-end"><button onClick={() => { const newCols = [...(selectedSection.content.columnsData || [])]; newCols.splice(idx, 1); updateSection(selectedSection.id, { columnsData: newCols }); }} className="p-1 text-red-500 text-xs flex items-center gap-1"><Trash2 className="w-3 h-3" /> Remove</button></div>
+                               </div>
+                             ))}
+                             <button onClick={() => updateSection(selectedSection.id, { columnsData: [...(selectedSection.content.columnsData || []), { title: 'New Column', text: 'Column content' }] })} className="text-xs text-red-600 hover:underline flex items-center gap-1"><Plus className="w-3 h-3" /> Add Column</button>
+                           </div>
+                         </div>
+                       )}
                     </div>
                     <hr className="border-slate-100 dark:border-slate-800" />
                     <div className="space-y-4">
                        <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2"><Palette className="w-3 h-3" /> Appearance</h4>
                        <ColorPicker label="Background Color" value={selectedSection.style.backgroundColor} onChange={(val) => updateSection(selectedSection.id, { backgroundColor: val })} />
                        <ColorPicker label="Text Color" value={selectedSection.style.textColor} onChange={(val) => updateSection(selectedSection.id, { textColor: val })} />
-                       <div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-2">Gradient Overlay</label><select value={selectedSection.style.backgroundGradient || ''} onChange={(e) => updateSection(selectedSection.id, { backgroundGradient: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white"><option value="">None</option><option value="from-slate-900 to-slate-800">Dark Fade</option><option value="from-blue-600 to-cyan-500">Ocean Blue</option><option value="from-orange-500 to-amber-500">Sunset</option></select></div>
+                       <div><label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-2">Gradient Overlay</label><select value={selectedSection.style.backgroundGradient || ''} onChange={(e) => updateSection(selectedSection.id, { backgroundGradient: e.target.value })} className="w-full p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm dark:text-white"><option value="">None</option><option value="from-slate-900 to-slate-800">Dark Fade</option><option value="from-red-600 to-red-500">Crimson Glow</option><option value="from-orange-500 to-amber-500">Sunset</option></select></div>
                     </div>
                  </div>
                  <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50">
@@ -702,7 +1030,7 @@ export const AdminDashboard: React.FC = () => {
                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Product Name</label>
                    <input 
                       type="text" 
-                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white" 
+                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white" 
                       value={editingProduct?.name || ''} 
                       onChange={e => setEditingProduct(prev => ({ ...prev, name: e.target.value }))}
                       placeholder="e.g. Panasonic LED Ceiling Light"
@@ -712,7 +1040,7 @@ export const AdminDashboard: React.FC = () => {
                   <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Category</label>
                     <select 
-                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white"
                       value={editingProduct?.category || 'Lighting'}
                       onChange={e => setEditingProduct(prev => ({ ...prev, category: e.target.value }))}
                     >
@@ -723,7 +1051,7 @@ export const AdminDashboard: React.FC = () => {
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Brand</label>
                     <input 
                       type="text" 
-                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white"
                       value={editingProduct?.brand || ''}
                       onChange={e => setEditingProduct(prev => ({ ...prev, brand: e.target.value }))}
                     />
@@ -734,7 +1062,7 @@ export const AdminDashboard: React.FC = () => {
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Price (RM)</label>
                     <input 
                       type="number" 
-                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white"
                       value={editingProduct?.price || ''}
                       onChange={e => setEditingProduct(prev => ({ ...prev, price: parseFloat(e.target.value) }))}
                     />
@@ -743,7 +1071,7 @@ export const AdminDashboard: React.FC = () => {
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Original Price</label>
                     <input 
                       type="number" 
-                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                      className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white"
                       value={editingProduct?.originalPrice || ''}
                       onChange={e => setEditingProduct(prev => ({ ...prev, originalPrice: parseFloat(e.target.value) }))}
                       placeholder="Optional"
@@ -754,7 +1082,7 @@ export const AdminDashboard: React.FC = () => {
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Description</label>
                   <textarea 
                     rows={4} 
-                    className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white"
                     value={editingProduct?.description || ''}
                     onChange={e => setEditingProduct(prev => ({ ...prev, description: e.target.value }))}
                   />
@@ -775,7 +1103,7 @@ export const AdminDashboard: React.FC = () => {
                 <div className="flex gap-2 mb-4">
                   <input 
                     type="text" 
-                    className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white"
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-red-500 outline-none dark:text-white"
                     placeholder="https://..."
                     value={editingProduct?.image || ''}
                     onChange={e => setEditingProduct(prev => ({ ...prev, image: e.target.value }))}
@@ -786,11 +1114,11 @@ export const AdminDashboard: React.FC = () => {
                 </div>
                 <div className="flex gap-4">
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4 rounded text-cyan-600" checked={editingProduct?.isSale || false} onChange={e => setEditingProduct(prev => ({ ...prev, isSale: e.target.checked }))} />
+                    <input type="checkbox" className="w-4 h-4 rounded text-red-600" checked={editingProduct?.isSale || false} onChange={e => setEditingProduct(prev => ({ ...prev, isSale: e.target.checked }))} />
                     <span className="text-sm text-slate-700 dark:text-slate-300">On Sale</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4 rounded text-cyan-600" checked={editingProduct?.isNew || false} onChange={e => setEditingProduct(prev => ({ ...prev, isNew: e.target.checked }))} />
+                    <input type="checkbox" className="w-4 h-4 rounded text-red-600" checked={editingProduct?.isNew || false} onChange={e => setEditingProduct(prev => ({ ...prev, isNew: e.target.checked }))} />
                     <span className="text-sm text-slate-700 dark:text-slate-300">New Arrival</span>
                   </label>
                 </div>
@@ -800,7 +1128,7 @@ export const AdminDashboard: React.FC = () => {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">Inventory Matrix</h3>
-                <p className="text-sm text-slate-500">Manage stock by variant, color, size, length, weight, and custom details.</p>
+                <p className="text-sm text-slate-500">Manage stock by variant, color, size, length, weight, and custom details. Click each field to open suggestion popup options.</p>
               </div>
               <Button variant="outline" className="gap-2" onClick={addInventoryMatrixRow}><Plus className="w-4 h-4" /> Add Row</Button>
             </div>
@@ -817,19 +1145,43 @@ export const AdminDashboard: React.FC = () => {
                 <tbody>
                   {(editingProduct?.inventoryMatrix || []).map((row, index) => (
                     <tr key={index} className="border-t border-slate-100 dark:border-slate-800">
-                      <td className="p-1"><input className="w-24 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.sku || ''} onChange={e => updateInventoryMatrixRow(index, { sku: e.target.value })} /></td>
-                      <td className="p-1"><input className="w-24 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.variant || ''} onChange={e => updateInventoryMatrixRow(index, { variant: e.target.value })} /></td>
-                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.color || ''} onChange={e => updateInventoryMatrixRow(index, { color: e.target.value })} /></td>
-                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.size || ''} onChange={e => updateInventoryMatrixRow(index, { size: e.target.value })} /></td>
-                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.length || ''} onChange={e => updateInventoryMatrixRow(index, { length: e.target.value })} /></td>
-                      <td className="p-1"><input className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.weight || ''} onChange={e => updateInventoryMatrixRow(index, { weight: e.target.value })} /></td>
-                      <td className="p-1"><input type="number" min={0} className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.stock ?? 0} onChange={e => updateInventoryMatrixRow(index, { stock: Number(e.target.value) })} /></td>
-                      <td className="p-1"><input className="w-40 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.details || ''} onChange={e => updateInventoryMatrixRow(index, { details: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-sku-options" className="w-24 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.sku || ''} onChange={e => updateInventoryMatrixRow(index, { sku: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-variant-options" className="w-24 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.variant || ''} onChange={e => updateInventoryMatrixRow(index, { variant: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-color-options" className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.color || ''} onChange={e => updateInventoryMatrixRow(index, { color: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-size-options" className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.size || ''} onChange={e => updateInventoryMatrixRow(index, { size: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-length-options" className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.length || ''} onChange={e => updateInventoryMatrixRow(index, { length: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-weight-options" className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.weight || ''} onChange={e => updateInventoryMatrixRow(index, { weight: e.target.value })} /></td>
+                      <td className="p-1"><input list="inventory-stock-options" type="number" min={0} className="w-20 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.stock ?? 0} onChange={e => updateInventoryMatrixRow(index, { stock: Number(e.target.value) })} /></td>
+                      <td className="p-1"><input list="inventory-details-options" className="w-40 p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700" value={row.details || ''} onChange={e => updateInventoryMatrixRow(index, { details: e.target.value })} /></td>
                       <td className="p-1"><button className="p-2 text-red-500 hover:bg-red-50 rounded" onClick={() => deleteInventoryMatrixRow(index)}><Trash2 className="w-4 h-4" /></button></td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <datalist id="inventory-sku-options">
+                {inventoryFieldOptions.sku.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-variant-options">
+                {inventoryFieldOptions.variant.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-color-options">
+                {inventoryFieldOptions.color.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-size-options">
+                {inventoryFieldOptions.size.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-length-options">
+                {inventoryFieldOptions.length.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-weight-options">
+                {inventoryFieldOptions.weight.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-stock-options">
+                {inventoryFieldOptions.stock.map((option) => <option key={option} value={option} />)}
+              </datalist>
+              <datalist id="inventory-details-options">
+                {inventoryFieldOptions.details.map((option) => <option key={option} value={option} />)}
+              </datalist>
               {(editingProduct?.inventoryMatrix || []).length === 0 && (
                 <div className="p-4 text-xs text-slate-500">No inventory rows yet. Add rows to manage stock by variant and attributes.</div>
               )}
@@ -857,7 +1209,7 @@ export const AdminDashboard: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="Search products..." 
-                className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:text-white"
+                className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500 dark:text-white"
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
               />
@@ -894,7 +1246,7 @@ export const AdminDashboard: React.FC = () => {
                    </td>
                    <td className="px-6 py-4 text-right">
                      <div className="flex justify-end gap-2">
-                       <button onClick={() => { setEditingProduct(product); setActiveSubView('product_entry'); }} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-cyan-600"><Pencil className="w-4 h-4" /></button>
+                       <button onClick={() => { setEditingProduct(product); setActiveSubView('product_entry'); }} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Pencil className="w-4 h-4" /></button>
                        <button onClick={() => handleDeleteProduct(product.id)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                      </div>
                    </td>
@@ -915,10 +1267,10 @@ export const AdminDashboard: React.FC = () => {
              <div><p className="text-sm text-slate-500">Pending Orders</p><p className="text-2xl font-bold text-slate-900 dark:text-white">{orders.filter(o => o.status === 'Pending').length}</p></div>
              <div className="p-3 bg-amber-100 text-amber-600 rounded-lg"><Clock className="w-6 h-6" /></div>
           </div>
-          <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-between items-center">
+           <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-between items-center">
              <div><p className="text-sm text-slate-500">Processing</p><p className="text-2xl font-bold text-slate-900 dark:text-white">{orders.filter(o => o.status === 'Processing').length}</p></div>
-             <div className="p-3 bg-blue-100 text-blue-600 rounded-lg"><Package className="w-6 h-6" /></div>
-          </div>
+             <div className="p-3 bg-red-100 text-red-600 rounded-lg"><Package className="w-6 h-6" /></div>
+           </div>
           <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-between items-center">
              <div><p className="text-sm text-slate-500">Shipped</p><p className="text-2xl font-bold text-slate-900 dark:text-white">{orders.filter(o => o.status === 'Shipped').length}</p></div>
              <div className="p-3 bg-purple-100 text-purple-600 rounded-lg"><Truck className="w-6 h-6" /></div>
@@ -954,8 +1306,8 @@ export const AdminDashboard: React.FC = () => {
                        onChange={(e) => handleOrderStatusChange(order.id, e.target.value as any)}
                        className={`px-3 py-1 rounded-full text-xs font-bold border-none outline-none cursor-pointer ${
                          order.status === 'Delivered' ? 'bg-green-100 text-green-700' :
-                         order.status === 'Cancelled' ? 'bg-red-100 text-red-700' :
-                         order.status === 'Processing' ? 'bg-blue-100 text-blue-700' :
+                         order.status === 'Cancelled' ? 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300' :
+                         order.status === 'Processing' ? 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300' :
                          order.status === 'Shipped' ? 'bg-purple-100 text-purple-700' :
                          'bg-amber-100 text-amber-700'
                        }`}
@@ -1009,7 +1361,7 @@ export const AdminDashboard: React.FC = () => {
                      <td className="px-6 py-4 font-bold">RM {spent.toFixed(2)}</td>
                      <td className="px-6 py-4">2 days ago</td>
                      <td className="px-6 py-4 text-right">
-                       <button className="text-cyan-600 hover:underline">View Profile</button>
+                       <button className="text-red-600 hover:underline">View Profile</button>
                      </td>
                    </tr>
                  )
@@ -1061,9 +1413,9 @@ export const AdminDashboard: React.FC = () => {
                  <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Payment Methods</label>
                     <div className="space-y-2">
-                       <label className="flex items-center gap-2"><input type="checkbox" defaultChecked className="rounded text-cyan-600" /><span className="text-sm">Credit Card (Stripe)</span></label>
-                       <label className="flex items-center gap-2"><input type="checkbox" defaultChecked className="rounded text-cyan-600" /><span className="text-sm">FPX Online Banking</span></label>
-                       <label className="flex items-center gap-2"><input type="checkbox" className="rounded text-cyan-600" /><span className="text-sm">Cash on Delivery</span></label>
+                       <label className="flex items-center gap-2"><input type="checkbox" defaultChecked className="rounded text-red-600" /><span className="text-sm">Credit Card (Stripe)</span></label>
+                       <label className="flex items-center gap-2"><input type="checkbox" defaultChecked className="rounded text-red-600" /><span className="text-sm">FPX Online Banking</span></label>
+                       <label className="flex items-center gap-2"><input type="checkbox" className="rounded text-red-600" /><span className="text-sm">Cash on Delivery</span></label>
                     </div>
                  </div>
               </div>
@@ -1088,7 +1440,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
 
           <div className="p-6 border-b border-slate-100 dark:border-slate-800">
-            <label className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-cyan-500">
+            <label className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-red-500">
               <Upload className="w-4 h-4" /> Upload Media
               <input
                 type="file"
@@ -1139,7 +1491,7 @@ export const AdminDashboard: React.FC = () => {
       <aside className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden md:block fixed h-[calc(100vh-80px)] top-20 left-0 overflow-y-auto custom-scrollbar z-30">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8 px-2">
-            <div className="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-white font-bold shadow-lg shadow-cyan-500/30">A</div>
+            <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center text-white font-bold shadow-lg shadow-red-500/30">A</div>
             <div>
               <p className="font-bold text-slate-900 dark:text-white text-sm">Admin Panel</p>
               <p className="text-xs text-slate-500">Focus Electrical</p>
@@ -1147,23 +1499,23 @@ export const AdminDashboard: React.FC = () => {
           </div>
           
           <div className="space-y-6">
-            <button onClick={() => { setActiveTab('overview'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'overview' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><LayoutDashboard className="w-4 h-4" /> Dashboard</button>
+            <button onClick={() => { setActiveTab('overview'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'overview' ? 'bg-red-500/10 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><LayoutDashboard className="w-4 h-4" /> Dashboard</button>
 
             <div className="mb-6">
               <h4 className="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Commerce</h4>
-              <button onClick={() => { setActiveTab('products'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'products' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><Package className="w-4 h-4" /> Products</button>
-              <button onClick={() => { setActiveTab('orders'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'orders' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><ShoppingCart className="w-4 h-4" /> Orders</button>
-              <button onClick={() => { setActiveTab('crm'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'crm' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><Users className="w-4 h-4" /> CRM</button>
+              <button onClick={() => { setActiveTab('products'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'products' ? 'bg-red-500/10 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><Package className="w-4 h-4" /> Products</button>
+              <button onClick={() => { setActiveTab('orders'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'orders' ? 'bg-red-500/10 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><ShoppingCart className="w-4 h-4" /> Orders</button>
+              <button onClick={() => { setActiveTab('crm'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'crm' ? 'bg-red-500/10 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><Users className="w-4 h-4" /> CRM</button>
             </div>
 
             <div className="mb-6">
               <h4 className="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Web Content</h4>
-              <button onClick={() => { setActiveTab('pages'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'pages' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><FileText className="w-4 h-4" /> Pages</button>
+              <button onClick={() => { setActiveTab('pages'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'pages' ? 'bg-red-500/10 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><FileText className="w-4 h-4" /> Pages</button>
             </div>
 
              <div className="mb-6">
               <h4 className="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Settings</h4>
-              <button onClick={() => { setActiveTab('settings'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'settings' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><Settings className="w-4 h-4" /> Store Settings</button>
+              <button onClick={() => { setActiveTab('settings'); setActiveSubView(null); }} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === 'settings' ? 'bg-red-500/10 text-red-600 dark:text-red-300' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}><Settings className="w-4 h-4" /> Store Settings</button>
             </div>
           </div>
         </div>
@@ -1214,7 +1566,7 @@ export const AdminDashboard: React.FC = () => {
                             <td className="px-6 py-4"><span className={`px-2 py-1 rounded-full text-xs font-bold ${page.status === 'published' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'}`}>{page.status}</span></td>
                             <td className="px-6 py-4 text-right">
                               <div className="flex justify-end gap-2">
-                                <button onClick={() => openPageEditor(page)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-cyan-600"><Pencil className="w-4 h-4" /></button>
+                                <button onClick={() => openPageEditor(page)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Pencil className="w-4 h-4" /></button>
                                 <button onClick={() => handleDeletePage(page.id)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                               </div>
                             </td>

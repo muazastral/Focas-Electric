@@ -24,8 +24,8 @@ export const Services: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICES_LIST.map((service, index) => (
             <div key={index} className="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-sm dark:shadow-none">
-              <div className="w-10 h-10 bg-cyan-100 dark:bg-cyan-500/10 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+              <div className="w-10 h-10 bg-red-100 dark:bg-red-500/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-5 h-5 text-red-600 dark:text-red-400" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{service.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">

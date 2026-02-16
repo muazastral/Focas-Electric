@@ -40,10 +40,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="bg-cyan-500/10 p-1.5 rounded-lg border border-cyan-500/20">
-                <Zap className="h-5 w-5 text-cyan-600 dark:text-cyan-400" />
+              <div className="bg-red-500/10 p-1.5 rounded-lg border border-red-500/20">
+                <Zap className="h-5 w-5 text-red-600 dark:text-red-400" />
               </div>
-              <span className="font-bold text-lg text-slate-900 dark:text-white">Focus<span className="text-cyan-600 dark:text-cyan-400">Electrical</span></span>
+              <span className="font-bold text-lg text-slate-900 dark:text-white">Focus<span className="text-red-600 dark:text-red-400">Electrical</span></span>
             </div>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               Your reliable partner for electrical & electronic solutions in Malaysia. Quality brands, fair prices, fast delivery.
@@ -55,17 +55,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h3 className="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h3>
             <ul className="space-y-4">
               <li>
-                <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors">
+                <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#products" onClick={(e) => handleLinkClick(e, '#products')} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors">
+                <a href="#products" onClick={(e) => handleLinkClick(e, '#products')} className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors">
                   Products
                 </a>
               </li>
               <li>
-                <a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors">
+                <a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors">
                   About Us
                 </a>
               </li>
@@ -74,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   <a 
                     href={item.href} 
                     onClick={(e) => handleLinkClick(e, item.href)}
-                    className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors"
+                    className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors"
                   >
                     {item.label}
                   </a>
@@ -87,9 +87,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="text-slate-900 dark:text-white font-bold mb-6">Support</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors">Contact Support</a></li>
-              <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 text-sm transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors">Contact Support</a></li>
+              <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 text-sm transition-colors">Terms of Service</a></li>
             </ul>
           </div>
 

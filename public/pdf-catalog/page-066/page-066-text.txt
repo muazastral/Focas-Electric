@@ -1,0 +1,19 @@
+Focus Electrical Malaysia
+Brand
+Amp Coverage (A)
+ABB
+0.4 – 380
+CHINT
+0.4 – 200
+FUJI
+0.1 – 13
+LS
+0.4 – 85
+SCHNEIDER
+0.25 – 104
+TAIAN
+0.9 – 31
+NXR-100 30-40A
+66
+T.O.R.
+Thermal Overload Relay

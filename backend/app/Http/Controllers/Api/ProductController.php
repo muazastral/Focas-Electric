@@ -181,7 +181,7 @@ class ProductController extends Controller
                     'price' => (float) ($item['price'] ?? 0),
                     'originalPrice' => isset($item['originalPrice']) ? (float) $item['originalPrice'] : null,
                     'rating' => (int) ($item['rating'] ?? 4),
-                    'image' => (string) ($item['image'] ?? 'https://picsum.photos/600/600?random=999'),
+                    'image' => (string) ($item['image'] ?? '/pdf-images/page-001-1.png'),
                     'description' => (string) ($item['description'] ?? 'PDF catalog reference entry.'),
                     'isNew' => (bool) ($item['isNew'] ?? false),
                     'isSale' => (bool) ($item['isSale'] ?? false),

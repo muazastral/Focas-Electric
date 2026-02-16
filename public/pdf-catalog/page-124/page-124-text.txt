@@ -1,0 +1,71 @@
+MODEL
+W X H (MM)
+LED TUBE
+GMF 1202/AL/LED 
+GMF 2212/AL/LED  
+GMF 2222/AL/LED  
+GMF 3222/AL/LED 
+GMF 4222/AL/LED 
+GMF 1414/AL/LED 
+GMF 2414/AL/LED 
+GMF 2424/AL/LED 
+GMF 3424/AL/LED 
+GMF 4424/AL/LED 
+GMF 1202/AL/MM/LED
+GMF 2212/AL/MM/LED
+GMF 2222/AL/MM/LED
+GMF 3222/AL/MM/LED
+GMF 4222/AL/MM/LED
+GMF 1414/AL/MM/LED
+GMF 2414/AL/MM/LED
+GMF 2424/AL/MM/LED
+GMF 3424/AL/MM/LED
+GMF 4424/AL/MM/LED
+200 X 70
+298 X 70
+603 X 70
+603 X 70
+603 X 70
+298 X 70
+298 X 70
+603 X 70
+603 X 70
+603 X 70
+200 X 70
+295 X 70
+595 X 70
+595 X 70
+595 X 70
+295 X 70
+295 X 70
+595 X 70
+595 X 70
+595 X 70
+1 x 2ft 
+2 x 2ft
+2 x 2ft 
+3 x 2ft
+ 4 x 2ft
+1 x 4ft
+2 x 4ft
+2 x 4ft
+3 x 4ft
+4 x 4ft
+1 x 2ft 
+2 x 2ft
+2 x 2ft
+3 x 2ft
+4 x 2ft
+1 x 4ft 
+2 x 4ft
+2 x 4ft
+3 x 4ft
+4 x 4ft
+GOODLITE TOP MIRROR
+*/AL = T-bar Recessed (imperial size)
+*/AL/MM = T-bar Recessed (metric size)
+**1e = 1 way tube
+**2e = 2 way tube
+Recessed or Surface got  JKR
+Please state 1e or 2e when ordering
+124

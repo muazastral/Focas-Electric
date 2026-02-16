@@ -80,12 +80,12 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <button 
              onClick={() => onNavigate('home')}
-             className="flex items-center gap-2 text-slate-500 hover:text-cyan-600 dark:text-slate-400 dark:hover:text-cyan-400 mb-6 transition-colors"
+             className="flex items-center gap-2 text-slate-500 hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400 mb-6 transition-colors"
            >
              <ArrowLeft className="w-4 h-4" /> Back to Home
            </button>
            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-             News & <span className="text-cyan-600 dark:text-cyan-400">Insights</span>
+             News & <span className="text-red-600 dark:text-red-400">Insights</span>
            </h1>
            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
              Stay updated with the latest product launches, company announcements, and technical guides from Focus Electrical.
@@ -104,7 +104,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                <input 
                  type="text" 
                  placeholder="Search articles..." 
-                 className="w-full pl-9 pr-4 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-cyan-500 outline-none text-slate-900 dark:text-white"
+                 className="w-full pl-9 pr-4 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-red-500 outline-none text-slate-900 dark:text-white"
                  value={searchQuery}
                  onChange={(e) => setSearchQuery(e.target.value)}
                />
@@ -119,7 +119,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                      onClick={() => setSelectedCategory(cat)}
                      className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                        selectedCategory === cat 
-                         ? 'bg-cyan-600 text-white' 
+                         ? 'bg-red-500 text-white' 
                          : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
                      }`}
                    >
@@ -132,7 +132,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
 
                <div className="relative">
                  <select 
-                   className="appearance-none bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 py-2 pl-4 pr-10 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer"
+                   className="appearance-none bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 py-2 pl-4 pr-10 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
                    value={sortOrder}
                    onChange={(e) => setSortOrder(e.target.value as 'newest' | 'oldest')}
                  >
@@ -163,7 +163,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                     alt={item.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur text-xs font-bold text-cyan-600 dark:text-cyan-400 px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur text-xs font-bold text-red-600 dark:text-red-400 px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
                     {item.category}
                   </div>
                   <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-300"></div>
@@ -174,13 +174,13 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
                     <Calendar className="w-4 h-4" />
                     <span>{item.date}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors mb-3 line-clamp-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors mb-3 line-clamp-2">
                     {item.title}
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-6 leading-relaxed">
                      {item.content}
                   </p>
-                  <span className="inline-flex items-center text-sm font-bold text-cyan-600 dark:text-cyan-400 hover:underline">
+                  <span className="inline-flex items-center text-sm font-bold text-red-600 dark:text-red-400 hover:underline">
                     Read Article <ArrowRight className="w-4 h-4 ml-1" />
                   </span>
                 </div>
@@ -226,7 +226,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate }) => {
               <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-6 pt-16">
                 <div className="flex items-center gap-3 text-white/90 text-sm mb-2">
                   <span className="flex items-center gap-1 font-medium"><Calendar className="w-4 h-4" /> {selectedNews.date}</span>
-                  <span className="flex items-center gap-1 bg-cyan-500/20 px-2 py-0.5 rounded text-cyan-300 border border-cyan-500/30 font-medium text-xs uppercase tracking-wide"><Tag className="w-3 h-3" /> {selectedNews.category}</span>
+                  <span className="flex items-center gap-1 bg-red-500/15 px-2 py-0.5 rounded text-red-100 border border-red-400/40 font-medium text-xs uppercase tracking-wide"><Tag className="w-3 h-3" /> {selectedNews.category}</span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight shadow-sm">{selectedNews.title}</h3>
               </div>

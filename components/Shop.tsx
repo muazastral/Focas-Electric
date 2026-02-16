@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, 
   Filter, 
@@ -25,21 +25,28 @@ import {
   Check,
   Zap,
   SlidersHorizontal,
-  Store
+  Store,
+  AlertCircle
 } from 'lucide-react';
 import { Button } from './Button';
 import { PRODUCTS, Product, BRAND_NAMES, LOCATIONS } from '../constants';
-import { useCart } from './CartContext';
+import { useCart, SelectedOptions } from './CartContext';
 import { fallbackData, getProductsRequest } from '../services/api';
 
 // Quick View Modal Component
 interface QuickViewModalProps {
   product: Product;
   onClose: () => void;
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (product: Product, e?: React.MouseEvent, options?: SelectedOptions) => void;
 }
 
 const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAddToCart }) => {
+  const [selectedVariant, setSelectedVariant] = useState<string | undefined>();
+  const [selectedColor, setSelectedColor] = useState<string | undefined>();
+  const [selectedSize, setSelectedSize] = useState<string | undefined>();
+  const [selectedModelCode, setSelectedModelCode] = useState<string | undefined>();
+  const [qty, setQty] = useState(1);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -47,15 +54,102 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAdd
     };
   }, []);
 
-  const optionGroups = [
-    { title: 'Model Codes', values: product.modelCodes },
-    { title: 'Variants', values: product.variants },
-    { title: 'Colors', values: product.colors },
-    { title: 'Sizes', values: product.sizes },
-    { title: 'Lengths', values: product.lengths },
-    { title: 'Types', values: product.types },
-    { title: 'Choices', values: product.choices },
-  ].filter(group => group.values && group.values.length);
+  // Build option groups with their keys
+  const optionGroupDefs = [
+    { key: 'modelCode' as const, title: 'Model Codes', values: product.modelCodes, selected: selectedModelCode, setSelected: setSelectedModelCode },
+    { key: 'variant' as const, title: 'Variants', values: product.variants, selected: selectedVariant, setSelected: setSelectedVariant },
+    { key: 'color' as const, title: 'Colors', values: product.colors, selected: selectedColor, setSelected: setSelectedColor },
+    { key: 'size' as const, title: 'Sizes', values: product.sizes, selected: selectedSize, setSelected: setSelectedSize },
+  ];
+
+  const activeGroups = optionGroupDefs.filter(g => g.values && g.values.length > 0);
+
+  // Cascade filtering: determine which values are available based on inventoryMatrix and current selections
+  const getAvailableValues = useMemo(() => {
+    const matrix = product.inventoryMatrix;
+    if (!matrix || matrix.length === 0) {
+      // No matrix — all values are available (no filtering)
+      const result: Record<string, Set<string>> = {};
+      activeGroups.forEach(g => {
+        result[g.key] = new Set(g.values || []);
+      });
+      return result;
+    }
+
+    // Filter matrix rows that match current selections (excluding the group being checked)
+    const getFiltered = (excludeKey: string) => {
+      return matrix.filter(row => {
+        if (excludeKey !== 'variant' && selectedVariant && row.variant && row.variant !== selectedVariant) return false;
+        if (excludeKey !== 'color' && selectedColor && row.color && row.color !== selectedColor) return false;
+        if (excludeKey !== 'size' && selectedSize && row.size && row.size !== selectedSize) return false;
+        // Only include rows with stock > 0
+        if (row.stock <= 0) return false;
+        return true;
+      });
+    };
+
+    const result: Record<string, Set<string>> = {};
+    activeGroups.forEach(g => {
+      if (g.key === 'modelCode') {
+        // Model codes aren't usually in inventory matrix, show all
+        result[g.key] = new Set(g.values || []);
+      } else {
+        const filtered = getFiltered(g.key);
+        const available = new Set<string>();
+        filtered.forEach(row => {
+          const val = (row as any)[g.key];
+          if (val) available.add(val);
+        });
+        // If matrix doesn't have data for this key, show all values
+        result[g.key] = available.size > 0 ? available : new Set(g.values || []);
+      }
+    });
+
+    return result;
+  }, [product, selectedVariant, selectedColor, selectedSize, selectedModelCode, activeGroups]);
+
+  // Check stock for current selection
+  const currentStock = useMemo(() => {
+    const matrix = product.inventoryMatrix;
+    if (!matrix || matrix.length === 0) return null;
+    
+    const matching = matrix.filter(row => {
+      if (selectedVariant && row.variant && row.variant !== selectedVariant) return false;
+      if (selectedColor && row.color && row.color !== selectedColor) return false;
+      if (selectedSize && row.size && row.size !== selectedSize) return false;
+      return true;
+    });
+    
+    if (matching.length === 0) return 0;
+    return matching.reduce((sum, r) => sum + r.stock, 0);
+  }, [product.inventoryMatrix, selectedVariant, selectedColor, selectedSize]);
+
+  // Reset downstream selections when upstream changes
+  const handleSelect = (key: string, value: string, setter: (v: string | undefined) => void) => {
+    setter(prev => prev === value ? undefined : value);
+    
+    // Clear downstream selections when an upstream choice changes
+    const order = ['modelCode', 'variant', 'color', 'size'];
+    const idx = order.indexOf(key);
+    if (idx >= 0) {
+      for (let i = idx + 1; i < order.length; i++) {
+        const downstream = activeGroups.find(g => g.key === order[i]);
+        if (downstream) downstream.setSelected(undefined);
+      }
+    }
+  };
+
+  const selectedOptions: SelectedOptions = {
+    variant: selectedVariant,
+    color: selectedColor,
+    size: selectedSize,
+    modelCode: selectedModelCode,
+  };
+
+  // Check if at least one option is selected (if options exist)
+  const hasOptions = activeGroups.length > 0;
+  const hasSelection = selectedVariant || selectedColor || selectedSize || selectedModelCode;
+  const canAddToCart = !hasOptions || hasSelection;
 
   return (
     <div 
@@ -91,7 +185,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAdd
           {/* Details Section */}
           <div className="flex flex-col h-full">
             <div className="mb-2">
-               <span className="text-cyan-600 dark:text-cyan-400 text-sm font-medium uppercase tracking-wider">{product.category}</span>
+               <span className="text-red-600 dark:text-red-400 text-sm font-medium uppercase tracking-wider">{product.category}</span>
             </div>
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">{product.name}</h2>
             <div className="text-sm text-slate-500 dark:text-slate-400 mb-4 font-medium">Brand: <span className="text-slate-900 dark:text-white">{product.brand}</span></div>
@@ -120,29 +214,86 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAdd
               </p>
             </div>
 
-            {optionGroups.length > 0 && (
+            {activeGroups.length > 0 && (
               <div className="mb-8 p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Available Options</h4>
-                <div className="space-y-3">
-                  {optionGroups.map(group => (
-                    <div key={group.title}>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">{group.title}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {group.values?.map((value) => (
-                          <span key={value} className="px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60">
-                            {value}
-                          </span>
-                        ))}
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4">Select Options</h4>
+                <div className="space-y-4">
+                  {activeGroups.map(group => {
+                    const available = getAvailableValues[group.key] || new Set(group.values || []);
+                    return (
+                      <div key={group.key}>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                          {group.title}
+                          {group.selected && (
+                            <span className="ml-2 text-red-600 dark:text-red-400 normal-case">— {group.selected}</span>
+                          )}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {group.values?.map((value) => {
+                            const isAvailable = available.has(value);
+                            const isSelected = group.selected === value;
+                            return (
+                              <button
+                                key={value}
+                                disabled={!isAvailable}
+                                onClick={() => handleSelect(group.key, value, group.setSelected)}
+                                className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-all duration-200 ${
+                                  isSelected
+                                    ? 'bg-red-600 text-white border-red-600 shadow-md ring-2 ring-red-300 dark:ring-red-800'
+                                    : isAvailable
+                                      ? 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 hover:border-red-400 hover:text-red-600 dark:hover:text-red-400 cursor-pointer'
+                                      : 'border-slate-100 dark:border-slate-800 text-slate-300 dark:text-slate-600 bg-slate-50 dark:bg-slate-900 line-through cursor-not-allowed opacity-50'
+                                }`}
+                              >
+                                {value}
+                              </button>
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
+                {currentStock !== null && (
+                  <div className={`mt-4 flex items-center gap-2 text-xs font-medium ${currentStock > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-500'}`}>
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    {currentStock > 0 ? `${currentStock} unit(s) in stock` : 'Out of stock for this combination'}
+                  </div>
+                )}
               </div>
             )}
+
+            {/* Non-selectable info groups (lengths, types, choices) */}
+            {(() => {
+              const infoGroups = [
+                { title: 'Lengths', values: product.lengths },
+                { title: 'Types', values: product.types },
+                { title: 'Choices', values: product.choices },
+              ].filter(g => g.values && g.values.length > 0);
+              
+              return infoGroups.length > 0 ? (
+                <div className="mb-8 p-4 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <div className="space-y-3">
+                    {infoGroups.map(g => (
+                      <div key={g.title}>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">{g.title}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {g.values?.map(v => (
+                            <span key={v} className="px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800">
+                              {v}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null;
+            })()}
             
             <div className="mb-8 p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                 <Store className="w-4 h-4 text-cyan-600 dark:text-cyan-400" /> Stock Availability:
+                 <Store className="w-4 h-4 text-red-600 dark:text-red-400" /> Stock Availability:
                </h4>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
                  {product.availableAt.map(locId => {
@@ -163,15 +314,53 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose, onAdd
             </div>
 
             <div className="mt-auto flex flex-col gap-3">
+              {/* Quantity Selector */}
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Qty:</span>
+                <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg">
+                  <button
+                    onClick={() => setQty(q => Math.max(1, q - 1))}
+                    className="px-3 py-1.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-l-lg transition-colors"
+                  >−</button>
+                  <span className="px-4 py-1.5 text-sm font-bold text-slate-900 dark:text-white border-x border-slate-200 dark:border-slate-700 min-w-[40px] text-center">{qty}</span>
+                  <button
+                    onClick={() => setQty(q => q + 1)}
+                    className="px-3 py-1.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-lg transition-colors"
+                  >+</button>
+                </div>
+              </div>
+
+              {/* Selected Options Summary */}
+              {hasSelection && (
+                <div className="flex flex-wrap gap-1.5">
+                  {Object.entries(selectedOptions).filter(([,v]) => v).map(([k,v]) => (
+                    <span key={k} className="text-[10px] px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/30 font-medium">
+                      {v}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {!canAddToCart && (
+                <p className="text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" /> Please select at least one option
+                </p>
+              )}
+
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button size="lg" className="flex-1 gap-2" onClick={() => onAddToCart(product)}>
+                <Button 
+                  size="lg" 
+                  className={`flex-1 gap-2 ${!canAddToCart ? 'opacity-50 cursor-not-allowed' : ''}`} 
+                  onClick={() => canAddToCart && onAddToCart(product, undefined, selectedOptions)}
+                  disabled={!canAddToCart}
+                >
                   <ShoppingCart className="w-5 h-5" /> Add to Cart
                 </Button>
                 <Button variant="secondary" size="lg" className="px-4" title="Add to Wishlist">
                   <Heart className="w-5 h-5" />
                 </Button>
               </div>
-              <Button variant="outline" className="w-full border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500">
+              <Button variant="outline" className="w-full border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 hover:border-red-500">
                   View Full Product Details
               </Button>
             </div>
@@ -196,9 +385,10 @@ const CATEGORY_ICONS: Record<string, any> = {
 
 interface ShopProps {
   initialCategory?: string;
+  onNavigate?: (page: string) => void;
 }
 
-export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
+export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All', onNavigate }) => {
   const [products, setProducts] = useState<Product[]>(PRODUCTS);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
@@ -230,7 +420,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
   }, []);
 
   const categories = Object.keys(CATEGORY_ICONS);
-  const brands = Array.from(new Set(products.map(product => product.brand))).filter(Boolean);
+  const brands: string[] = Array.from(new Set(products.map(product => product.brand))).filter((brand): brand is string => Boolean(brand));
   const availableBrands = brands.length ? brands : BRAND_NAMES;
 
   const toggleBrand = (brand: string) => {
@@ -244,11 +434,11 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
     setWishlist(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
   };
 
-  const handleAddToCart = (product: Product, e?: React.MouseEvent) => {
+  const handleAddToCart = (product: Product, e?: React.MouseEvent, options?: SelectedOptions) => {
     if (e) {
       e.stopPropagation();
     }
-    addToCart(product);
+    addToCart(product, 1, options);
     setAddedEffect(product.id);
     setTimeout(() => setAddedEffect(null), 1000);
   };
@@ -277,7 +467,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                   <h4 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">2025 Collection</h4>
                   <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight mb-6">
                      STEP INTO <br />
-                     <span className="text-cyan-600 dark:text-cyan-400">ELECTRICAL</span> EXCELLENCE
+                     <span className="text-red-600 dark:text-red-400">ELECTRICAL</span> EXCELLENCE
                   </h1>
                   <p className="text-slate-600 dark:text-slate-300 mb-8 text-lg">
                      Discover premium components for home and industry. <br className="hidden md:block"/>
@@ -293,9 +483,9 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                
                {/* Hero Image / Abstract */}
                <div className="mt-10 md:mt-0 relative">
-                  <div className="w-64 h-64 md:w-96 md:h-96 bg-cyan-500/20 rounded-full blur-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                  <div className="w-64 h-64 md:w-96 md:h-96 bg-red-500/20 rounded-full blur-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                   <img 
-                    src="https://picsum.photos/800/800?random=hero" 
+                    src="/pdf-catalog/page-004/img-001.jpeg" 
                     alt="Hero Product" 
                     className="relative z-10 w-full max-w-sm drop-shadow-2xl rounded-3xl transform rotate-[-10deg] hover:rotate-0 transition-transform duration-500"
                   />
@@ -325,20 +515,24 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
            
            {/* CATEGORY TABS (Horizontal Pills) */}
            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-                    selectedCategory === cat 
-                      ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-lg transform scale-105' 
-                      : 'bg-transparent text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
-                  }`}
-                >
-                  <span className={`w-2 h-2 rounded-full ${selectedCategory === cat ? 'bg-cyan-400' : 'bg-transparent'}`}></span>
-                  {cat}
-                </button>
-              ))}
+              {categories.map((cat) => {
+                const count = cat === 'All' ? products.length : products.filter(p => p.category === cat).length;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+                      selectedCategory === cat 
+                        ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-lg transform scale-105' 
+                        : 'bg-transparent text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                    }`}
+                  >
+                    <span className={`w-2 h-2 rounded-full ${selectedCategory === cat ? 'bg-red-400' : 'bg-transparent'}`}></span>
+                    {cat}
+                    <span className={`text-xs px-1.5 py-0.5 rounded-full ${selectedCategory === cat ? 'bg-white/20 dark:bg-slate-900/20' : 'bg-slate-100 dark:bg-slate-800'}`}>{count}</span>
+                  </button>
+                );
+              })}
            </div>
         </div>
 
@@ -351,7 +545,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
               <input 
                 type="text" 
                 placeholder="Search products..." 
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border-none focus:ring-2 focus:ring-cyan-500 outline-none text-slate-900 dark:text-white"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border-none focus:ring-2 focus:ring-red-500 outline-none text-slate-900 dark:text-white"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -361,12 +555,12 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
            <div className="flex gap-3 w-full md:w-auto">
               <button 
                 onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-                className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium transition-colors ${showAdvancedFilters ? 'bg-cyan-50 dark:bg-cyan-900/20 border-cyan-500 text-cyan-700 dark:text-cyan-400' : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
+                className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-medium transition-colors ${showAdvancedFilters ? 'bg-red-50 dark:bg-red-900/20 border-red-500 text-red-700 dark:text-red-400' : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
               >
                 <SlidersHorizontal className="w-4 h-4" /> Filters
               </button>
               <div className="relative flex-1 md:flex-none">
-                 <select className="w-full appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 py-2.5 pl-4 pr-10 rounded-xl font-medium focus:outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
+                 <select className="w-full appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 py-2.5 pl-4 pr-10 rounded-xl font-medium focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer">
                      <option>Sort: Newest</option>
                      <option>Price: Low to High</option>
                      <option>Price: High to Low</option>
@@ -391,7 +585,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                           max="1000" 
                           value={priceRange[1]}
                           onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
-                          className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                          className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-red-500"
                       />
                       <span className="text-sm font-bold text-slate-900 dark:text-white">{priceRange[1]}</span>
                    </div>
@@ -407,8 +601,8 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                           onClick={() => toggleBrand(brand)}
                           className={`px-3 py-1 rounded-lg text-xs font-medium border transition-colors ${
                             selectedBrands.includes(brand) 
-                              ? 'bg-cyan-600 text-white border-cyan-600' 
-                              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-cyan-500'
+                              ? 'bg-red-500 text-white border-red-500' 
+                              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-red-500'
                           }`}
                         >
                           {brand}
@@ -419,6 +613,19 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
              </div>
           </div>
         )}
+
+        {/* Results count */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Showing <span className="font-bold text-slate-900 dark:text-white">{filteredProducts.length}</span> of <span className="font-bold text-slate-900 dark:text-white">{products.length}</span> products
+            {selectedCategory !== 'All' && <span> in <span className="font-medium text-red-600 dark:text-red-400">{selectedCategory}</span></span>}
+          </p>
+          {selectedCategory !== 'All' && (
+            <button onClick={() => setSelectedCategory('All')} className="text-sm font-medium text-red-600 dark:text-red-400 hover:underline">
+              View All Products
+            </button>
+          )}
+        </div>
 
         {/* 4. PRODUCT GRID */}
         {filteredProducts.length > 0 ? (
@@ -456,7 +663,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                    {/* Badges */}
                    <div className="absolute top-3 left-3 flex flex-col gap-1">
                       {product.isNew && <span className="px-2 py-0.5 bg-orange-500 text-white text-[10px] font-bold uppercase rounded">New</span>}
-                      {product.isSale && <span className="px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold uppercase rounded">Sale</span>}
+                      {product.isSale && <span className="px-2 py-0.5 bg-red-400 text-white text-[10px] font-bold uppercase rounded">Sale</span>}
                    </div>
 
                    {/* Quick View Button */}
@@ -466,7 +673,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
                          e.stopPropagation();
                          setSelectedProduct(product);
                        }}
-                       className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-3 rounded-full shadow-xl hover:scale-110 transition-transform duration-200 border border-slate-100 dark:border-slate-700 hover:text-cyan-600 dark:hover:text-cyan-400"
+                       className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-3 rounded-full shadow-xl hover:scale-110 transition-transform duration-200 border border-slate-100 dark:border-slate-700 hover:text-red-600 dark:hover:text-red-400"
                        title="Quick View"
                      >
                        <Eye className="w-5 h-5" />
@@ -539,7 +746,7 @@ export const Shop: React.FC<ShopProps> = ({ initialCategory = 'All' }) => {
       {/* Floating Cart Bar (Mobile Only) */}
       {cartCount > 0 && (
         <div className="fixed bottom-6 left-4 right-4 z-40 lg:hidden animate-in slide-in-from-bottom-4 duration-300">
-          <div className="bg-slate-900 dark:bg-white rounded-full p-4 shadow-2xl flex items-center justify-between text-white dark:text-slate-900" onClick={() => window.location.hash = 'cart'}>
+          <div className="bg-slate-900 dark:bg-white rounded-full p-4 shadow-2xl flex items-center justify-between text-white dark:text-slate-900 cursor-pointer" onClick={() => onNavigate?.('cart')}>
             <div className="flex items-center gap-3 pl-2">
                <span className="font-bold">{cartCount} Item(s)</span>
                <span className="opacity-50">|</span>
