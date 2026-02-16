@@ -1,0 +1,16 @@
+{
+    "name": "focus-electrical/deploy",
+    "description": "Root composer wrapper — installs Laravel dependencies in backend/",
+    "type": "project",
+    "scripts": {
+        "post-install-cmd": [
+            "@php backend/deploy.php"
+        ],
+        "post-update-cmd": [
+            "@php backend/deploy.php"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
