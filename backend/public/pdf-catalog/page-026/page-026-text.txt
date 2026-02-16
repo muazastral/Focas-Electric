@@ -1,0 +1,87 @@
+Model 
+Power
+Lumen
+Cap / Base
+Length
+Color
+Quantity
+AFG-10TD
+10Watt
+1 000
+G13
+       28 x 602mm
+Daylight
+30 pcs/ctn
+Model 
+Power
+Lumen
+Cap / Base
+Length
+Color
+Quantity
+AFG-22TD
+22Watt
+2 200
+G13
+          28 x 1212mm
+Daylight
+30 pcs/ctn
+AFG-22TC
+22Watt
+2 200
+G13
+          28 x 1212mm
+Cool White
+30 pcs/ctn
+AFG-22TW
+22Watt
+2 200
+G13
+          28 x 1212mm
+Warm White
+30 pcs/ctn
+Model 
+Power
+Lumen
+Cap / Base
+Length
+Color
+Quantity
+AFG-32TD
+32Watt
+3 200
+G13
+        28 x 1212mm
+Daylight
+30 pcs/ctn
+ 28 x 602mm
+ 28 x 1212mm
+ 28 x 1212mm
+by HIKARI
+LED T8 Tube (Glass)
+10W
+20W
+32W
+CRI
+>70
+VOLT
+220-240
+G13
+CAP
+Model 
+Power
+Lumen
+Cap / Base
+Length
+Color
+Quantity
+AFG-20TD
+20Watt
+2 000
+G13
+          28 x 1212mm
+Daylight
+30 pcs/ctn
+ 28 x 1212mm
+22W
+26

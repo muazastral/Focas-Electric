@@ -1,0 +1,15 @@
+Focus Electrical Malaysia
+AMP
+25A, 40A, 63A, 100A
+POLE
+2 & 4
+TRIP SENSITIVITY
+10mA, 30 mA, 100 mA, 300 mA
+TYPE
+A & AC
+63A
+4P
+0.1A
+ELCB 
+62
+Earth Leakage Circuit Breaker

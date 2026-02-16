@@ -1,0 +1,75 @@
+Model 
+Power
+Lumen
+Power Factor
+Size
+Color
+Quantity
+AFG-HB-100
+100Watt
+10 000
+0.9
+260 x 260 x 34mm
+Daylight
+5 pcs/ctn
+Model 
+Power
+Lumen
+Power Factor
+Size
+Color
+Quantity
+AFG-HB-150
+150Watt
+15 000
+0.9
+302 x 302 x 34mm
+Daylight
+5 pcs/ctn
+Model 
+Power
+Lumen
+Power Factor
+Size
+Color
+Quantity
+AFG-HB-200
+200Watt
+20 000
+0.9
+332 x 332 x 34mm
+Daylight
+5 pcs/ctn
+by HIKARI
+LED High Bay
+100W
+150W
+200W
+10kV
+10kV
+Surge Protector
+Surge Protector
+ 260mm
+ 34mm
+ 260mm
+10kV
+10kV
+Surge Protector
+Surge Protector
+ 302mm
+ 34mm
+ 302mm
+10kV
+10kV
+Surge Protector
+Surge Protector
+ 332mm
+ 34mm
+ 332mm
+IP66
+VOLT
+170-240
+PF0.9
+CRI
+>80
+30

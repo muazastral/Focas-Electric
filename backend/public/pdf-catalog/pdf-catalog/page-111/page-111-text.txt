@@ -1,0 +1,40 @@
+SIZE
+DIAMETER
+2"x2"
+2"x3"
+2"x4"
+2"x6"
+2"x8"
+2"x10"
+2"x12"
+2"x14"
+3"x3"
+3"x4"
+3"x6"
+3"x8"
+3"x10"
+3"x12"
+3"x14"
+4"x4"
+4"x6"
+4"x8"
+4"x10"
+4"x12"
+4"x14"
+4"x16"
+6"x6"
+6"x8"
+6"x10"
+6"x12"
+6"x14"
+6"x16"
+6"x18"
+18G (1.0mm,1.2mm)
+15G (1.5mm,1.6mm)
+14G (2.0mm)
+METAL TRUNKING
+MS IEC 61084 (TYPE 1, JKR)
+EPOXY POWDER COATED - CLASS 1 (INDOOR)
+HOT DIPPED GALVANIZED - CLASS 2 (OUTDOOR)
+*1.0 = 18G , 1.2 = 18G , 2.0 = 14G  
+111

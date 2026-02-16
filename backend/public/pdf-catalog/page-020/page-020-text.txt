@@ -1,0 +1,138 @@
+Model 
+Power
+Inch
+Lumen
+Size
+Color
+Quantity
+AFG-4DLR-12l
+12Watt
+4'’
+860
+      140 x 33.5mm
+Daylight
+60 pcs/ctn
+AFG-4CWR-12l
+12Watt
+4"
+860
+      140 x 33.5mm
+Cool White
+60 pcs/ctn
+AFG-4WWR-12l
+12Watt
+4
+860
+      140 x 33.5mm
+Warm White
+60 pcs/ctn
+f
+Model 
+Power
+Inch
+Lumen
+Size
+Color
+Quantity
+AFG-6DLR-18l
+18Watt
+6"
+1 300
+      140 x 33.5mm
+Daylight
+30 pcs/ctn
+AFG-6CWR-18l
+18Watt
+6"
+1 300
+      140 x 33.5mm
+Cool White
+30 pcs/ctn
+AFG-6WWR-18l
+18Watt
+6"
+1 300
+      140 x 33.5mm
+Warm White
+30 pcs/ctn
+Model 
+Power
+Inch
+Lumen
+Size
+Color
+Quantity
+AFG-4DLS-12l
+12Watt
+4"
+860
+145 x 110 x 33.5mm
+Daylight
+60 pcs/ctn
+AFG-4DLS-12l
+12Watt
+4"
+860
+145 x 110 x 33.5mm
+Cool White
+60 pcs/ctn
+AFG-4WWS-12l
+12Watt
+4"
+860
+145 x 110 x 33.5mm
+Warm White
+60 pcs/ctn
+Model 
+Power
+Inch
+Lumen
+Size
+Color
+Quantity
+AFG-6DLS-18l
+18Watt
+6"
+1 300
+185 x 140 x 33.5mm
+Daylight
+60 pcs/ctn
+AFG-6CWS-18l
+18Watt
+6"
+1 300
+185 x 140 x 33.5mm
+Cool White
+60 pcs/ctn
+AFG-6WWS-18l
+18Watt
+6"
+1 300
+185 x 140 x 33.5mm
+Warm White
+60 pcs/ctn
+by HIKARI
+LED Reccessed Panel Light
+185mm
+140mm
+33.5mm
+33.5mm
+110mm
+145mm
+33.5mm
+185mm
+140mm
+33.5mm
+110mm
+145mm
+Round 4"
+Round 6"
+Square 4"
+Square 6"
+CRI
+>80
+VOLT
+170-240
+For Indoor
+Use
+20

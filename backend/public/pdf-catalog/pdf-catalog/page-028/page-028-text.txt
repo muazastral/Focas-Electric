@@ -1,0 +1,63 @@
+Model 
+Power
+Lumen
+Voltage
+ Base
+Length
+Color
+Quantity
+AFG-1027DL
+10Watt
+860
+220-240V ~ 50/60Hz
+E27
+120 x 36.5mm
+Daylight
+100 pcs/ctn
+AFG-1027WW
+10Watt
+860
+220-240V ~ 50/60Hz
+E27
+120 x 36.5mm
+Warm White
+100 pcs/ctn
+Model 
+Power
+Lumen
+Voltage
+ Base
+Length
+Color
+Quantity
+AFG-1527DL
+15Watt
+1 425
+220-240V ~ 50/60Hz
+E27
+145 x 49mm
+Daylight
+100 pcs/ctn
+AFG-1527WW
+15Watt
+1 425
+220-240V ~ 50/60Hz
+E27
+145 x 49mm
+Warm White
+100 pcs/ctn
+LED Stick
+by HIKARI
+ 36.5mm
+ 120mm
+ 49mm
+145mm
+10W
+15W
+CRI
+>80
+VOLT
+220-240
+For Indoor
+Use
+28

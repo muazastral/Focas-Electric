@@ -8,7 +8,14 @@ const resolveApiBaseUrl = (): string => {
     return browserGlobal;
   }
 
-  return 'http://127.0.0.1:8000/api';
+  // Use Vite env variable if defined, otherwise use relative /api path (works in production)
+  const envUrl = import.meta.env.VITE_API_BASE_URL;
+  if (envUrl) {
+    return envUrl;
+  }
+
+  // In production, the API is on the same domain
+  return '/api';
 };
 
 const API_BASE_URL = resolveApiBaseUrl();

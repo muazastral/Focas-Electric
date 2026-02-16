@@ -1,0 +1,26 @@
+Focus Electrical Malaysia
+Type
+Current Range
+Voltage
+Brands
+Mini
+9–25A
+240V
+Kozuka
+Standard
+32–100A
+415V
+ABB, Chint
+Heavy Duty
+125–300A
+415V
+LS
+Modular
+16–40A
+240V
+Schneider
+64
+32A
+3P
+240V
+CONTACTOR

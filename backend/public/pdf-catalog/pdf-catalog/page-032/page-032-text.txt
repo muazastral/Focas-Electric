@@ -1,0 +1,44 @@
+Model 
+AFG-P-TAPE-BLK
+AFG-P-TAPE-BLUE
+AFG-P-TAPE-G
+AFG-P-TAPE-R
+AFG-P-TAPE-Y
+Material
+PVC
+PVC
+PVC
+PVC
+PVC
+Thickness
+0.13mm
+0.13mm
+0.13mm
+0.13mm
+0.13mm
+Color
+Black
+Blue
+Green
+Red
+Yellow
+Quantity
+10 pcs/pack
+10 pcs/pack
+10 pcs/pack
+10 pcs/pack
+10 pcs/pack
+Size
+18mm x 5M
+18mm x 5M
+18mm x 5M
+18mm x 5M
+18mm x 5M
+by HIKARI
+PVC Electrical Tape
+TAPE 5M
+ 0.13mm
+ 18mm
+ 38mm
+5M
+32

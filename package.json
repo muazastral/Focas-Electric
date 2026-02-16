@@ -9,7 +9,7 @@
     "dev:backend": "node scripts/run-backend-dev.mjs",
     "dev:backend:strict": "node scripts/run-backend-dev.mjs --strict",
     "dev:all": "concurrently -n frontend,backend -c cyan,green \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "build": "vite build",
+    "build": "vite build && node scripts/copy-public-assets.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,9 +20,13 @@
     "recharts": "^3.6.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.24",
     "concurrently": "^9.1.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }

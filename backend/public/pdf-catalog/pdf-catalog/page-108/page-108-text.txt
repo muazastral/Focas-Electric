@@ -1,0 +1,37 @@
+Focus Electrical Malaysia
+Code
+Size (INCH)
+Size (MM)
+PT-3/4
+3/4" X 3/8"
+20MM X 10MM
+PT-1
+1" X 1/2"
+27MM X 13MM
+PT-1-1/2
+1 1/2" X 5/8"
+40MM X 16MM
+PT-1-1/2X3/4
+1 1/2" X 3/4"
+40MM X 20MM
+PT-1X2
+2" X 1"
+50MM X 30MM
+PT-2
+2" X 5/8"
+50MM X 16MM
+PT-2X2
+2" X 2"
+50MM X 50MM
+PT-2X3
+3" X 2"
+75MM X 50 MM
+PT-2X4
+4" X 2"
+100MM X 50MM
+PT-3X4
+4" X 3"
+100MM X 75MM
+Fighter
+PVC Mini Trunking ( 1.83 Meter / 6ft)
+108
