@@ -1,0 +1,28 @@
+# ──────────────────────────────────────────────────────────────
+# Root .htaccess — Routes production requests to Laravel
+# (Vite dev server ignores .htaccess, so this only affects production)
+# ──────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Skip if already rewritten to backend/public
+    RewriteCond %{REQUEST_URI} ^/backend/public/
+    RewriteRule ^ - [L]
+
+    # If the requested file exists inside backend/public/, serve it from there
+    # (handles /build/assets/*, /pdf-catalog/*, /favicon.ico, /robots.txt, etc.)
+    RewriteCond %{DOCUMENT_ROOT}/backend/public%{REQUEST_URI} -f
+    RewriteRule ^(.+)$ backend/public/$1 [L]
+
+    # Everything else → Laravel front controller
+    RewriteRule ^ backend/public/index.php [L]
+</IfModule>
